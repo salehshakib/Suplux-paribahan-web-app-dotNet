@@ -1,6 +1,13 @@
-﻿body {
+﻿/*Fonts import*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,900&display=swap');
+
+/*-----------------------
+        Utilities
+------------------------*/
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +28,49 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+a,
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.suplux-navbar-brand{
+    font-size: 30px;
+    padding-left: 0;
+}
+
+.suplux-header-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.suplux-navbar{
+    display: flex;
+    align-items: center;
+}
+
+.suplux-white-text{
+    color: white;
+    font-size: 20px;
+}
+
+/*--------------------------------
+        Brand Button Design
+---------------------------------*/
+.suplux-btn{
+    color: white;
+    padding: 5px 15px;
+    background-color: yellowgreen;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.suplux-btn:hover,
+.suplux-btn:focus{
+    background-color: wheat;
 }
