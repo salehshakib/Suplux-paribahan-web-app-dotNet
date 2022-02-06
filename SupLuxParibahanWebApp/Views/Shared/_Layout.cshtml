@@ -7,33 +7,31 @@
     @Styles.Render("~/Content/bootstrap.min.css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/Site.css")
+    <script src="https://kit.fontawesome.com/d1dbecc215.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="suplux-header-flex">
-                <div class="navbar-header">
-                    @Html.ActionLink("SUPLUX", "Index", "Home", new { area = "" }, new { @class = "navbar-brand suplux-navbar-brand" })
-                </div>
-                <div class="suplux-navbar">
-                    <button class="suplux-btn">@Html.ActionLink("Log In", "LogIn", "Account")</button>
-                    <!--ul class="nav navbar-nav text-center text-md-start">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul-->
+    <header>
+        <div class="navbar navbar-inverse suplux-navbar">
+            <div class="container">
+                <div class="suplux-header-flex">
+                    <div class="navbar-header">
+                        @Html.ActionLink("SUPLUX", "Index", "Home", new { area = "" }, new { @class = "navbar-brand suplux-navbar-brand" })
+                    </div>
+                    <div class="suplux-navbar-element">
+                        <button class="suplux-btn">@Html.ActionLink("Log In", "LogIn", "Account")</button>
+                    </div>
                 </div>
             </div>
-            
         </div>
-    </div>
-    <div class="container body-content">
+    </header>
+
+    <main>
         @RenderBody()
+    </main>
+    <footer class="container-fluid">
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -1,0 +1,71 @@
+﻿/*-----------------------------
+        Utilities Import
+------------------------------*/
+@import url("Site.css");
+
+/*---------------------------------------
+        Auto Complete Box Design
+----------------------------------------*/
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.autocomplete-items {
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    transform-origin: top;
+}
+
+.autocomplete_scale {
+    animation: scale_autocomplete 0.3s ease-in-out forwards;
+}
+
+@keyframes scale_autocomplete {
+
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.autocomplete-items i {
+    margin-right: 10px;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    padding-left: 20px;
+    cursor: pointer;
+    background-color: white;
+    color: var(--suplux-dark-blue);
+    transition: 0.3s ease-in-out;
+}
+
+    .autocomplete-items div:not(:last-child) {
+        border-bottom: 1px dashed var(--suplux-dark-blue);
+    }
+
+    .autocomplete-items div:hover {
+        background-color: #e9e9e9;
+    }
+
+.autocomplete-active {
+    background-color: var(--suplux-dark-blue) !important;
+    color: white !important;
+    transition: 0.3s ease-in-out;
+}
+
+.autocomplete-active i {
+    color: white;
+}

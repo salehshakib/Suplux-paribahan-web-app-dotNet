@@ -1,0 +1,138 @@
+﻿/*-----------------------------
+        Utilities Import
+------------------------------*/
+@import url("Site.css");
+
+/*-------------------------------------
+        Search Box Section Design
+--------------------------------------*/
+#search-box-section {
+    background-image: url(../Resources/images/home-header-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 150px 0 200px;
+}
+
+.search-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 100px 0 0;
+    background-color: white;
+    padding: 50px 30px;
+    border-radius: 30px;
+}
+
+.suplux-search-box{
+    position: relative;
+    background-color: white;
+    border: 2px solid var(--suplux-dark-blue);
+    width: 33.33%;
+    border-radius: 10px;
+}
+
+.suplux-search-box + .suplux-search-box {
+
+    margin-left: 10px;
+}
+
+.suplux-search-box p{
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.suplux-search-box input {
+    width: 100%;
+    border-radius: 10px;
+    padding: 25px 30px 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--suplux-dark-blue);
+    cursor: pointer;
+    border: 0;
+}
+
+.suplux-search-box input:focus{
+    background-color: var(--suplux-light-skyblue);
+}
+
+.search-btn-container {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search-btn-container .suplux-btn{
+    padding: 18px 50px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+/*--------------------------
+        Tablet Design
+---------------------------*/
+@media (max-width: 992px){
+    .search-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .suplux-search-box {
+        width: 100%;
+    }
+
+    .suplux-date-box {
+        grid-column: 1/ span 2;
+    }
+
+    .suplux-search-box + .suplux-search-box {
+        margin-left: 0;
+    }
+
+    .search-btn-container .suplux-btn {
+        padding: 15px 30px;
+        font-size: 14px;
+    }
+}
+
+/*--------------------------
+        Mobile Design
+---------------------------*/
+@media (max-width: 576px){
+    .search-container {
+        width: 95%;
+        padding: 50px 15px;
+    }
+
+    .suplux-search-box p {
+        left: 10px;
+    }
+
+    .suplux-search-box input {
+        padding: 30px 15px 10px;
+        font-size: 16px;
+    }
+}
+
+/*--------------------------
+        Xs Design
+---------------------------*/
+@media (max-width: 290px){
+    .suplux-search-box p{
+        left: 5px;
+    }
+    .suplux-search-box input {
+        padding: 25px 5px 10px;
+    }
+
+    .suplux-search-box p,
+    .suplux-search-box input {
+        font-size: 14px;
+    }
+}
