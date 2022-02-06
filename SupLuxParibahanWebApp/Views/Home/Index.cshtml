@@ -2,6 +2,7 @@
     ViewBag.Title = "HOME";
     @Styles.Render("~/Content/home-page.css")
     @Styles.Render("~/Content/autocomplete-field.css")
+    @Styles.Render("~/Content/date-picker.css")
 }
 
 <!--    search box section    -->
@@ -24,8 +25,10 @@
                 </div>
 
                 <div class="suplux-search-box suplux-date-box">
+
                     <p>journey date</p>
-                    <input type="text" name="to" value="" placeholder="Enter City" />
+                    <input id="suplux-datepicker" class="date" type="text" name="to" value="" readonly="readonly" placeholder="Enter City" />
+
                 </div>
                 <div class="search-btn-container">
                     <button class="suplux-btn"><i class="fas fa-search"></i>Search</button>
@@ -59,4 +62,7 @@
     </div>
 </div>
 
+@Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+@Scripts.Render("~/Scripts/jquery-ui.min.js")
 @Scripts.Render("~/Scripts/autocomplete-field.js")
+@Scripts.Render("~/Scripts/date-picker.js")
