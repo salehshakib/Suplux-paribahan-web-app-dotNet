@@ -165,7 +165,7 @@
 
 .ui-state-active:not(.ui-state-highlight) {
     color: white;
-    background: #5D9CF5;
+    background: tomato;
 }
 
 .ui-datepicker-unselectable .ui-state-default {
