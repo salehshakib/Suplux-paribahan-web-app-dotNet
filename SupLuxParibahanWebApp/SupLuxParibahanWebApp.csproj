@@ -146,7 +146,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Resources\images\bkash-logo.svg" />
     <Content Include="Resources\images\home-header-bg.jpg" />
+    <Content Include="Resources\images\Nagad-Logo.svg" />
+    <Content Include="Resources\images\rocket-logo.svg" />
+    <Content Include="Resources\images\suplux logo.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

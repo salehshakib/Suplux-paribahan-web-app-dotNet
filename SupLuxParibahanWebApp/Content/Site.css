@@ -166,11 +166,71 @@ i{
     width: 85%;
 }
 
+
+/*---------------------------
+        Footer Design
+----------------------------*/
+footer{
+    background-color: var(--suplux-dark-blue);
+    color: white;
+    padding-bottom: 20px;
+}
+
+.extra-footer-info{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 30px;
+    
+}
+
+.payment-methods-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.payment-method + .payment-method{
+    margin-left: 5px;
+}
+.payment-method img {
+    width: 50px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.payment-method.bg-transparent img{
+    background-color: transparent;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-image {
+    width: 150px;
+}
+
+.footer-image svg{
+    fill: white;
+}
+
+.footer-text p{
+    margin: 0;
+}
+
+.footer-logo-stroke {
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 12px;
+}
 /*--------------------------
         Tablet Design
 ---------------------------*/
-@media (max-width: 992px){
-
+@media (max-width: 992px) {
     .suplux-card-group {   
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
