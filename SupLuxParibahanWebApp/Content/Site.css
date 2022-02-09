@@ -7,6 +7,11 @@
 :root {
     --suplux-dark-blue: #1C3C6B;
     --suplux-light-skyblue: #DEEBFF;
+    --suplux-dark-skyblue: #1D4DA2;
+    --suplux-dark-blue-text: #123293;
+    --suplux-light-grey: #EAE9EC;
+    --suplux-dark-grey: #6E6B7B;
+    --suplux-bg-color: #EBF0F4;
 }
 
 body {
@@ -40,6 +45,14 @@ i{
     display:flex;
 }
 
+.flex-column{
+    flex-direction: column;
+}
+
+.align-center{
+    align-items: center;
+}
+
 .justify-content-center{
     justify-content: center;
 }
@@ -47,6 +60,13 @@ i{
 .suplux-white-text {
     color: white;
     font-size: 20px;
+}
+
+.section-title {
+    color: var(--suplux-dark-blue);
+    font-weight: 600;
+    font-size: 40px;
+    margin-bottom: 30px;
 }
 
 /*-------------------------
@@ -93,4 +113,81 @@ i{
 .suplux-btn:hover,
 .suplux-btn:focus {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/*--------------------------------
+        Brand Card Design
+---------------------------------*/
+.suplux-card-group{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 10px;
+}
+
+.suplux-card{
+    width: 100%;
+    background-color: white;
+    padding: 20px 0;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.suplux-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.suplux-card-image {
+    display: flex;
+    justify-content: center;
+}
+
+.suplux-card-image svg {
+    max-width: 20%;
+    fill: var(--suplux-dark-skyblue);
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-title{
+    text-align: center;
+    font-size: 18px;
+    margin: 30px 0 20px;
+    font-weight: 300;
+    color: var(--suplux-dark-grey);
+}
+
+.card-text {
+    text-align: center;
+    color: var(--suplux-dark-blue);
+    width: 85%;
+}
+
+/*--------------------------
+        Tablet Design
+---------------------------*/
+@media (max-width: 992px){
+
+    .suplux-card-group {   
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .section-title{
+        text-align: center;
+    }
+}
+
+/*--------------------------
+        Mobile Design
+---------------------------*/
+@media (max-width: 576px) {
+    .suplux-card-group {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        margin: 0 15px;
+    }
 }

@@ -73,10 +73,23 @@
     border-radius: 10px;
 }
 
+#suplux-day{
+    top: 70%;
+    left: 30px;
+}
+
+/*-----------------------------------
+        Why Us section Design
+------------------------------------*/
+#why-us-section{
+    padding: 100px 0;
+    background-color: var(--suplux-bg-color);
+}
+
 /*--------------------------
         Tablet Design
 ---------------------------*/
-@media (max-width: 992px){
+@media (max-width: 992px) {
     .search-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -99,6 +112,11 @@
         padding: 15px 30px;
         font-size: 14px;
     }
+
+    #suplux-day {
+        top: 70%;
+        left: 30px;
+    }
 }
 
 /*--------------------------
@@ -118,21 +136,31 @@
         padding: 30px 15px 10px;
         font-size: 16px;
     }
+
+    #suplux-day{
+        left: 15px;
+    }
 }
 
 /*--------------------------
         Xs Design
 ---------------------------*/
 @media (max-width: 290px){
-    .suplux-search-box p{
+    .suplux-search-box p {
         left: 5px;
+        font-size: 12px;
     }
     .suplux-search-box input {
-        padding: 25px 5px 10px;
+        padding: 25px 5px 15px;
     }
 
     .suplux-search-box p,
     .suplux-search-box input {
         font-size: 14px;
+    }
+
+    #suplux-day {
+        left: 5px;
+        font-size: 12px;
     }
 }
