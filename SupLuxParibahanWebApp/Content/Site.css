@@ -12,6 +12,7 @@
     --suplux-light-grey: #EAE9EC;
     --suplux-dark-grey: #6E6B7B;
     --suplux-bg-color: #EBF0F4;
+    --suplux-social-icon-bg-color: #496389;
 }
 
 body {
@@ -184,6 +185,10 @@ footer{
     
 }
 
+.extra-info-container {
+    text-align: center;
+}
+
 .payment-methods-container {
     display: flex;
     margin-top: 10px;
@@ -200,6 +205,37 @@ footer{
 
 .payment-method.bg-transparent img{
     background-color: transparent;
+}
+
+.social-icons{
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon + .social-icon{
+    margin-left: 10px;
+}
+
+.social-icon a {
+    background-color: var(--suplux-social-icon-bg-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+}
+
+.social-icon a:hover {
+    background-color: white;
+    color: var(--suplux-social-icon-bg-color);
+}
+
+.social-icon a i {
+    margin: 0;
+    font-size: 18px;
 }
 
 .footer-container {
@@ -249,5 +285,15 @@ footer{
         grid-template-columns: repeat(1, 1fr);
         gap: 10px;
         margin: 0 15px;
+    }
+
+    .extra-footer-info,
+    .footer-container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .extra-info-container{
+        margin-top: 20px;
     }
 }
