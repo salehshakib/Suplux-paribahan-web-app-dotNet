@@ -86,6 +86,31 @@
     background-color: var(--suplux-bg-color);
 }
 
+/*------------------------------------------
+        Destinations section Design
+------------------------------------------*/
+#destination-section {
+    padding: 100px 0;
+}
+
+.destination-card-container .suplux-card-group{
+    row-gap: 20px;
+}
+
+.destination-card-container .suplux-card {
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--suplux-bg-color);
+}
+
+.destination-card-container .suplux-card-image{
+    padding: 10px;
+    height: 70%;
+}
+
+.destination-card-container .card-title{
+    font-size: 25px;
+}
 /*--------------------------
         Tablet Design
 ---------------------------*/

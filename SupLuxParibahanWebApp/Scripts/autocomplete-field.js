@@ -102,7 +102,7 @@
 }
 
 
-var cities = ["Bandarban", "Bogura", "Chattogram", "Cox's Bazar", "Dhaka", "Khulna", "Khagrachari", "Kuakata", "Rangamati", "Saint Martin", "Sreemangal", "Sylhet"];
+var cities = ["Bandarban", "Benapole", "Chattogram", "Cox's Bazar", "Dhaka", "Jessore", "Khagrachari", "Khulna", "Rangamati", "Saint Martin", "Satkhira", "Sylhet"];
 
 
 autocomplete(document.getElementById("starting-point"), cities);

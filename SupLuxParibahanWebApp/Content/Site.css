@@ -73,7 +73,7 @@ i{
 /*-------------------------
         Navbar Design
 --------------------------*/
-.suplux-navbar{
+#suplux-navbar{
     position:absolute;
     top: 0;
     background-color: transparent;
@@ -81,10 +81,12 @@ i{
     margin: 0;
     padding: 10px 0;
     width: 100%;
+    transition: 0.3s ease-in-out;
+    z-index: 99999;
 }
 
-.suplux-navbar-brand {
-    font-size: 30px;
+.navbar-header{
+    width: 100px;
 }
 
 .suplux-header-flex {
@@ -92,9 +94,41 @@ i{
     justify-content: space-between;
 }
 
+.suplux-navbar-brand svg {
+    transition: 0.3s ease-in-out;
+}
+
+.suplux-navbar-brand:hover svg,
+.suplux-navbar-brand:focus svg {
+    fill: var(--suplux-dark-skyblue);
+}
+
+.suplux-navbar-brand:hover .header-logo-stroke,
+.suplux-navbar-brand:focus .header-logo-stroke {
+    stroke: var(--suplux-dark-skyblue);
+}
+
+.header-logo-stroke {
+    fill: none;
+    stroke: black;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 12px;
+    transition: 0.3s ease-in-out;
+}
+
 .suplux-navbar-element {
     display: flex;
     align-items: center;
+}
+
+.nav-bg {
+    background-color: white !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.fixed {
+    position: fixed !important;
 }
 
 /*--------------------------------
@@ -147,7 +181,12 @@ i{
     fill: var(--suplux-dark-skyblue);
 }
 
-.card-body{
+.suplux-card-image img{
+    width:100%;
+    border-radius: 20px;
+}
+
+.card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
