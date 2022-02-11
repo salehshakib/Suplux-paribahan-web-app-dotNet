@@ -144,6 +144,8 @@
     <Content Include="Content\date-picker.css" />
     <Content Include="Content\home-page.css" />
     <Content Include="Content\log-sign-page.css" />
+    <Content Include="Content\profile.css" />
+    <Content Include="Content\terms-page.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -199,6 +201,7 @@
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Terms\Terms.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
