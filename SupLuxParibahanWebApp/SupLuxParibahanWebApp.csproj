@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TermsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -142,20 +143,34 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\date-picker.css" />
     <Content Include="Content\home-page.css" />
+    <Content Include="Content\log-sign-page.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Resources\images\bandarban.jpg" />
+    <Content Include="Resources\images\benapole.JPG" />
     <Content Include="Resources\images\bkash-logo.svg" />
+    <Content Include="Resources\images\chittagong.jpg" />
+    <Content Include="Resources\images\coxs-bazar.jpg" />
+    <Content Include="Resources\images\dhaka.jpg" />
     <Content Include="Resources\images\home-header-bg.jpg" />
+    <Content Include="Resources\images\jessore.jpg" />
+    <Content Include="Resources\images\khagrachari.jpg" />
+    <Content Include="Resources\images\khulna.jpg" />
     <Content Include="Resources\images\Nagad-Logo.svg" />
+    <Content Include="Resources\images\rangamati.jpg" />
     <Content Include="Resources\images\rocket-logo.svg" />
+    <Content Include="Resources\images\saint-martin.jpg" />
+    <Content Include="Resources\images\satkhira.jpg" />
+    <Content Include="Resources\images\sylhet.jpg" />
     <Content Include="Resources\images\suplux logo.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\autocomplete-field.js" />
     <Content Include="Scripts\date-picker.js" />
+    <Content Include="Scripts\header.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -166,7 +181,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\login-page.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\signup-page.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -178,10 +195,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\Terms\Terms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

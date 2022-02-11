@@ -1,8 +1,52 @@
 ﻿
 @{
-    ViewBag.Title = "Log In";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "LOG IN";
+    @Styles.Render("~/Content/log-sign-page.css")
 }
 
-<h2>LogIn</h2>
+<!--    log in section    -->
+
+<section id="login-section">
+
+    <div class="container">
+        <div class="row">
+            <div class="login-form-container">
+                <h2 class="form-title">Log In</h2>
+                <form action="/" method="post">
+                    <div id="login-email-input-wrapper" class="form-input-wrapper">
+                        <div class="form-icon-container">
+                            <span class="form-input-icon"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <div class="form-input-container">
+                            <span class="form-input-label">Email</span>
+                            <input id="login-email-field" class="" type="email" name="name" value="" placeholder="someone@example.com" autocomplete="off" required />
+                        </div>
+                    </div>
+                    <div id="login-password-input-wrapper" class="form-input-wrapper">
+                        <div class="form-icon-container">
+                            <span class="form-input-icon"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <div class="form-input-container">
+                            <span class="form-input-label">Password</span>
+                            <input id="login-password-field" type="password" name="name" value="" placeholder="some@pass#123" autocomplete="off" required />
+                        </div>
+                        <div class="form-icon-container">
+                            <span id="pasword-icon" class="form-input-icon"><i id="password-eye-icon" class="fas fa-eye"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-button-container">
+                        <button id="login-button" class="suplux-btn log-sign-btn">Log In</button>
+                        <span>Don't have an account? <a href="@Url.Action("SignUp", "Account")">Sign Up</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('suplux-navbar').classList.add('nav-bg');
+</script>
+
+@Scripts.Render("~/Scripts/login-page.js")
 

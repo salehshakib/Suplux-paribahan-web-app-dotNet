@@ -6,15 +6,10 @@ using System.Web.Mvc;
 
 namespace SupLuxParibahanWebApp.Controllers
 {
-    public class AccountController : Controller
+    public class TermsController : Controller
     {
-        // GET: Account
-        public ActionResult SignUp()
-        {
-            return View();
-        }
-
-        public ActionResult LogIn()
+        // GET: Terms
+        public ActionResult Terms()
         {
             return View();
         }

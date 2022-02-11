@@ -14,7 +14,7 @@ window.onscroll = function () {
 
     } else {
 
-        if (st === 0 && window.screen.width > 990) {
+        if (st === 0 && window.screen.width > 990 && location.pathname == '/') {
             navBar.classList.remove('nav-bg');
             navBar.classList.remove('fixed');
         }

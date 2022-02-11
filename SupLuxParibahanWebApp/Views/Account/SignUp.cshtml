@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "SIGN UP";
+    @Styles.Render("~/Content/log-sign-page.css")
+}
+
+<!--    sign up section    -->
+
+<section id="signup-section">
+
+    <div class="container">
+        <div class="row">
+            <div class="signup-form-container">
+                <h2 class="form-title">Sign Up</h2>
+                <p class="form-text">Create an account to easily access our services.</p>
+                <form action="/" method="post">
+                    <div id="signup-email-input-wrapper" class="form-input-wrapper">
+                        <div class="form-icon-container">
+                            <span class="form-input-icon"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <div class="form-input-container">
+                            <span class="form-input-label">Email</span>
+                            <input id="signup-email-field" class="" type="email" name="name" value="" placeholder="someone@example.com" autocomplete="off" required />
+                        </div>
+                    </div>
+                    <div id="signup-mobile-input-wrapper" class="form-input-wrapper">
+                        <div class="form-icon-container">
+                            <span class="form-input-icon"><i class="fas fa-phone-alt"></i></span>
+                        </div>
+                        <div class="form-input-container">
+                            <span class="form-input-label">Mobile</span>
+                            <span class="mobile-leading-number">+88</span>
+                            <input id="signup-mobile-field" class="" type="text" name="name" value="" placeholder="Ex: 01XXXXXXXXX" autocomplete="off" required />
+                        </div>
+                    </div>
+                    <div id="signup-password-input-wrapper" class="form-input-wrapper">
+                        <div class="form-icon-container">
+                            <span class="form-input-icon"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <div class="form-input-container">
+                            <span class="form-input-label">Password</span>
+                            <input id="signup-password-field" type="password" name="name" value="" placeholder="some@pass#123" autocomplete="off" required />
+                        </div>
+                        <div class="form-icon-container">
+                            <span id="pasword-icon" class="form-input-icon"><i id="password-eye-icon" class="fas fa-eye"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-checkbox-wrapper">
+                        <input class="suplux-checkbox" type="checkbox" name="name" value="" required />
+                        <span class="form-text">By creating an account you agree to our <a href="@Url.Action("Terms", "Terms")">Terms & Conditions</a></span>
+                    </div>
+                    <div class="form-button-container">
+                        <button id="signup-button" class="suplux-btn log-sign-btn">Sign Up</button>
+                        <span>Already have an account? <a href="@Url.Action("LogIn", "Account")">Log In</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('suplux-navbar').classList.add('nav-bg');
+</script>
+
+@Scripts.Render("~/Scripts/signup-page.js")

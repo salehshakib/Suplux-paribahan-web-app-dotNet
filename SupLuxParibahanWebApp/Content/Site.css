@@ -13,6 +13,9 @@
     --suplux-dark-grey: #6E6B7B;
     --suplux-bg-color: #EBF0F4;
     --suplux-social-icon-bg-color: #496389;
+    --suplux-form-icon-color: #A5ABB2;
+    --suplux-input-bg-color: #F8FAFC;
+    --suplux-input-error-bg-color: #FFF3F3;
 }
 
 body {
@@ -206,11 +209,45 @@ i{
     width: 85%;
 }
 
+/*--------------------------------
+        Brand Checkbox Design
+---------------------------------*/
+.suplux-checkbox {
+    position: relative;
+    appearance: none;
+    margin: 0 !important;
+    margin-right: 8px !important;
+    border: 2px solid var(--suplux-form-icon-color);
+    background-color: var(--suplux-input-bg-color);
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.suplux-checkbox:focus {
+    outline: none !important;
+}
+
+.suplux-checkbox:checked {
+    background-color: var(--suplux-dark-blue);
+}
+
+.suplux-checkbox::after {
+    content: '\2714';
+    font-size: 14px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--suplux-input-bg-color);
+}
 
 /*---------------------------
         Footer Design
 ----------------------------*/
-footer{
+footer {
     background-color: var(--suplux-dark-blue);
     color: white;
     padding-bottom: 20px;
@@ -221,7 +258,6 @@ footer{
     justify-content: space-around;
     align-items: flex-start;
     margin-top: 30px;
-    
 }
 
 .extra-info-container {

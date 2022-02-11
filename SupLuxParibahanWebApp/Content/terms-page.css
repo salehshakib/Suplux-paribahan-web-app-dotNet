@@ -1,0 +1,42 @@
+﻿/*-----------------------------
+        Utilities Import
+------------------------------*/
+@import url("Site.css");
+
+/*---------------------------------
+        Terms Section Design
+----------------------------------*/
+#terms-section{
+    padding: 100px 0;
+    background-color: var(--suplux-bg-color);
+}
+
+.terms-container{
+    background-color: white;
+    padding: 30px 30px;
+}
+
+.terms-title{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--suplux-dark-blue);
+}
+
+.terms-text{
+    font-weight: 300;
+    line-height: 25px;
+}
+
+.terms-text strong{
+    font-weight: 500;
+}
+
+/*--------------------------
+        Mobile Design
+---------------------------*/
+@media (max-width: 576px){
+    .terms-container{
+        width: 95%;
+        margin: 0 auto;
+    }
+}
