@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SupLuxParibahanWebApp.Models;
 
 namespace SupLuxParibahanWebApp.Controllers
 {
@@ -15,8 +16,9 @@ namespace SupLuxParibahanWebApp.Controllers
         }
         
         [HttpPost]
-        public ActionResult SignUp(int id)
+        public ActionResult SignUp(UserTable userTable)
         {
+
             return RedirectToAction("Login");
         }
 
