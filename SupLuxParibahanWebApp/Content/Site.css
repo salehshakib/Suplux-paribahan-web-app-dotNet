@@ -77,6 +77,26 @@ i{
     margin-bottom: 30px;
 }
 
+.fixed {
+    position: fixed !important;
+}
+
+d-block {
+    display: block;
+}
+
+.d-none {
+    display: none;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
 /*-------------------------
         Navbar Design
 --------------------------*/
@@ -132,18 +152,6 @@ i{
 .nav-bg {
     background-color: white !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.fixed {
-    position: fixed !important;
-}
-
-d-block{
-    display: block;
-}
-
-.d-none{
-    display: none;
 }
 
 /*--------------------------------

@@ -85,19 +85,26 @@
                             <form class="edit-profile-form" action="/" method="post">
                                 <div class="edit-form-input">
                                     <p class="profile-text">Name</p>
-                                    <input type="text" name="name" value="" />
+                                    <input type="text" name="name" value="" autocomplete="off"/>
                                 </div>
                                 <div class="edit-form-input">
                                     <p class="profile-text">Phone</p>
-                                    <input type="text" name="name" value="" />
+                                    <input type="text" name="name" value="" autocomplete="off"/>
                                 </div>
-                                <div class="edit-form-input">
+                                <div id="gender-input-container" class="edit-form-input">
                                     <p class="profile-text">Gender</p>
-                                    <input type="text" name="name" value="" />
+                                    <input id="gender-input" type="text" name="name" value="Select Gender" autocomplete="off" readonly/>
+                                    <span id="gender-arrow"><i class="fas fa-chevron-down"></i></span>
+                                    <ul id="gender-menu" class="hidden">
+                                        <li class="gender-menu-item">Select Gender</li>
+                                        <li class="gender-menu-item">Male</li>
+                                        <li class="gender-menu-item">Female</li>
+                                        <li class="gender-menu-item">Others</li>
+                                    </ul>
                                 </div>
                                 <div class="edit-form-input">
                                     <p class="profile-text">National ID</p>
-                                    <input type="text" name="name" value="" />
+                                    <input type="text" name="name" value="" autocomplete="off"/>
                                 </div>
                                 <div class="edit-form-input edit-form-textarea">
                                     <p class="profile-text">Present Address</p>

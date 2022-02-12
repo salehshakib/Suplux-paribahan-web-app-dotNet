@@ -157,6 +157,63 @@
     border-radius: 5px;
     padding: 8px;
     font-size: 14px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    color: var(--suplux-dark-blue);
+    font-weight: 500;
+}
+
+.edit-form-input input:focus,
+.edit-form-input textarea:focus {
+    border: 1px solid var(--suplux-dark-blue);
+}
+
+#gender-input-container {
+    position: relative;
+}
+
+#gender-inpu-containert input {
+    cursor: pointer;
+}
+
+#gender-input-container span {
+    position: absolute;
+    top: 53%;
+    right: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+#gender-input-container span i{
+    margin: 0;
+}
+
+.arrow-rotate {
+    transform: rotateZ(180deg);
+}
+
+#gender-input-container ul {
+    position: absolute;
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    border-radius: 10px;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#gender-input-container ul li {
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: 0.3s ease-in-out;
+    color: var(--suplux-dark-grey);
+}
+
+#gender-input-container ul li:hover,
+#gender-input-container ul li:focus {
+    background-color: var(--suplux-profile-menu-color);
+    color: var(--suplux-profile-menu-text-color);
 }
 
 .edit-form-textarea,
