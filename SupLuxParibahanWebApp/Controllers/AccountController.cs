@@ -13,6 +13,12 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
+        
+        [HttpPost]
+        public ActionResult SignUp(int id)
+        {
+            return RedirectToAction("Login");
+        }
 
         public ActionResult LogIn()
         {
