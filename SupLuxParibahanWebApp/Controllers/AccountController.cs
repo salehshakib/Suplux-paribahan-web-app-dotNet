@@ -19,9 +19,17 @@ namespace SupLuxParibahanWebApp.Controllers
         [HttpPost]
         public ActionResult SignUp(UserTable userTable)
         {
-            db.UserTables.Add(userTable);
-            db.SaveChanges();
-            return RedirectToAction("Login");
+            if (db.UserTables.Any(temp=>temp.userEmail==userTable.userEmail))
+            {
+                ViewBag.Notification = "This account already exists.";
+                return View();
+            }
+            else {
+                db.UserTables.Add(userTable);
+                db.SaveChanges();
+                return RedirectToAction("Login");
+            }
+            
         }
 
         public ActionResult LogIn()
