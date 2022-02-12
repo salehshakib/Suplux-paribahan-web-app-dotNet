@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SUPLUXDashboardModelStoreContainer" CdmEntityContainer="SUPLUXDashboardEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="SUPLUXDashboardModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+          <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="SUPLUXDashboardModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="reservationNO" ColumnName="reservationNO" />
+          <ScalarProperty Name="UTKNo" ColumnName="UTKNo" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="coachNo" ColumnName="coachNo" />
+          <ScalarProperty Name="bookedSeat" ColumnName="bookedSeat" />
+          <ScalarProperty Name="reservationDate" ColumnName="reservationDate" />
+          <ScalarProperty Name="dateOfJourney" ColumnName="dateOfJourney" />
+          <ScalarProperty Name="paymentMethod" ColumnName="paymentMethod" />
+          <ScalarProperty Name="duePayment" ColumnName="duePayment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionLogs">
+      <EntityTypeMapping TypeName="SUPLUXDashboardModel.TransactionLog">
+        <MappingFragment StoreEntitySet="TransactionLog">
+          <ScalarProperty Name="transactionNo" ColumnName="transactionNo" />
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="statusInfo" ColumnName="statusInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tripDatas">
+      <EntityTypeMapping TypeName="SUPLUXDashboardModel.tripData">
+        <MappingFragment StoreEntitySet="tripData">
+          <ScalarProperty Name="coachNo" ColumnName="coachNo" />
+          <ScalarProperty Name="startingFrom" ColumnName="startingFrom" />
+          <ScalarProperty Name="boardingPoint" ColumnName="boardingPoint" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="departureTime" ColumnName="departureTime" />
+          <ScalarProperty Name="coachType" ColumnName="coachType" />
+          <ScalarProperty Name="farePerSeat" ColumnName="farePerSeat" />
+          <ScalarProperty Name="TripStatus" ColumnName="TripStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="SUPLUXDashboardModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="userGender" ColumnName="userGender" />
+          <ScalarProperty Name="userPhoneNumber" ColumnName="userPhoneNumber" />
+          <ScalarProperty Name="userNID" ColumnName="userNID" />
+          <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -9,6 +9,7 @@ namespace SupLuxParibahanWebApp.Controllers
 {
     public class AccountController : Controller
     {
+        SUPLUXDashboardEntities db=new SUPLUXDashboardEntities();   
         // GET: Account
         public ActionResult SignUp()
         {
@@ -18,7 +19,8 @@ namespace SupLuxParibahanWebApp.Controllers
         [HttpPost]
         public ActionResult SignUp(UserTable userTable)
         {
-
+            db.UserTables.Add(userTable);
+            db.SaveChanges();
             return RedirectToAction("Login");
         }
 
