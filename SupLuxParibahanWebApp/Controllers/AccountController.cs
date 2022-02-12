@@ -17,6 +17,8 @@ namespace SupLuxParibahanWebApp.Controllers
         public ActionResult LogIn()
         {
             return View();
+
+
         }
 
         public ActionResult UserProfile()
