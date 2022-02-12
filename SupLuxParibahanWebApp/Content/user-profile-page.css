@@ -83,7 +83,11 @@
     border-radius: 10px;
 }
 
-.profile-title{
+.info-container + .info-container{
+    margin-top: 30px;
+}
+
+.profile-title {
     color: var(--suplux-dark-blue);
     font-weight: 600;
     margin: 0;
@@ -132,4 +136,176 @@
 .suplux-table tbody tr td,
 .suplux-table tbody tr th {
     padding: 15px 8px;
+}
+
+.edit-profile-form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 15px;
+    column-gap: 30px;
+    margin-top: 20px;
+}
+
+.edit-form-input .profile-text {
+    margin-bottom: 5px;
+}
+
+.edit-form-input input,
+.edit-form-input textarea {
+    width: 100%;
+    border: 1px solid var(--suplux-edit-profile-input-color);
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.edit-form-textarea,
+.edit-form-button-container {
+    grid-column: 1 / span 2;
+}
+
+.edit-form-button-container,
+.change-password-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-form-button-container .suplux-btn:first-child,
+.change-password-button-container .suplux-btn:first-child {
+    margin-right: 10px;
+}
+
+/*---------------------------------------
+        Transaction Log Design
+----------------------------------------*/
+.log-table .suplux-table thead tr th:first-child,
+.log-table .suplux-table thead tr th:last-child,
+.log-table .suplux-table tbody tr th
+.log-table .suplux-table tbody tr td:last-child {
+    width: 5%;
+}
+
+.log-table .suplux-table thead tr th,
+.log-table .suplux-table tbody tr th,
+.log-table .suplux-table tbody tr td {
+    text-align: center;
+}
+
+.log-table .suplux-table thead tr th{
+    color: var(--suplux-dark-blue);
+}
+
+.log-table .suplux-table tbody tr td:nth-child(2) {
+    width: 40%;
+}
+
+/*----------------------------
+        Settings Design
+-----------------------------*/
+.settings-table .suplux-table tbody tr td,
+.settings-table .suplux-table tbody tr th {
+    border: 0;
+}
+
+.settings-table .suplux-table tbody tr:first-child td,
+.settings-table .suplux-table tbody tr:first-child th {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.settings-table .suplux-table tbody tr:first-child th {
+    color: var(--suplux-dark-grey);
+}
+
+.settings-table .suplux-table tbody tr:nth-child(2) th .edit-button {
+    position: static;
+    font-weight: 700;
+}
+
+.change-pass-input-container{
+    display: flex;
+    align-items: center;
+}
+
+.change-pass-input-container p{
+   width: 20%;
+   padding: 15px 8px;
+   margin: 0;
+   color: var(--suplux-dark-grey);
+}
+
+.change-pass-input-container .change-pass-input {
+    height: 35px;
+    margin: 0 8px;
+    border: 1px solid var(--suplux-edit-profile-input-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.change-pass-input{
+    display: flex;
+}
+
+.change-pass-input input {
+    border: 0;
+    padding-left: 5px;
+    width: 250px;
+    color: var(--suplux-dark-blue);
+}
+
+.form-icon-container {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#current-password-eye-icon,
+#new-password-eye-icon,
+#confirm-password-eye-icon {
+    cursor: pointer;
+}
+
+/*--------------------------
+        Tablet Design
+---------------------------*/
+@media (max-width: 992px){
+    .profile-info-container {
+       
+        display: block;
+        width: 95%;
+        margin: 0 auto;  
+    }
+
+    .profile-aside{
+        margin-bottom: 30px;
+    }
+}
+
+/*--------------------------
+        Mobile Design
+---------------------------*/
+@media (max-width: 576px) {
+    .log-table,
+    .settings-table {
+        overflow-x: scroll;
+    }
+
+    .log-table .suplux-table{
+        width: 750px;
+        max-width: 750px;
+    }
+
+    .change-pass-input-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .change-pass-input-container p{
+        width: 100%;
+        padding-bottom: 0;
+    }
+
+    .change-password-button-container{
+        margin-top: 20px;
+    }
 }
