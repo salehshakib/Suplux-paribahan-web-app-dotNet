@@ -1,8 +1,13 @@
-﻿
+﻿@model SupLuxParibahanWebApp.Models.UserTable
+
 @{
     ViewBag.Title = "USER PROFILE";
     @Styles.Render("~/Content/user-profile-page.css")
+    //@Html.Action("UserProfile");
+
 }
+
+
 
 <!--    basic info section    -->
 <section id="basic-info-section">
@@ -53,47 +58,47 @@
                             <p class="profile-text">Basic info, for a faster booking experience</p>
                             <h4 id="edit-profile-button" class="edit-button" tabindex="1"><i class="fas fa-edit"></i>Edit</h4>
                             <div class="info-table">
-                                <table class="table suplux-table">
-                                    <tbody>
-                                        <tr>
-                                            <td>Name</td>
-                                            <th scope="row">N/A</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Phone</td>
-                                            <th scope="row">N/A</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Gender</td>
-                                            <th scope="row">N/A</th>
-                                        </tr>
-                                        <tr>
-                                            <td>National ID</td>
-                                            <th scope="row">N/A</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Present Address</td>
-                                            <th scope="row">N/A</th>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    <table class="table suplux-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Name</td>
+                                                <th scope="row">N/A</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone</td>
+                                                <th scope="row">@Session["phoneNumber"]</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Gender</td>
+                                                <th scope="row">N/A</th>
+                                            </tr>
+                                            <tr>
+                                                <td>National ID</td>
+                                                <th scope="row">N/A</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Present Address</td>
+                                                <th scope="row">N/A</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                             </div>
                         </div>
                         <!--    edit info form    -->
                         <div id="edit-info-wrapper" class="d-none">
                             <h3 class="profile-title">Edit Profile</h3>
-                            <form class="edit-profile-form" action="/" method="post">
+                            <form class="edit-profile-form" action="/Account/EditUserProfile" method="post">
                                 <div class="edit-form-input">
                                     <p class="profile-text">Name</p>
-                                    <input type="text" name="name" value="" autocomplete="off"/>
+                                    <input type="text" name="userName" value="" autocomplete="off" />
                                 </div>
                                 <div class="edit-form-input">
                                     <p class="profile-text">Phone</p>
-                                    <input type="text" name="name" value="" autocomplete="off"/>
+                                    <input type="text" name="userPhoneNumber" value="@Session["phoneNumber"]" autocomplete="off" />
                                 </div>
                                 <div id="gender-input-container" class="edit-form-input">
                                     <p class="profile-text">Gender</p>
-                                    <input id="gender-input" type="text" name="name" value="Select Gender" autocomplete="off" readonly/>
+                                    <input id="gender-input" type="text" name="userGender" value="Select Gender" autocomplete="off" readonly />
                                     <span id="gender-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <ul id="gender-menu" class="hidden">
                                         <li class="gender-menu-item">Select Gender</li>
@@ -104,11 +109,11 @@
                                 </div>
                                 <div class="edit-form-input">
                                     <p class="profile-text">National ID</p>
-                                    <input type="text" name="name" value="" autocomplete="off"/>
+                                    <input type="text" name="userNID" value="" autocomplete="off" />
                                 </div>
                                 <div class="edit-form-input edit-form-textarea">
                                     <p class="profile-text">Present Address</p>
-                                    <textarea name="contact-message" id="" cols="30" rows="10"></textarea>
+                                    <textarea name="userAddress" id="" cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="edit-form-button-container">
                                     <button id="close-edit-form-button" class="suplux-btn suplux-alt-btn" type="reset"><i class="fas fa-ban"></i>Close</button>

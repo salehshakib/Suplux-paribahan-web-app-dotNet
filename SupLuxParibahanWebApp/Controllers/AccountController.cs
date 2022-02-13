@@ -7,8 +7,12 @@ using SupLuxParibahanWebApp.Models;
 
 namespace SupLuxParibahanWebApp.Controllers
 {
+
+
     public class AccountController : Controller
     {
+
+        
         SUPLUXDashboardEntities db=new SUPLUXDashboardEntities();   
         // GET: Account
         public ActionResult SignUp()
@@ -56,11 +60,14 @@ namespace SupLuxParibahanWebApp.Controllers
                 return View();
             }*/
 
-            if (db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword)))
+            if (db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail)))
             {
 
                 Session["currentEmail"] = userTable.userEmail.ToString();
-                //Session["currentPassword"]=userTable.userPassword.ToString();
+                UserTable user = db.UserTables.Where(temp => temp.userEmail.Equals(userTable.userEmail.ToString())).FirstOrDefault();
+                Session["phoneNumber"] = user.userPhoneNumber.ToString();
+
+
 
                 return RedirectToAction("UserProfile");
             }
@@ -80,6 +87,7 @@ namespace SupLuxParibahanWebApp.Controllers
 
         public ActionResult UserProfile()
         {
+
             return View();
         }
 
@@ -87,5 +95,25 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult EditUserProfile(UserTable userTable)
+        {
+            //UserTable user = db.UserTables.Find(Session["urrentEmail"]);
+            //db.Entry(userTable).State = System.Data.Entity.EntityState.Modified;
+            //db.SaveChanges();
+           
+            return View();
+
+        }
+
+
+
+        /*public ActionResult UserProfile(UserTable userTable)
+        {
+            
+
+
+        }*/
     }
 }
