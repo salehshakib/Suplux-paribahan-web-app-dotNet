@@ -19,7 +19,7 @@ namespace SupLuxParibahanWebApp.Controllers
         [HttpPost]
         public ActionResult SignUp(UserTable userTable)
         {
-            if (db.UserTables.Any(temp=>temp.userEmail==userTable.userEmail))
+            if (db.UserTables.Any(temp=>temp.userEmail==userTable.userEmail || temp.userPhoneNumber==userTable.userPhoneNumber))
             {
                 ViewBag.Notification = "This account already exists.";
                 return View();
@@ -79,6 +79,11 @@ namespace SupLuxParibahanWebApp.Controllers
 
 
         public ActionResult UserProfile()
+        {
+            return View();
+        }
+
+        public ActionResult getUserInfo()
         {
             return View();
         }
