@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SUPLUXDashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="adminID" />
+    </Key>
+    <Property Name="adminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adminPassword" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="reservationNO" />
+    </Key>
+    <Property Name="reservationNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UTKNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="userEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="coachNo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="bookedSeat" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="reservationDate" Type="date" />
+    <Property Name="dateOfJourney" Type="date" />
+    <Property Name="paymentMethod" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="duePayment" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionLog">
+    <Key>
+      <PropertyRef Name="transactionNo" />
+    </Key>
+    <Property Name="transactionNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transactionId" Type="varchar" MaxLength="100" />
+    <Property Name="userEmail" Type="varchar" MaxLength="50" />
+    <Property Name="statusInfo" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tripData">
+    <Key>
+      <PropertyRef Name="coachNo" />
+    </Key>
+    <Property Name="coachNo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="startingFrom" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="boardingPoint" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="destination" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="departureTime" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="coachType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="farePerSeat" Type="int" Nullable="false" />
+    <Property Name="TripStatus" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="userEmail" />
+    </Key>
+    <Property Name="userEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="20" />
+    <Property Name="userPassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="userGender" Type="varchar" MaxLength="10" />
+    <Property Name="userPhoneNumber" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="userNID" Type="varchar" MaxLength="20" />
+    <Property Name="userAddress" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__Reservati__coach__47DBAE45">
+    <End Role="tripData" Type="Self.tripData" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tripData">
+        <PropertyRef Name="coachNo" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="coachNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__userE__46E78A0C">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="userEmail" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="userEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__userE__412EB0B6">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="TransactionLog" Type="Self.TransactionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="userEmail" />
+      </Principal>
+      <Dependent Role="TransactionLog">
+        <PropertyRef Name="userEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SUPLUXDashboardModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionLog" EntityType="Self.TransactionLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tripData" EntityType="Self.tripData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Reservati__coach__47DBAE45" Association="Self.FK__Reservati__coach__47DBAE45">
+      <End Role="tripData" EntitySet="tripData" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__userE__46E78A0C" Association="Self.FK__Reservati__userE__46E78A0C">
+      <End Role="UserTable" EntitySet="UserTable" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__userE__412EB0B6" Association="Self.FK__Transacti__userE__412EB0B6">
+      <End Role="UserTable" EntitySet="UserTable" />
+      <End Role="TransactionLog" EntitySet="TransactionLog" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

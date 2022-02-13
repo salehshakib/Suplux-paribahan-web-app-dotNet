@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SUPLUXDashboardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="adminID" />
+    </Key>
+    <Property Name="adminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminPassword" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="reservationNO" />
+    </Key>
+    <Property Name="reservationNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UTKNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="coachNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bookedSeat" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="reservationDate" Type="DateTime" Precision="0" />
+    <Property Name="dateOfJourney" Type="DateTime" Precision="0" />
+    <Property Name="paymentMethod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="duePayment" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tripData" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="Reservation" ToRole="tripData" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK__Reservati__userE__46E78A0C" FromRole="Reservation" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="TransactionLog">
+    <Key>
+      <PropertyRef Name="transactionNo" />
+    </Key>
+    <Property Name="transactionNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="transactionId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="userEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="statusInfo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK__Transacti__userE__412EB0B6" FromRole="TransactionLog" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="tripData">
+    <Key>
+      <PropertyRef Name="coachNo" />
+    </Key>
+    <Property Name="coachNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="startingFrom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="boardingPoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="destination" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="departureTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="coachType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="farePerSeat" Type="Int32" Nullable="false" />
+    <Property Name="TripStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="tripData" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="userEmail" />
+    </Key>
+    <Property Name="userEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="userPhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userNID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="userAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__userE__46E78A0C" FromRole="UserTable" ToRole="Reservation" />
+    <NavigationProperty Name="TransactionLogs" Relationship="Self.FK__Transacti__userE__412EB0B6" FromRole="UserTable" ToRole="TransactionLog" />
+  </EntityType>
+  <Association Name="FK__Reservati__coach__47DBAE45">
+    <End Role="tripData" Type="Self.tripData" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tripData">
+        <PropertyRef Name="coachNo" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="coachNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__userE__46E78A0C">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="userEmail" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="userEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__userE__412EB0B6">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="TransactionLog" Type="Self.TransactionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="userEmail" />
+      </Principal>
+      <Dependent Role="TransactionLog">
+        <PropertyRef Name="userEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SUPLUXDashboardEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+    <EntitySet Name="TransactionLogs" EntityType="Self.TransactionLog" />
+    <EntitySet Name="tripDatas" EntityType="Self.tripData" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+    <AssociationSet Name="FK__Reservati__coach__47DBAE45" Association="Self.FK__Reservati__coach__47DBAE45">
+      <End Role="tripData" EntitySet="tripDatas" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__userE__46E78A0C" Association="Self.FK__Reservati__userE__46E78A0C">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__userE__412EB0B6" Association="Self.FK__Transacti__userE__412EB0B6">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="TransactionLog" EntitySet="TransactionLogs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
