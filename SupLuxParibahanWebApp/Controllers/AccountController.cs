@@ -42,11 +42,24 @@ namespace SupLuxParibahanWebApp.Controllers
         [HttpPost]
         public ActionResult LogIn(UserTable userTable)
         {
-            var checkLogin = db.UserTables.Where(temp=>temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword));
+            /*var checkLogin = db.UserTables.Where(temp=>temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword));
 
             if (checkLogin!=null) {
 
                 Session["currentEmail"]=userTable.userEmail.ToString();
+                //Session["currentPassword"]=userTable.userPassword.ToString();
+
+                return RedirectToAction("UserProfile");
+            }
+            else
+            {
+                return View();
+            }*/
+
+            if (db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword)))
+            {
+
+                Session["currentEmail"] = userTable.userEmail.ToString();
                 //Session["currentPassword"]=userTable.userPassword.ToString();
 
                 return RedirectToAction("UserProfile");
