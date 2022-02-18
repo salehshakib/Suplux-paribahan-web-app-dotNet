@@ -9,7 +9,7 @@ namespace SupLuxParibahanWebApp.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        public ActionResult AdminHomePage()
+        public ActionResult AdminHome()
         {
             return View();
         }
