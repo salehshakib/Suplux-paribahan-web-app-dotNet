@@ -2,14 +2,13 @@
 @{
     ViewBag.Title = "ADMIN HOME";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
-    @Styles.Render("~/Content/admin-home-page.css")
+    @Styles.Render("~/Content/admin.css");
 }
 
-<main class="container">
-
-    <!--    admin cards container    -->
-    <section class="admin-cards-container">
-        <a href="#">
+<!--    admin cards container    -->
+<section class="container admin-card-section">
+    <div class="admin-cards-container">
+        <a href="@Url.Action("BusList", "Admin")">
             <div class="suplux-admin-card">
                 <div class="admin-card-image">
                     <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -89,5 +88,5 @@
                 </div>
             </div>
         </a>
-    </section>
-</main>
+    </div>
+</section>

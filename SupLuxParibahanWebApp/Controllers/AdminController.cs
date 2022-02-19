@@ -13,5 +13,11 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
+
+        // GET: Bus List
+        public ActionResult BusList()
+        {
+            return View();
+        }
     }
 }

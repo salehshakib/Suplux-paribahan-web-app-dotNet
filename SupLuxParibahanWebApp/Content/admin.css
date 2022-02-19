@@ -1,0 +1,205 @@
+﻿/*-----------------------------
+        Utilities Import
+------------------------------*/
+@import url("Site.css");
+
+/*----------------------------------
+        Admin Home Page Design
+-----------------------------------*/
+body {
+    background-color: var(--suplux-bg-color);
+    min-height: 100vh;
+}
+
+.admin-card-section{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/*----------------------------------
+        Admin Card Design
+-----------------------------------*/
+.suplux-admin-card {
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.suplux-admin-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.admin-card-image {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-card-image svg {
+    width: 50%;
+    fill: var(--suplux-dark-blue);
+}
+
+.admin-card-title h3{
+    font-size: 35px;
+    font-weight: 600;
+    color: var(--suplux-dark-blue);
+    text-align: center;
+}
+
+/*--------------------------------------
+        Coach Search Box Design
+---------------------------------------*/
+.search-bus-container {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.search-form{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-form form {
+    display: flex;
+    align-items: center;
+}
+
+.search-coach-input + .search-coach-input{
+    margin: 0 20px;
+}
+
+.search-coach-input input {
+    padding: 10px 8px;
+    border: 2px solid var(--suplux-dark-blue);
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--suplux-dark-blue);
+}
+
+#coach-type-input-container {
+    position: relative;
+}
+
+#coach-type-input-container input {
+    cursor: pointer;
+}
+
+#coach-type-input-container span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+#coach-type-input-container span i {
+    margin: 0;
+}
+
+.arrow-rotate {
+    transform: translateY(-50%) rotateZ(180deg) !important;
+}
+
+#coach-type-input-container ul {
+    position: absolute;
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    border-radius: 10px;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#coach-type-input-container ul li {
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: 0.3s ease-in-out;
+    color: var(--suplux-dark-grey);
+}
+
+#coach-type-input-container ul li:hover,
+#coach-type-input-container ul li:focus {
+    background-color: var(--suplux-profile-menu-color);
+    color: var(--suplux-profile-menu-text-color);
+}
+
+/*----------------------------------
+        Admin Footer Design
+-----------------------------------*/
+footer {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: var(--suplux-dark-blue);
+    padding: 20px;
+    border-radius: 15px;
+    right: 30px;
+    bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.logged-admin-info{
+    margin-right: 20px;
+}
+
+.logged-admin-info h3 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.logged-admin-info h3 #admin-name{
+    font-weight: 700;
+}
+
+/*--------------------------
+        Mobile Design
+---------------------------*/
+@media (max-width: 576px) {
+    .admin-cards-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .admin-card-section{
+        margin: 150px 0;
+    }
+
+    footer{
+        width: 90%;
+        right: 50%;
+        transform: translateX(50%);
+        flex-direction: column;
+    }
+
+    .logged-admin-info {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/*--------------------------
+        Xs Design
+---------------------------*/
+@media (max-width: 290px) {
+
+    .logged-admin-info h3 {
+        font-size: 15px;
+    }
+}

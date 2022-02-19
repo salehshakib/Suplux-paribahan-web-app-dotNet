@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "BUS LIST";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    @Styles.Render("~/Content/admin.css");
+}
+
+<!--    bus list container    -->
+<section>
+    <!--    search bus div   -->
+    <div class="search-bus-container">
+        <div class="search-form">
+            <form action="/" method="post">
+                <div class="search-coach-input">
+                    <input type="text" name="name" value="" placeholder="Enter Coach No" autocomplete="off" />
+                </div>
+                <div id="coach-type-input-container" class="search-coach-input">
+                    <input id="coach-type-input" type="text" name="name" value="Select Coach Type" autocomplete="off" readonly />
+                    <span id="down-arrow"><i class="fas fa-chevron-down"></i></span>
+                    <ul id="coach-type-menu" class="hidden">
+                        <li class="coach-menu-item">Select Coach Type</li>
+                        <li class="coach-menu-item">NON-AC</li>
+                        <li class="coach-menu-item">AC(Bi-Axle)</li>
+                        <li class="coach-menu-item">AC(Multi-Axle)</li>
+                        <li class="coach-menu-item">AC(Double Decker)</li>
+                        <li class="coach-menu-item">AC(Sleeper)</li>
+                    </ul>
+                </div>
+                <div class="search-coach-button">
+                    <button class="suplux-btn"><i class="fas fa-search"></i>Search Coach</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+@Scripts.Render("~/Scripts/admin.js")

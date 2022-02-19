@@ -169,6 +169,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin.css" />
     <Content Include="Content\autocomplete-field.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -210,6 +211,7 @@
     <Content Include="Resources\images\satkhira.jpg" />
     <Content Include="Resources\images\sylhet.jpg" />
     <Content Include="Resources\images\suplux logo.svg" />
+    <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Model1.edmx">
@@ -255,6 +257,7 @@
     <Content Include="Views\Account\UserProfile.cshtml" />
     <Content Include="Views\Admin\AdminHome.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\BusList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
