@@ -22,3 +22,11 @@ window.onscroll = function () {
     }
     lastScrollTop = st <= 0 ? 0 : st;
 }
+
+/*
+ *  switching display none to nav user profile
+ */
+document.getElementById('logged-in-user-div').addEventListener('click', function () {
+
+    document.getElementById('nav-user-dropdown-menu').classList.toggle('d-none');
+});

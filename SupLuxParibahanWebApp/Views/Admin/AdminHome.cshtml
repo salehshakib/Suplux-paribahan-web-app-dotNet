@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "ADMIN HOME";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    @Styles.Render("~/Content/admin-home-page.css")
+}
+
+<main class="container">
+
+    <!--    admin cards container    -->
+    <section class="admin-cards-container">
+        <a href="#">
+            <div class="suplux-admin-card">
+                <div class="admin-card-image">
+                    <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0 {
+                            fill: none;
+                            stroke: #1C3C6B;
+                            stroke-width: 2;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+
+                        .st1 {
+                            fill: none;
+                            stroke: #1C3C6B;
+                            stroke-width: 2;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+                    </style>
+                    <path class="st0" d="M12,26H6v2c0,1.1,0.9,2,2,2h2c1.1,0,2-0.9,2-2V26z" />
+                    <path class="st0" d="M26,26h-6v2c0,1.1,0.9,2,2,2h2c1.1,0,2-0.9,2-2V26z" />
+                    <path class="st0" d="M25,26H7c-1.1,0-2-0.9-2-2V7c0-2.2,1.8-4,4-4h14c2.2,0,4,1.8,4,4v17C27,25.1,26.1,26,25,26z" />
+                    <path class="st0" d="M5,16L5,16c7.1,2.6,14.9,2.6,22,0l0,0" />
+                    <line class="st0" x1="8" y1="21" x2="12" y2="22" />
+                    <line class="st0" x1="24" y1="21" x2="20" y2="22" />
+                    <polyline class="st0" points="27,9 31,11 31,16 " />
+                    <polyline class="st0" points="5,9 1,11 1,16 " />
+                    </svg>
+                </div>
+                <div class="admin-card-title">
+                    <h3>View Buses</h3>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="suplux-admin-card">
+                <div class="admin-card-image">
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 519 519" style="enable-background:new 0 0 519 519;" xml:space="preserve">
+                        <g>
+                            <path d="M259.5,0C116.4,0,0,116.4,0,259.5S116.4,519,259.5,519S519,402.6,519,259.5S402.6,0,259.5,0z M259.5,468.8
+		                        c-115.4,0-209.3-93.9-209.3-209.3S144.1,50.2,259.5,50.2s209.3,93.9,209.3,209.3S374.9,468.8,259.5,468.8z" />
+                            <path d="M351.6,234.4h-67v-67c0-13.9-11.2-25.1-25.1-25.1s-25.1,11.2-25.1,25.1v67h-67c-13.9,0-25.1,11.2-25.1,25.1
+		                        s11.2,25.1,25.1,25.1h67v67c0,13.9,11.2,25.1,25.1,25.1s25.1-11.2,25.1-25.1v-67h67c13.9,0,25.1-11.2,25.1-25.1
+		                        S365.5,234.4,351.6,234.4z" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="admin-card-title">
+                    <h3>Add New Bus</h3>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="suplux-admin-card">
+                <div class="admin-card-image">
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
+                        <circle style="fill: none; stroke: #1C3C6B; stroke-width: 5;" cx="29" cy="29" r="26" />
+                        <path style="fill: #1C3C6B;" d="M10,32c-1.104,0-2-0.896-2-2c0-7.72,6.28-14,14-14h14c1.104,0,2,0.896,2,2s-0.896,2-2,2H22
+	                        c-5.514,0-10,4.486-10,10C12,31.104,11.104,32,10,32z" />
+                        <path style="fill: #1C3C6B;" d="M26.002,28c-0.618,0-1.228-0.285-1.619-0.823c-0.65-0.894-0.452-2.145,0.44-2.794L33.6,18
+	                        l-8.776-6.383c-0.893-0.649-1.091-1.9-0.44-2.794c0.648-0.892,1.899-1.091,2.794-0.44L40.4,18l-13.224,9.617
+	                        C26.821,27.876,26.409,28,26.002,28z" />
+                        <path style="fill: #1C3C6B;" d="M35,42H21c-1.104,0-2-0.896-2-2s0.896-2,2-2h14c5.514,0,10-4.486,10-10c0-1.104,0.896-2,2-2
+	                        s2,0.896,2,2C49,35.72,42.72,42,35,42z" />
+                        <path style="fill: #1C3C6B;" d="M30.998,50c-0.407,0-0.819-0.124-1.175-0.383L16.6,40l13.224-9.617
+	                        c0.895-0.652,2.144-0.452,2.794,0.44c0.65,0.894,0.452,2.145-0.44,2.794L23.4,40l8.776,6.383c0.893,0.649,1.091,1.9,0.44,2.794
+	                        C32.227,49.715,31.616,50,30.998,50z" />
+                    </svg>
+                </div>
+                <div class="admin-card-title">
+                    <h3>Reroute Bus</h3>
+                </div>
+            </div>
+        </a>
+    </section>
+</main>

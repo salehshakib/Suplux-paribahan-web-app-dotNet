@@ -31,11 +31,44 @@
                                 <polyline class="header-logo-stroke" points="6.08 276 6.08 6 422.08 6" />
                                 <polyline class="header-logo-stroke" points="786.08 276 786.08 6 370.08 6" />
                             </svg>
-                        </a>         
+                        </a>
                     </div>
-                    <div class="suplux-navbar-element">
-                        <button class="suplux-btn">@Html.ActionLink("Log In", "LogIn", "Account")</button>
-                    </div>
+                    @if (Session["currentEmail"] is string)
+                    {
+                        <div id="logged-in-user-div" class="loged-in-user" tabindex="2">
+                            <div>
+                                <h5 class="user-nick-name">User</h5>
+                            </div>
+                            <div class="profile-image">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     viewBox="0 0 248.349 248.349" style="enable-background:new 0 0 248.349 248.349;" xml:space="preserve">
+                                <g>
+                                <path d="M9.954,241.305h228.441c3.051,0,5.896-1.246,7.805-3.416c1.659-1.882,2.393-4.27,2.078-6.723
+			                                        c-5.357-41.734-31.019-76.511-66.15-95.053c-14.849,14.849-35.348,24.046-57.953,24.046s-43.105-9.197-57.953-24.046
+			                                        C31.09,154.65,5.423,189.432,0.071,231.166c-0.315,2.453,0.424,4.846,2.078,6.723C4.058,240.059,6.903,241.305,9.954,241.305z" />
+                                <path d="M72.699,127.09c1.333,1.398,2.725,2.73,4.166,4.019c12.586,11.259,29.137,18.166,47.309,18.166
+			                                        s34.723-6.913,47.309-18.166c1.441-1.289,2.834-2.622,4.166-4.019c1.327-1.398,2.622-2.828,3.84-4.329
+			                                        c9.861-12.211,15.8-27.717,15.8-44.6c0-39.216-31.906-71.116-71.116-71.116S53.059,38.95,53.059,78.16
+			                                        c0,16.883,5.939,32.39,15.8,44.6C70.072,124.262,71.366,125.687,72.699,127.09z" />
+	                            </g>
+                            </svg>
+                            </div>
+                            <div class="nav-user-dropdown">
+                                <i class="fas fa-chevron-down"></i>
+                                <ul id="nav-user-dropdown-menu" class="nav-user-menu d-none">
+                                    <li><a href="@Url.Action("UserProfile", "Account")"><i class="fas fa-user"></i>Profile</a></li>
+                                    <li><a href="#"><i class="fas fa-remove-format"></i>Cancel Tickets</a></li>
+                                    <li><a href="/Account/LogOut"><i class="fas fa-sign-out-alt"></i>Log Out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+                    else {
+                        <div class="suplux-navbar-element">
+                            <button class="suplux-btn">@Html.ActionLink("Log In", "LogIn", "Account")</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -44,6 +77,7 @@
     <main>
         @RenderBody()
     </main>
+
     <footer class="container-fluid">
         
         <div class="container">
