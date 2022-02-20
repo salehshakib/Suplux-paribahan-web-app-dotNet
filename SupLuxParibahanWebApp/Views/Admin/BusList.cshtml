@@ -6,13 +6,13 @@
 }
 
 <!--    bus list container    -->
-<section>
+<section class="bus-list-section">
     <!--    search bus div   -->
     <div class="search-bus-container">
         <div class="search-form">
             <form action="/" method="post">
                 <div class="search-coach-input">
-                    <input type="text" name="name" value="" placeholder="Enter Coach No" autocomplete="off" />
+                    <input id="coach-no-input" type="text" name="name" value="" placeholder="Enter Coach No" autocomplete="off" />
                 </div>
                 <div id="coach-type-input-container" class="search-coach-input">
                     <input id="coach-type-input" type="text" name="name" value="Select Coach Type" autocomplete="off" readonly />
@@ -33,6 +33,175 @@
         </div>
     </div>
 
+    <!--    coach info div   -->
+    <div class="container-fluid coach-info-container">
+        <div class="coach-info-row">
+            <div class="coach-info">
+                <p>Coach No.</p>
+                <h3 class="coach-no">M-4055</h3>
+            </div>
+            <div class="coach-info">
+                <p>Coach Type</p>
+                <h3>AC (Multi-Axle)</h3>
+            </div>
+            <div class="coach-info">
+                <p>Starting Point</p>
+                <h3>Dhaka</h3>
+            </div>
+            <div class="coach-info">
+                <p>Ending Point</p>
+                <h3>Chattogram</h3>
+            </div>
+            <div class="coach-info">
+                <p>Departure Time</p>
+                <h3>10:00 PM</h3>
+            </div>
+            <div class="coach-info">
+                <p>Fare</p>
+                <h3>BDT 1200</h3>
+            </div>
+            <div class="coach-info-btn-container">
+                <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
+            </div>
+            <div class="coach-info-btn-container">
+                <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
+            </div>
+        </div>
+        <div class="coach-info-row maintained">
+            <div class="coach-info">
+                <p>Coach No.</p>
+                <h3 class="coach-no">M-1253</h3>
+            </div>
+            <div class="coach-info">
+                <p>Coach Type</p>
+                <h3>AC (Multi-Axle)</h3>
+            </div>
+            <div class="coach-info">
+                <p>Starting Point</p>
+                <h3>Dhaka</h3>
+            </div>
+            <div class="coach-info">
+                <p>Ending Point</p>
+                <h3>Chattogram</h3>
+            </div>
+            <div class="coach-info">
+                <p>Departure Time</p>
+                <h3>10:00 PM</h3>
+            </div>
+            <div class="coach-info">
+                <p>Fare</p>
+                <h3>BDT 1200</h3>
+            </div>
+            <div class="coach-info-btn-container">
+                <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
+            </div>
+            <div class="coach-info-btn-container">
+                <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
+            </div>
+        </div>
+        <div class="coach-info-row halt">
+            <div class="coach-info">
+                <p>Coach No.</p>
+                <h3 class="coach-no">M-1025</h3>
+            </div>
+            <div class="coach-info">
+                <p>Coach Type</p>
+                <h3>AC (Multi-Axle)</h3>
+            </div>
+            <div class="coach-info">
+                <p>Starting Point</p>
+                <h3>Dhaka</h3>
+            </div>
+            <div class="coach-info">
+                <p>Ending Point</p>
+                <h3>Chattogram</h3>
+            </div>
+            <div class="coach-info">
+                <p>Departure Time</p>
+                <h3>10:00 PM</h3>
+            </div>
+            <div class="coach-info">
+                <p>Fare</p>
+                <h3>BDT 1200</h3>
+            </div>
+            <div class="coach-info-btn-container">
+                <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
+            </div>
+            <div class="coach-info-btn-container">
+                <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
+            </div>
+        </div>
+        <div class="coach-info-row">
+            <div class="coach-info">
+                <p>Coach No.</p>
+                <h3 class="coach-no">M-1247</h3>
+            </div>
+            <div class="coach-info">
+                <p>Coach Type</p>
+                <h3>AC (Multi-Axle)</h3>
+            </div>
+            <div class="coach-info">
+                <p>Starting Point</p>
+                <h3>Dhaka</h3>
+            </div>
+            <div class="coach-info">
+                <p>Ending Point</p>
+                <h3>Chattogram</h3>
+            </div>
+            <div class="coach-info">
+                <p>Departure Time</p>
+                <h3>10:00 PM</h3>
+            </div>
+            <div class="coach-info">
+                <p>Fare</p>
+                <h3>BDT 1200</h3>
+            </div>
+            <div class="coach-info-btn-container">
+                <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
+            </div>
+            <div class="coach-info-btn-container">
+                <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
+            </div>
+        </div>
+
+        <!--    maintanence confirmation modal   -->
+        <div id="bus-maintain-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><i class="fas fa-exclamation-triangle maintain-ex"></i><span id="maintain-modal-title"></span></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you really wish to take this bus under routine maintanence? This bus will be no longer operational after <strong>15 days</strong> if you press <strong>"Yes, I Do."</strong> However, It will be back online after 7 days of regular maintanence.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="suplux-btn suplux-alt-btn" data-dismiss="modal">No</button>
+                        <button type="button" class="suplux-btn">Yes, I Do.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--    halt confirmation modal   -->
+        <div id="bus-halt-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><i class="fas fa-exclamation-triangle halt-ex"></i><span id="halt-modal-title"></span></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you really wish to halt this bus from the route. This bus will be no longer operational after <strong>15 days</strong> if you press <strong>"Yes, I Do."</strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="suplux-btn suplux-alt-btn" data-dismiss="modal">No</button>
+                        <button type="button" class="suplux-btn">Yes, I Do.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-@Scripts.Render("~/Scripts/admin.js")
+@Scripts.Render("~/Scripts/bus-list.js")

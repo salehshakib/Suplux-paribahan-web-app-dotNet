@@ -3,6 +3,18 @@
 ------------------------------*/
 @import url("Site.css");
 
+/*---------------------
+        Utilities
+----------------------*/
+:root {
+    --suplux-buslist-active-bg-color: rgb(222, 255, 222);
+    --suplux-buslist-maintain-bg-color: rgb(255, 239, 204);
+    --suplux-buslist-halt-bg-color: rgb(255, 222, 222);
+    --suplux-buslist-active-text-color: rgb(36, 181, 36);
+    --suplux-buslist-maintain-text-color: rgb(242, 172, 17);
+    --suplux-buslist-halt-text-color: rgb(224, 61, 61);
+}
+
 /*----------------------------------
         Admin Home Page Design
 -----------------------------------*/
@@ -11,7 +23,24 @@ body {
     min-height: 100vh;
 }
 
-.admin-card-section{
+.modal-dialog-centered{
+    top: 50%;
+   
+}
+
+.modal-dialog-centered .modal-content {
+    transform: translateY(-50%);
+}
+
+.fa-exclamation-triangle.maintain-ex{
+    color: var(--suplux-buslist-maintain-text-color);
+}
+
+.fa-exclamation-triangle.halt-ex {
+    color: var(--suplux-buslist-halt-text-color);
+}
+
+.admin-card-section {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -59,11 +88,15 @@ body {
         Coach Search Box Design
 ---------------------------------------*/
 .search-bus-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
     background-color: white;
     padding: 20px;
     display: flex;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 999999;
 }
 
 .search-form{
@@ -98,6 +131,12 @@ body {
     cursor: pointer;
 }
 
+#coach-type-input-container input:disabled,
+#coach-no-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
 #coach-type-input-container span {
     position: absolute;
     top: 50%;
@@ -124,6 +163,7 @@ body {
     transition: 0.3s ease-in-out;
     overflow: hidden;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 99999;
 }
 
 #coach-type-input-container ul li {
@@ -138,7 +178,82 @@ body {
     background-color: var(--suplux-profile-menu-color);
     color: var(--suplux-profile-menu-text-color);
 }
+/*----------------------------------
+        Coach Info Row Design
+-----------------------------------*/
+.bus-list-section{
+    min-height: 100vh;
+    background-color: white;
+}
 
+.coach-info-container {
+    margin: 80px 0 0;
+    padding: 20px 20px 120px;
+}
+.coach-info-row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    background-color: var(--suplux-buslist-active-bg-color);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.coach-info-row.maintained{
+    background-color: var(--suplux-buslist-maintain-bg-color);
+}
+
+.coach-info-row.halt{
+    background-color: var(--suplux-buslist-halt-bg-color);
+}
+
+.coach-info-row + .coach-info-row {
+    margin-top: 20px;
+}
+
+.coach-info h3,
+.coach-info p {
+    margin: 0;
+    color: var(--suplux-buslist-active-text-color);
+}
+
+.coach-info-row.maintained h3,
+.coach-info-row.maintained p{
+    color: var(--suplux-buslist-maintain-text-color);
+}
+
+.coach-info-row.halt h3,
+.coach-info-row.halt p{
+    color: var(--suplux-buslist-halt-text-color);
+}
+
+.coach-info-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.suplux-btn.maintain-btn {
+    border: 3px solid var(--suplux-buslist-maintain-text-color);
+    color: var(--suplux-buslist-maintain-text-color);
+    background-color: var(--suplux-buslist-maintain-bg-color);
+}
+
+.suplux-btn.maintain-btn:disabled,
+.suplux-btn.halt-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.suplux-btn.maintain-btn:disabled:hover,
+.suplux-btn.halt-btn:disabled:hover {
+    box-shadow: none;
+}
+
+.suplux-btn.halt-btn {
+    border: 3px solid var(--suplux-buslist-halt-text-color);
+    color: var(--suplux-buslist-halt-text-color);
+    background-color: var(--suplux-buslist-halt-bg-color);
+}
 /*----------------------------------
         Admin Footer Design
 -----------------------------------*/
