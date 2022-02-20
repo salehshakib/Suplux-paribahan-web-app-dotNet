@@ -80,11 +80,35 @@ namespace SupLuxParibahanWebApp.Controllers
 
         public ActionResult UserProfile()
         {
+            if (Session["currentEmail"] != null)
+            {
+                String email = Session["currentEmail"].ToString();
+                var getUser = db.UserTables.Where(temp => temp.userEmail.Equals(email)).FirstOrDefault();
+                if (getUser != null)
+                {
+                    return View(getUser);
+                }
+                else { return View(); }
+            }
             return View();
         }
 
-        public ActionResult getUserInfo()
+        [HttpPost]
+        public ActionResult UpdateUserInfo(UserTable userTable)
         {
+            String email = Session["currentEmail"].ToString();
+            UserTable user = new UserTable();
+            user = db.UserTables.SingleOrDefault(x=>x.userEmail.Equals(email));
+            if (user != null) { 
+                user.userName = userTable.userName.ToString();
+                user.userGender = userTable.userGender.ToString();  
+                user.userPhoneNumber = userTable.userPhoneNumber.ToString();
+                user.userAddress = userTable.userAddress.ToString();
+                user.userNID = userTable.userNID.ToString();
+                db.Entry(user).State=System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return View();  //here we have error
+            }
             return View();
         }
     }
