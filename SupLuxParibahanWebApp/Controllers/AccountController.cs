@@ -107,9 +107,33 @@ namespace SupLuxParibahanWebApp.Controllers
                 user.userNID = userTable.userNID.ToString();
                 db.Entry(user).State=System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return View();  //here we have error
+                return RedirectToAction("UserProfile","Account");  //redirecting to userprofile once again
             }
-            return View();
+            return View("~/Views/Account/UserProfile.cshtml"); // this line of code can destroy the program. Expected errors from here
+        }
+
+        [HttpPost]
+        public ActionResult UpdateUserPassword(String currentPassword,String newPassword,String confirmPassword)
+        {
+            String email = Session["currentEmail"].ToString();
+            UserTable user = new UserTable();
+            user = db.UserTables.SingleOrDefault(x => x.userEmail.Equals(email));
+            
+            if (user != null)
+            {
+                if (user.userPassword.Equals(currentPassword))
+                {
+                    if (confirmPassword.Equals(newPassword)) 
+                    {
+                        user.userPassword = newPassword;
+                        db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("UserProfile", "Account");
+                    }
+                }
+            }
+
+            return View("~/Views/Account/UserProfile.cshtml");// this line of code can destroy the program. Expected errors from here
         }
     }
 }
