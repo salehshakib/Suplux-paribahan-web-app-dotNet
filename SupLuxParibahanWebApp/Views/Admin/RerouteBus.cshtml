@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "REROUTE BUS";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    @Styles.Render("~/Content/autocomplete-field.css")
+    @Styles.Render("~/Content/admin.css");
+}
+
+<!--    reroute bus container    -->
+<section class="reroute-bus-section">
+    <div class="verify-coach">
+        <form action="/" method="post">
+            <div class="search-coach-input">
+                <input id="reroute-coach-no-input" type="text" name="name" value="" placeholder="Enter Coach No" autocomplete="off" />
+            </div>
+            <div class="search-coach-button">
+                <button class="suplux-btn"><i class="fas fa-check-circle"></i>Verify</button>
+            </div>
+        </form>
+    </div>
+    <!--    error message    -->
+    <div id="reroute-coach-info-container" class="d-none">
+        <div class="not-found-msg">
+            <h1>No Such Coach Found!</h1>
+        </div>
+    </div>
+    <!--    reroute bus form    -->
+    <div class="reroute-form">
+        <h3 class="form-title">Reroute Bus</h3>
+        <form id="reroute-bus-form" action="/" method="post">
+            <div class="reroute-coach-info">
+                <div class="reroute-input-wrapper">
+                    <input id="reroute-coach-no" type="text" name="name" value="" placeholder="Coach No" readonly />
+                </div>
+                <div class="reroute-input-wrapper">
+                    <input type="text" name="name" value="" placeholder="Coach Type" readonly />
+                </div>
+                <div class="autocomplete reroute-input-wrapper">
+                    <input id="starting-point" type="text" name="from" value="" placeholder="Starting Point" required/>
+                </div>
+                <div class="autocomplete reroute-input-wrapper">
+                    <input id="ending-point" type="text" name="to" value="" placeholder="Ending Point" autocomplete="off" required/>
+                </div>
+                <div class="reroute-input-wrapper">
+                    <input type="text" name="name" value="" placeholder="Fare" autocomplete="off" required/>
+                    <span>BDT</span>
+                </div>
+            </div>
+            <div class="reroute-coach-btn">
+                <button id="reroute-btn" class="suplux-btn" type="button" data-toggle="modal" data-target="#reroute-bus-modal"><i class="fas fa-retweet"></i>Reroute</button>
+            </div>
+            <!--    halt confirmation modal   -->
+            <div id="reroute-bus-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"><i class="fas fa-exclamation-triangle maintain-ex"></i><span id="reroute-modal-title"></span></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Do you really wish to reroute this bus? This bus will be rerouted after <strong>15 days</strong> if you press <strong>"Yes, I Do."</strong></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="suplux-btn suplux-alt-btn" data-dismiss="modal">No</button>
+                            <button id="reroute-modal-yes-btn" type="submit" class="suplux-btn" data-confirm="modal">Yes, I Do.</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+@Scripts.Render("~/Scripts/autocomplete-field.js")
+
+<script>
+    //this function is submitting the form after the modal is confirmed
+    document.getElementById('reroute-modal-yes-btn').addEventListener('click', function() {
+
+        document.getElementById('reroute-bus-form').submit();
+    });
+
+    //this function is setting the modal title when the reroute button is clicked
+    document.getElementById('reroute-btn').addEventListener('click', function () {
+
+        document.getElementById('reroute-modal-title').innerText = `Do you really want to reroute Coach no. ${document.getElementById('reroute-coach-no').value }?`;
+    });
+
+</script>

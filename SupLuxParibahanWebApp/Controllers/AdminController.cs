@@ -19,5 +19,18 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
+
+
+        // GET: Add New Bus
+        public ActionResult AddNewBus()
+        {
+            return View();
+        }
+
+        // GET: Reroute Bus
+        public ActionResult RerouteBus()
+        {
+            return View();
+        }
     }
 }

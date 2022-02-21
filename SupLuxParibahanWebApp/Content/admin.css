@@ -178,6 +178,7 @@ body {
     background-color: var(--suplux-profile-menu-color);
     color: var(--suplux-profile-menu-text-color);
 }
+
 /*----------------------------------
         Coach Info Row Design
 -----------------------------------*/
@@ -254,21 +255,125 @@ body {
     color: var(--suplux-buslist-halt-text-color);
     background-color: var(--suplux-buslist-halt-bg-color);
 }
+
+/*----------------------------------
+        Reroute Bus Design
+-----------------------------------*/
+.reroute-bus-section{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reroute-coach-info-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#reroute-coach-info-container h1 {
+    font-size: 80px;
+    text-align: center;
+    font-weight: 900;
+    color: var(--suplux-dark-grey);
+    opacity: 0.2;
+}
+
+.reroute-form{
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.form-title{
+    text-align: center;
+    font-size: 35px;
+    color: var(--suplux-dark-blue);
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.reroute-coach-info{
+    display: flex;
+    justify-content: center;
+}
+
+.reroute-input-wrapper{
+    position: relative;
+    width: fit-content;
+}
+
+.reroute-input-wrapper + .reroute-input-wrapper{
+    margin-left: 20px;
+}
+
+.reroute-input-wrapper input{
+    padding: 10px 8px;
+    border: 2px solid var(--suplux-dark-blue);
+    border-radius: 10px;
+    color: var(--suplux-dark-blue);
+    font-weight: 600;
+}
+
+.reroute-input-wrapper input:read-only{
+    background-color: var(--suplux-light-skyblue);
+}
+
+.reroute-input-wrapper span {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: var(--suplux-dark-blue);
+    font-weight: 600;
+}
+
+.reroute-coach-btn{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/*----------------------------------
+        Verify Coach Design
+-----------------------------------*/
+.verify-coach {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.verify-coach form {
+    display: flex;
+    justify-content: center;
+}
+
+.verify-coach form input{
+    margin-right: 20px;
+}
+
 /*----------------------------------
         Admin Footer Design
 -----------------------------------*/
-footer {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    color: var(--suplux-dark-blue);
-    padding: 20px;
-    border-radius: 15px;
-    right: 30px;
-    bottom: 20px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+    footer {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        background-color: white;
+        color: var(--suplux-dark-blue);
+        padding: 20px;
+        border-radius: 15px;
+        right: 30px;
+        bottom: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
 
 .logged-admin-info{
     margin-right: 20px;
