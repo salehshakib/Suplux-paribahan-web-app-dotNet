@@ -38,9 +38,6 @@
                         inp.value = this.getElementsByTagName("input")[0].value;
                     }
 
-
-                    console.log(this.getElementsByTagName("input")[0].value);
-
                     closeAllLists();
                 });
                 a.appendChild(b);
