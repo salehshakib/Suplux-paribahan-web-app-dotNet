@@ -92,7 +92,7 @@ for (let i = 0; i < haltBtns.length; i++) {
 
     haltBtns[i].addEventListener('click', function () {
 
-        haltModalTitle.innerText = `Do you really want to halt Coach no. ${coachNo[i].innerText}?`;
+        haltModalTitle.innerText = `Do you really want to halt Coach no. <strong>${coachNo[i].innerText}/<strong>?`;
     });
 }
 
@@ -100,6 +100,6 @@ for (let i = 0; i < maintainBtns.length; i++) {
 
     maintainBtns[i].addEventListener('click', function () {
 
-        maintainModalTitle.innerText = `Do you really want to take Coach no. ${coachNo[i].innerText} under maintanence?`;
+        maintainModalTitle.innerHTML = `Do you really want to take Coach no. <strong>${coachNo[i].innerText}/<strong> under maintanence?`;
     });
 }

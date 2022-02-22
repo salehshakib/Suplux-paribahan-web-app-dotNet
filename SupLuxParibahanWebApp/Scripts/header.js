@@ -29,4 +29,5 @@ window.onscroll = function () {
 document.getElementById('logged-in-user-div').addEventListener('click', function () {
 
     document.getElementById('nav-user-dropdown-menu').classList.toggle('d-none');
+    document.getElementById('nav-user-down-arrow').classList.toggle('arrow-rotate');
 });

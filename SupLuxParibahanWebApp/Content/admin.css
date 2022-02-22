@@ -102,7 +102,7 @@ body {
 .search-form{
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .search-form form {
@@ -259,7 +259,8 @@ body {
 /*----------------------------------
         Reroute Bus Design
 -----------------------------------*/
-.reroute-bus-section{
+.reroute-bus-section,
+.add-bus-section {
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -267,14 +268,16 @@ body {
     align-items: center;
 }
 
-#reroute-coach-info-container {
+#reroute-coach-info-container,
+#add-bus-coach-info-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#reroute-coach-info-container h1 {
+#reroute-coach-info-container h1,
+#add-bus-coach-info-container h1{
     font-size: 80px;
     text-align: center;
     font-weight: 900;
@@ -282,7 +285,8 @@ body {
     opacity: 0.2;
 }
 
-.reroute-form{
+.reroute-form,
+.add-new-bus-form-container {
     background-color: white;
     padding: 20px;
     border-radius: 20px;
@@ -297,21 +301,25 @@ body {
     margin-bottom: 30px;
 }
 
-.reroute-coach-info{
+.reroute-coach-info,
+.add-bus-coach-info {
     display: flex;
     justify-content: center;
 }
 
-.reroute-input-wrapper{
+.reroute-input-wrapper,
+.add-bus-input-wrapper {
     position: relative;
     width: fit-content;
 }
 
-.reroute-input-wrapper + .reroute-input-wrapper{
+.reroute-input-wrapper + .reroute-input-wrapper,
+.add-bus-input-wrapper + .add-bus-input-wrapper{
     margin-left: 20px;
 }
 
-.reroute-input-wrapper input{
+.reroute-input-wrapper input,
+.add-bus-input-wrapper input{
     padding: 10px 8px;
     border: 2px solid var(--suplux-dark-blue);
     border-radius: 10px;
@@ -319,11 +327,17 @@ body {
     font-weight: 600;
 }
 
-.reroute-input-wrapper input:read-only{
+.reroute-input-wrapper input:read-only,
+.add-bus-input-wrapper input:read-only{
     background-color: var(--suplux-light-skyblue);
 }
 
-.reroute-input-wrapper span {
+.required-field-not-filled{
+    background-color: var(--suplux-buslist-halt-bg-color);
+}
+
+.reroute-input-wrapper span,
+.add-bus-input-wrapper span{
     position: absolute;
     top: 50%;
     right: 10px;
@@ -332,7 +346,8 @@ body {
     font-weight: 600;
 }
 
-.reroute-coach-btn{
+.reroute-coach-btn,
+.add-coach-btn-container {
     margin-top: 30px;
     display: flex;
     justify-content: center;
@@ -352,28 +367,28 @@ body {
 
 .verify-coach form {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
-.verify-coach form input{
+.verify-coach form .search-coach-input {
     margin-right: 20px;
 }
 
 /*----------------------------------
         Admin Footer Design
 -----------------------------------*/
-    footer {
-        position: fixed;
-        display: flex;
-        align-items: center;
-        background-color: white;
-        color: var(--suplux-dark-blue);
-        padding: 20px;
-        border-radius: 15px;
-        right: 30px;
-        bottom: 20px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
+footer {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: var(--suplux-dark-blue);
+    padding: 20px;
+    border-radius: 15px;
+    right: 30px;
+    bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
 .logged-admin-info{
     margin-right: 20px;

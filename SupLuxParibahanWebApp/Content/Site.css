@@ -110,6 +110,14 @@ d-block {
     fill: var(--suplux-dark-blue);
 }
 
+#nav-user-down-arrow{
+    transition: 0.3s ease-in-out;
+}
+
+.arrow-rotate {
+    transform: rotateZ(180deg) !important;
+}
+
 /*-------------------------
         Navbar Design
 --------------------------*/
