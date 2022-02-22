@@ -60,7 +60,7 @@ namespace SupLuxParibahanWebApp.Controllers
             {
 
                 Session["currentEmail"] = userTable.userEmail.ToString();
-                //Session["currentPassword"]=userTable.userPassword.ToString();
+                //Session["currentUserName"]=userTable.userPassword.ToString();
 
                 return RedirectToAction("Index", "Home");
             }
