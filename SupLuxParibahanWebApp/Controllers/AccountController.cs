@@ -55,19 +55,41 @@ namespace SupLuxParibahanWebApp.Controllers
             {
                 return View();
             }*/
-
-            if (db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword)))
+            if (userTable.userEmail.Contains("admin."))
             {
+                if (db.Admins.Any(temp => temp.adminEmail.Equals(userTable.userEmail) && temp.adminPassword.Equals(userTable.userPassword)))
+                {
 
-                Session["currentEmail"] = userTable.userEmail.ToString();
-                //Session["currentUserName"]=userTable.userPassword.ToString();
+                    Session["currentEmail"] = userTable.userEmail.ToString();
+                    //Session["currentUserName"]=userTable.userPassword.ToString();
 
-                return RedirectToAction("Index", "Home");
+                    return RedirectToAction("AdminHome", "Admin");
+                }
+                else
+                {
+                    ViewBag.Notification = "Error such account doesnt exists.";
+                    return View();
+                }
             }
-            else
+            else 
             {
-                return View();
+                if (db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword)))
+                {
+
+                    Session["currentEmail"] = userTable.userEmail.ToString();
+                    //Session["currentUserName"]=userTable.userPassword.ToString();
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Notification = "Error such account doesnt exists.";
+                    return View();
+                }
             }
+            
+
+            return View();
 
         }
 

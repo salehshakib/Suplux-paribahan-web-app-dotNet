@@ -6,6 +6,8 @@
     </Key>
     <Property Name="adminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="adminPassword" Type="varchar" MaxLength="10" />
+    <Property Name="adminEmail" Type="varchar" MaxLength="50" />
+    <Property Name="adminNick" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Reservation">
     <Key>

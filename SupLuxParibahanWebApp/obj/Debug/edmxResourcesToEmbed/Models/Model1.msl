@@ -4,6 +4,8 @@
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="SUPLUXDashboardModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="adminNick" ColumnName="adminNick" />
+          <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
           <ScalarProperty Name="adminID" ColumnName="adminID" />
           <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
         </MappingFragment>

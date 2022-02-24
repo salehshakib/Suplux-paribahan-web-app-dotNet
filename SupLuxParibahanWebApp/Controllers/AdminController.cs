@@ -11,6 +11,9 @@ namespace SupLuxParibahanWebApp.Controllers
         // GET: Admin
         public ActionResult AdminHome()
         {
+            if (Session["currentEmail"] != null)
+            { 
+            }
             return View();
         }
 
