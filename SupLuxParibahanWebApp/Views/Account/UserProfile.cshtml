@@ -85,15 +85,15 @@
                             <form class="edit-profile-form" action="/Account/UpdateUserInfo" method="post">
                                 <div class="edit-form-input">
                                     <p class="profile-text">Name</p>
-                                    <input type="text" name="userName" value="" autocomplete="off"/>
+                                    <input type="text" name="userName" value="@Model.userName" autocomplete="off"/>
                                 </div>
                                 <div class="edit-form-input">
                                     <p class="profile-text">Phone</p>
-                                    <input type="text" name="userPhoneNumber" value="" autocomplete="off"/>
+                                    <input type="text" name="userPhoneNumber" value="@Model.userPhoneNumber" autocomplete="off"/>
                                 </div>
                                 <div id="gender-input-container" class="edit-form-input">
                                     <p class="profile-text">Gender</p>
-                                    <input id="gender-input" type="text" name="userGender" value="Select Gender" autocomplete="off" readonly/>
+                                    <input id="gender-input" type="text" name="userGender" value="@Model.userGender" autocomplete="off" readonly/>
                                     <span id="gender-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <ul id="gender-menu" class="hidden">
                                         <li class="gender-menu-item">Select Gender</li>
@@ -104,11 +104,11 @@
                                 </div>
                                 <div class="edit-form-input">
                                     <p class="profile-text">National ID</p>
-                                    <input type="text" name="userNID" value="" autocomplete="off"/>
+                                    <input type="text" name="userNID" value="@Model.userNID" autocomplete="off"/>
                                 </div>
                                 <div class="edit-form-input edit-form-textarea">
                                     <p class="profile-text">Present Address</p>
-                                    <textarea name="userAddress" id="" cols="30" rows="10"></textarea>
+                                    <textarea name="userAddress" id="" cols="30" rows="10">@Model.userAddress</textarea>
                                 </div>
                                 <div class="edit-form-button-container">
                                     <button id="close-edit-form-button" class="suplux-btn suplux-alt-btn" type="reset"><i class="fas fa-ban"></i>Close</button>
