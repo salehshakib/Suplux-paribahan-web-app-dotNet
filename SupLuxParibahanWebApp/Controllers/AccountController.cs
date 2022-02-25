@@ -40,7 +40,7 @@ namespace SupLuxParibahanWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(UserTable userTable)
+        public ActionResult LogIn(String uEmail, String uPassword)
         {
             /*var checkLogin = db.UserTables.Where(temp=>temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword));
 
@@ -55,19 +55,43 @@ namespace SupLuxParibahanWebApp.Controllers
             {
                 return View();
             }*/
-
-            if (db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword)))
+            if (uEmail.Contains("admin."))
             {
+                
+                if (db.Admins.SingleOrDefault(x=>x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword)) !=null)
+                {
 
-                Session["currentEmail"] = userTable.userEmail.ToString();
-                //Session["currentPassword"]=userTable.userPassword.ToString();
-
-                return RedirectToAction("Index", "Home");
+                    Session["currentEmail"] = uEmail;
+                    
+                    return RedirectToAction("AdminHome", "Admin");
+                }
+                else
+                {
+                    ViewBag.Notification = "Error such account doesnt exists.";
+                    return View();
+                }
             }
-            else
+            else 
             {
-                return View();
+                //db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword))     UserTable userTable, userTable.userEmail.ToString()
+
+                if (db.UserTables.Any(temp => temp.userEmail.Equals(uEmail) && temp.userPassword.Equals(uPassword)))
+                {
+
+                    Session["currentEmail"] = uEmail;
+                    //Session["currentUserName"]=userTable.userPassword.ToString();
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Notification = "Error such account doesnt exists.";
+                    return View();
+                }
             }
+            
+
+            return View();
 
         }
 
