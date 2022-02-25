@@ -40,7 +40,7 @@ namespace SupLuxParibahanWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(UserTable userTable)
+        public ActionResult LogIn(String uEmail, String uPassword)
         {
             /*var checkLogin = db.UserTables.Where(temp=>temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword));
 
@@ -55,14 +55,14 @@ namespace SupLuxParibahanWebApp.Controllers
             {
                 return View();
             }*/
-            if (userTable.userEmail.Contains("admin."))
+            if (uEmail.Contains("admin."))
             {
-                if (db.Admins.Any(temp => temp.adminEmail.Equals(userTable.userEmail) && temp.adminPassword.Equals(userTable.userPassword)))
+                
+                if (db.Admins.SingleOrDefault(x=>x.adminEmail.Equals(uEmail))!=null)
                 {
 
-                    Session["currentEmail"] = userTable.userEmail.ToString();
-                    //Session["currentUserName"]=userTable.userPassword.ToString();
-
+                    Session["currentEmail"] = uEmail;
+                    
                     return RedirectToAction("AdminHome", "Admin");
                 }
                 else
@@ -73,10 +73,12 @@ namespace SupLuxParibahanWebApp.Controllers
             }
             else 
             {
-                if (db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword)))
+                //db.UserTables.Any(temp => temp.userEmail.Equals(userTable.userEmail) && temp.userPassword.Equals(userTable.userPassword))     UserTable userTable, userTable.userEmail.ToString()
+
+                if (db.UserTables.Any(temp => temp.userEmail.Equals(uEmail) && temp.userPassword.Equals(uPassword)))
                 {
 
-                    Session["currentEmail"] = userTable.userEmail.ToString();
+                    Session["currentEmail"] = uEmail;
                     //Session["currentUserName"]=userTable.userPassword.ToString();
 
                     return RedirectToAction("Index", "Home");
