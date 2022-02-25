@@ -55,13 +55,14 @@ namespace SupLuxParibahanWebApp.Controllers
             {
                 return View();
             }*/
-            if (uEmail.Contains("admin."))
+            if (uEmail.Contains("@suplux.com"))
             {
-                
-                if (db.Admins.SingleOrDefault(x=>x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword)) !=null)
+                var getAdmin = db.Admins.SingleOrDefault(x => x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword));
+                if (getAdmin != null)
                 {
 
                     Session["currentEmail"] = uEmail;
+                    Session["AdminNick"] = getAdmin.adminNick;
                     
                     return RedirectToAction("AdminHome", "Admin");
                 }
@@ -112,7 +113,9 @@ namespace SupLuxParibahanWebApp.Controllers
                 {
                     return View(getUser);
                 }
-                else { return View(); }
+                else {
+                    return RedirectToAction("LogIn","Account");
+                }
             }
             return View();
         }

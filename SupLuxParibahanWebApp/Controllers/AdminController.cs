@@ -14,7 +14,7 @@ namespace SupLuxParibahanWebApp.Controllers
         // GET: Admin
         public ActionResult AdminHome()
         {
-            if (Session["currentEmail"] != null)
+            if (Session["currentEmail"] != null && Session["currentEmail"].ToString().Contains("@suplux.com"))
             {
                 String email = Session["currentEmail"].ToString();
                 var getAdmin = database.Admins.Where(temp=>temp.adminEmail.Equals(email)).FirstOrDefault();
