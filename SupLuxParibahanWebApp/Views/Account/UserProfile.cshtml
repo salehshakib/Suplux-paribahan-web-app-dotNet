@@ -4,6 +4,9 @@
     @Styles.Render("~/Content/user-profile-page.css")
 }
 
+
+  
+
 <!--    basic info section    -->
 <section id="basic-info-section">
     <div class="container">
@@ -85,15 +88,15 @@
                             <form class="edit-profile-form" action="/Account/UpdateUserInfo" method="post">
                                 <div class="edit-form-input">
                                     <p class="profile-text">Name</p>
-                                    <input type="text" name="userName" value="@Model.userName" autocomplete="off"/>
+                                    <input type="text" name="userName" value="@Model.userName" autocomplete="off" />
                                 </div>
                                 <div class="edit-form-input">
                                     <p class="profile-text">Phone</p>
-                                    <input type="text" name="userPhoneNumber" value="@Model.userPhoneNumber" autocomplete="off"/>
+                                    <input type="text" name="userPhoneNumber" value="@Model.userPhoneNumber" autocomplete="off" />
                                 </div>
                                 <div id="gender-input-container" class="edit-form-input">
                                     <p class="profile-text">Gender</p>
-                                    <input id="gender-input" type="text" name="userGender" value="@Model.userGender" autocomplete="off" readonly/>
+                                    <input id="gender-input" type="text" name="userGender" value="@Model.userGender" autocomplete="off" readonly />
                                     <span id="gender-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <ul id="gender-menu" class="hidden">
                                         <li class="gender-menu-item">Select Gender</li>
@@ -104,7 +107,7 @@
                                 </div>
                                 <div class="edit-form-input">
                                     <p class="profile-text">National ID</p>
-                                    <input type="text" name="userNID" value="@Model.userNID" autocomplete="off"/>
+                                    <input type="text" name="userNID" value="@Model.userNID" autocomplete="off" />
                                 </div>
                                 <div class="edit-form-input edit-form-textarea">
                                     <p class="profile-text">Present Address</p>
@@ -224,3 +227,4 @@
 </script>
 
 @Scripts.Render("~/Scripts/user-profile-page.js")
+

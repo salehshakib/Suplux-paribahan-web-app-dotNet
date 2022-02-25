@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
     @Styles.Render("~/Content/admin.css");
 }
-
+@model List<SupLuxParibahanWebApp.Models.tripData>
 <!--    bus list container    -->
 <section class="bus-list-section">
     <!--    search bus div   -->
@@ -29,7 +29,7 @@
                     </svg>
                 </a>
             </div>
-            <form action="/" method="post">
+            <form action="/Admin/BusList" method="post">
                 <div class="search-coach-input">
                     <input id="coach-no-input" type="text" name="name" value="" placeholder="Enter Coach No" autocomplete="off" />
                 </div>
@@ -52,102 +52,130 @@
 
     <!--    coach info div   -->
     <div class="container-fluid coach-info-container">
-        <div class="coach-info-row">
-            <div class="coach-info">
-                <p>Coach No.</p>
-                <h3 class="coach-no">M-4055</h3>
-            </div>
-            <div class="coach-info">
-                <p>Coach Type</p>
-                <h3>AC (Multi-Axle)</h3>
-            </div>
-            <div class="coach-info">
-                <p>Starting Point</p>
-                <h3>Dhaka</h3>
-            </div>
-            <div class="coach-info">
-                <p>Ending Point</p>
-                <h3>Chattogram</h3>
-            </div>
-            <div class="coach-info">
-                <p>Departure Time</p>
-                <h3>10:00 PM</h3>
-            </div>
-            <div class="coach-info">
-                <p>Fare</p>
-                <h3>BDT 1200</h3>
-            </div>
-            <div class="coach-info-btn-container">
-                <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
-            </div>
-            <div class="coach-info-btn-container">
-                <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
-            </div>
+
+
+
+        @foreach (var item in Model)
+        {
+
+            if (item.TripStatus.Equals("available"))
+            {
+
+                <div class="coach-info-row">
+                    <div class="coach-info">
+                        <p>Coach No.</p>
+                        <h3 class="coach-no">@item.coachNo</h3>
+                    </div>
+                    <div class="coach-info">
+                        <p>Coach Type</p>
+                        <h3>@item.coachType</h3>
+                    </div>
+                    <div class="coach-info">
+                        <p>Starting Point</p>
+                        <h3>@item.startingFrom</h3>
+                    </div>
+                    <div class="coach-info">
+                        <p>Ending Point</p>
+                        <h3>@item.destination</h3>
+                    </div>
+                    <div class="coach-info">
+                        <p>Departure Time</p>
+                        <h3>@item.departureTime</h3>
+                    </div>
+                    <div class="coach-info">
+                        <p>Fare</p>
+                        <h3>BDT @item.farePerSeat</h3>
+                    </div>
+
+
+                    <div class="coach-info-btn-container">
+                        <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
+                    </div>
+                    <div class="coach-info-btn-container">
+                        <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
+                    </div>
+                </div>
+
+            }
+            else if (item.TripStatus.Equals("maintenance"))
+            {
+    <div class="coach-info-row maintained">
+        <div class="coach-info">
+            <p>Coach No.</p>
+            <h3 class="coach-no">@item.coachNo</h3>
         </div>
-        <div class="coach-info-row maintained">
-            <div class="coach-info">
-                <p>Coach No.</p>
-                <h3 class="coach-no">M-1253</h3>
-            </div>
-            <div class="coach-info">
-                <p>Coach Type</p>
-                <h3>AC (Multi-Axle)</h3>
-            </div>
-            <div class="coach-info">
-                <p>Starting Point</p>
-                <h3>Dhaka</h3>
-            </div>
-            <div class="coach-info">
-                <p>Ending Point</p>
-                <h3>Chattogram</h3>
-            </div>
-            <div class="coach-info">
-                <p>Departure Time</p>
-                <h3>10:00 PM</h3>
-            </div>
-            <div class="coach-info">
-                <p>Fare</p>
-                <h3>BDT 1200</h3>
-            </div>
-            <div class="coach-info-btn-container">
-                <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
-            </div>
-            <div class="coach-info-btn-container">
-                <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
-            </div>
+        <div class="coach-info">
+            <p>Coach Type</p>
+            <h3>@item.coachType</h3>
         </div>
-        <div class="coach-info-row halt">
-            <div class="coach-info">
-                <p>Coach No.</p>
-                <h3 class="coach-no">M-1025</h3>
-            </div>
-            <div class="coach-info">
-                <p>Coach Type</p>
-                <h3>AC (Multi-Axle)</h3>
-            </div>
-            <div class="coach-info">
-                <p>Starting Point</p>
-                <h3>Dhaka</h3>
-            </div>
-            <div class="coach-info">
-                <p>Ending Point</p>
-                <h3>Chattogram</h3>
-            </div>
-            <div class="coach-info">
-                <p>Departure Time</p>
-                <h3>10:00 PM</h3>
-            </div>
-            <div class="coach-info">
-                <p>Fare</p>
-                <h3>BDT 1200</h3>
-            </div>
-            <div class="coach-info-btn-container">
-                <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
-            </div>
-            <div class="coach-info-btn-container">
-                <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
-            </div>
+        <div class="coach-info">
+            <p>Starting Point</p>
+            <h3>@item.startingFrom</h3>
         </div>
+        <div class="coach-info">
+            <p>Ending Point</p>
+            <h3>@item.destination</h3>
+        </div>
+        <div class="coach-info">
+            <p>Departure Time</p>
+            <h3>@item.departureTime</h3>
+        </div>
+        <div class="coach-info">
+            <p>Fare</p>
+            <h3>BDT @item.farePerSeat</h3>
+        </div>
+        <div class="coach-info-btn-container">
+            <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
+        </div>
+        <div class="coach-info-btn-container">
+            <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
+        </div>
+    </div>
+            }
+            else if(item.TripStatus.Equals("halt"))
+            {
+    <div class="coach-info-row halt">
+        <div class="coach-info">
+            <p>Coach No.</p>
+            <h3 class="coach-no">@item.coachNo</h3>
+        </div>
+        <div class="coach-info">
+            <p>Coach Type</p>
+            <h3>@item.coachType</h3>
+        </div>
+        <div class="coach-info">
+            <p>Starting Point</p>
+            <h3>@item.startingFrom</h3>
+        </div>
+        <div class="coach-info">
+            <p>Ending Point</p>
+            <h3>@item.destination</h3>
+        </div>
+        <div class="coach-info">
+            <p>Departure Time</p>
+            <h3>@item.departureTime</h3>
+        </div>
+        <div class="coach-info">
+            <p>Fare</p>
+            <h3>BDT @item.farePerSeat</h3>
+        </div>
+        <div class="coach-info-btn-container">
+            <button class="suplux-btn maintain-btn" data-toggle="modal" data-target="#bus-maintain-modal"><i class="fas fa-cogs"></i>Maintanence</button>
+        </div>
+        <div class="coach-info-btn-container">
+            <button class="suplux-btn halt-btn" data-toggle="modal" data-target="#bus-halt-modal"><i class="fas fa-ban"></i>Halt</button>
+        </div>
+    </div>
+
+            }
+
+
+
+        }
+
+        <!--
+
+
         <div class="coach-info-row">
             <div class="coach-info">
                 <p>Coach No.</p>
@@ -181,6 +209,8 @@
             </div>
         </div>
 
+
+    -->
         <!--    maintanence confirmation modal   -->
         <div id="bus-maintain-modal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
