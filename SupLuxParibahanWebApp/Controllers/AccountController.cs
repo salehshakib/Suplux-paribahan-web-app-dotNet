@@ -58,7 +58,7 @@ namespace SupLuxParibahanWebApp.Controllers
             if (uEmail.Contains("admin."))
             {
                 
-                if (db.Admins.SingleOrDefault(x=>x.adminEmail.Equals(uEmail))!=null)
+                if (db.Admins.SingleOrDefault(x=>x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword)) !=null)
                 {
 
                     Session["currentEmail"] = uEmail;
