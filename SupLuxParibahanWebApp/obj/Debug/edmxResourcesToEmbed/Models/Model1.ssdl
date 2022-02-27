@@ -38,12 +38,12 @@
     </Key>
     <Property Name="coachNo" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="startingFrom" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="boardingPoint" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="destination" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="departureTime" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="coachType" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="farePerSeat" Type="int" Nullable="false" />
     <Property Name="TripStatus" Type="varchar" MaxLength="20" />
+    <Property Name="MHDate" Type="date" />
   </EntityType>
   <EntityType Name="UserTable">
     <Key>

@@ -41,13 +41,13 @@
     </Key>
     <Property Name="coachNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="startingFrom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="boardingPoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="destination" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="departureTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="coachType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="farePerSeat" Type="Int32" Nullable="false" />
     <Property Name="TripStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="tripData" ToRole="Reservation" />
+    <Property Name="MHDate" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="UserTable">
     <Key>

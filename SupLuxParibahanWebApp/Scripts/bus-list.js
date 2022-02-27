@@ -20,20 +20,20 @@ function sleep(milliseconds) {
 /*
  * picking data from coach type dropdown
  */
-document.getElementById('coach-type-input').addEventListener('focus', function () {
+document.getElementById('coachType').addEventListener('focus', function () {
 
     addClass('down-arrow', 'arrow-rotate');
     addClass('coach-type-menu', 'visible');
     removeClass('coach-type-menu', 'hidden');
 });
 
-document.getElementById('coach-type-input').addEventListener('blur', function () {
+document.getElementById('coachType').addEventListener('blur', function () {
 
 
     document.querySelectorAll('.coach-menu-item').forEach(item => {
         item.addEventListener('click', event => {
 
-            document.getElementById('coach-type-input').value = event.target.innerText;
+            document.getElementById('coachType').value = event.target.innerText;
         })
     });
 
@@ -42,11 +42,11 @@ document.getElementById('coach-type-input').addEventListener('blur', function ()
         removeClass('coach-type-menu', 'visible');
         addClass('coach-type-menu', 'hidden');
 
-        if (document.getElementById('coach-type-input').value != 'Select Coach Type') {
+        if (document.getElementById('coachType').value != 'Select Coach Type') {
 
-            document.getElementById('coach-no-input').disabled = true;
+            document.getElementById('coachNo').disabled = true;
         } else {
-            document.getElementById('coach-no-input').disabled = false;
+            document.getElementById('coachNo').disabled = false;
         }
     });
 });
@@ -54,13 +54,13 @@ document.getElementById('coach-type-input').addEventListener('blur', function ()
 /*
  * this two functions are enabling and disabling search coach fields
  */
-document.getElementById('coach-no-input').addEventListener('keyup', function () {
+document.getElementById('coachNo').addEventListener('keyup', function () {
 
-    if (document.getElementById('coach-no-input').value != '') {
+    if (document.getElementById('coachNo').value != '') {
 
-        document.getElementById('coach-type-input').disabled = true;
+        document.getElementById('coachType').disabled = true;
     } else {
-        document.getElementById('coach-type-input').disabled = false;
+        document.getElementById('coachType').disabled = false;
     }
 });
 
