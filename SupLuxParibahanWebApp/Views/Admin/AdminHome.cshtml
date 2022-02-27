@@ -6,6 +6,14 @@
     @Styles.Render("~/Content/admin.css");
 }
 
+@{
+    Session["newCoachNo"] = "";
+    Session["newCoachType"] = "";
+    Session["coachNoForReroute"] = "";
+    Session["coachTypeForReroute"] = "";
+
+}
+
 <!--    admin cards container    -->
 <section class="container admin-card-section">
     <div class="admin-cards-container">

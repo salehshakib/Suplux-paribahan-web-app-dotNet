@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2f6b020743244e80821f387f2d1ea32b" Name="Diagram1">
-        <EntityTypeShape EntityType="SUPLUXDashboardModel.Admin" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SUPLUXDashboardModel.Admin" Width="1.5" PointX="7" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SUPLUXDashboardModel.Reservation" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SUPLUXDashboardModel.TransactionLog" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="SUPLUXDashboardModel.tripData" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SUPLUXDashboardModel.tripData" Width="2.5" PointX="3.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SUPLUXDashboardModel.UserTable" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="SUPLUXDashboardModel.FK__Reservati__coach__47DBAE45" ManuallyRouted="false" />
         <AssociationConnector Association="SUPLUXDashboardModel.FK__Reservati__userE__46E78A0C" ManuallyRouted="false" />

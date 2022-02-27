@@ -39,9 +39,9 @@
     <EntitySetMapping Name="tripDatas">
       <EntityTypeMapping TypeName="SUPLUXDashboardModel.tripData">
         <MappingFragment StoreEntitySet="tripData">
+          <ScalarProperty Name="MHDate" ColumnName="MHDate" />
           <ScalarProperty Name="coachNo" ColumnName="coachNo" />
           <ScalarProperty Name="startingFrom" ColumnName="startingFrom" />
-          <ScalarProperty Name="boardingPoint" ColumnName="boardingPoint" />
           <ScalarProperty Name="destination" ColumnName="destination" />
           <ScalarProperty Name="departureTime" ColumnName="departureTime" />
           <ScalarProperty Name="coachType" ColumnName="coachType" />
