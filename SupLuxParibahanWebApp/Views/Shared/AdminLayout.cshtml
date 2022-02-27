@@ -17,10 +17,10 @@
 
     <footer>
         <div class="logged-admin-info">
-            <h3>Logged in as <span id="admin-name">Admin-1</span></h3>
+            <h3>Logged in as <span id="admin-name">@Session["AdminNick"]</span></h3>
         </div>
         <div class="admin-logout-btn">
-            <button class="suplux-btn">Log Out</button>
+            <button class="suplux-btn" onclick="location.href = '@Url.Action("LogOut","Admin")'">Log Out</button>
         </div>
     </footer>
 
