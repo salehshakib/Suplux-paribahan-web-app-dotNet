@@ -22,12 +22,12 @@ namespace SupLuxParibahanWebApp.Models
     
         public string coachNo { get; set; }
         public string startingFrom { get; set; }
-        public string boardingPoint { get; set; }
         public string destination { get; set; }
         public string departureTime { get; set; }
         public string coachType { get; set; }
         public int farePerSeat { get; set; }
         public string TripStatus { get; set; }
+        public Nullable<System.DateTime> MHDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }
