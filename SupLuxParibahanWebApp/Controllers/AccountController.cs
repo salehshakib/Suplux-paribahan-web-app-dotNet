@@ -58,11 +58,13 @@ namespace SupLuxParibahanWebApp.Controllers
             }*/
             if (uEmail.Contains("admin."))
             {
-                
-                if (db.Admins.SingleOrDefault(x=>x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword)) !=null)
+                var getAdmin = db.Admins.SingleOrDefault(x => x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword));
+
+                if (getAdmin != null)
                 {
                     Session["currentEmail"] = uEmail;
-                    
+                    Session["AdminNick"] = getAdmin.adminNick;
+
                     return RedirectToAction("AdminHome", "Admin");
                 }
                 else
