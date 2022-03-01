@@ -10,6 +10,7 @@ namespace SupLuxParibahanWebApp.Controllers
     public class AccountController : Controller
     {
         SUPLUXDashboardEntities db=new SUPLUXDashboardEntities();   
+        
         // GET: Account
         public ActionResult SignUp()
         {
@@ -55,14 +56,12 @@ namespace SupLuxParibahanWebApp.Controllers
             {
                 return View();
             }*/
-            if (uEmail.Contains("@suplux.com"))
+            if (uEmail.Contains("admin."))
             {
-                var getAdmin = db.Admins.SingleOrDefault(x => x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword));
-                if (getAdmin != null)
+                
+                if (db.Admins.SingleOrDefault(x=>x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword)) !=null)
                 {
-
                     Session["currentEmail"] = uEmail;
-                    Session["AdminNick"] = getAdmin.adminNick;
                     
                     return RedirectToAction("AdminHome", "Admin");
                 }
@@ -80,6 +79,7 @@ namespace SupLuxParibahanWebApp.Controllers
                 {
 
                     Session["currentEmail"] = uEmail;
+                    
                     //Session["currentUserName"]=userTable.userPassword.ToString();
 
                     return RedirectToAction("Index", "Home");

@@ -28,9 +28,9 @@
                 </svg>
             </a>
         </div>
-        <form action="/Admin/AddNewBus" method="post">
+        <form action="/Admin/SearchBus" method="post">
             <div id="coach-type-input-container" class="search-coach-input">
-                <input id="coach-type-input" type="text" name="name" value="Select Coach Type" autocomplete="off" readonly />
+                <input id="coachType" type="text" name="coachType" value="Select Coach Type" autocomplete="off" readonly />
                 <span id="down-arrow"><i class="fas fa-chevron-down"></i></span>
                 <ul id="coach-type-menu" class="hidden">
                     <li class="coach-menu-item">Select Coach Type</li>
@@ -40,7 +40,7 @@
                 </ul>
             </div>
             <div class="search-coach-button">
-                <button id="verify-add-btn" class="suplux-btn"><i class="fas fa-check-circle"></i>Verify</button>
+                <button id="verify-add-btn" class="suplux-btn" type="submit"><i class="fas fa-check-circle"></i>Verify</button>
             </div>
         </form>
     </div>
@@ -53,22 +53,25 @@
     <!--    add bus form    -->
     <div id="add-coach-form" class="add-new-bus-form-container">
         <h3 class="form-title">Add New Coach</h3>
-        <form id="add-bus-form" action="/" method="post">
+        <form id="add-bus-form" action="/Admin/AddNewBus" method="post">
             <div class="add-bus-coach-info">
                 <div class="add-bus-input-wrapper">
-                    <input id="new-coach-no" type="text" name="name" value="" placeholder="Coach No" readonly />
+                    <input id="new-coach-no" type="text" name="coachNo" value="@Session["newCoachNo"]" placeholder="Coach No" readonly />
                 </div>
                 <div class="add-bus-input-wrapper">
-                    <input type="text" name="name" value="" placeholder="Coach Type" readonly />
+                    <input type="text" name="coachType" value="@Session["newCoachType"]" placeholder="Coach Type" readonly />
                 </div>
                 <div class="autocomplete add-bus-input-wrapper">
-                    <input id="starting-point" type="text" name="from" value="" placeholder="Starting Point" autocomplete="off" required />
+                    <input id="starting-point" type="text" name="startingFrom" value="" placeholder="Starting Point" autocomplete="off" required />
                 </div>
                 <div class="autocomplete add-bus-input-wrapper">
-                    <input id="ending-point" type="text" name="to" value="" placeholder="Ending Point" autocomplete="off" required />
+                    <input id="ending-point" type="text" name="destination" value="" placeholder="Ending Point" autocomplete="off" required />
                 </div>
                 <div class="add-bus-input-wrapper">
-                    <input type="text" name="name" value="" placeholder="Fare" autocomplete="off" required />
+                    <input type="text" name="departureTime" value="" placeholder="Departure Time" autocomplete="off" required />
+                </div>
+                <div class="add-bus-input-wrapper">
+                    <input type="text" name="farePerSeat" value="" placeholder="Fare" autocomplete="off" required />
                     <span>BDT</span>
                 </div>
             </div>
@@ -165,20 +168,20 @@
     /*
      * picking data from coach type dropdown
      */
-    document.getElementById('coach-type-input').addEventListener('focus', function () {
+    document.getElementById('coachType').addEventListener('focus', function () {
 
         addClass('down-arrow', 'arrow-rotate');
         addClass('coach-type-menu', 'visible');
         removeClass('coach-type-menu', 'hidden');
     });
 
-    document.getElementById('coach-type-input').addEventListener('blur', function () {
+    document.getElementById('coachType').addEventListener('blur', function () {
 
 
         document.querySelectorAll('.coach-menu-item').forEach(item => {
             item.addEventListener('click', event => {
 
-                document.getElementById('coach-type-input').value = event.target.innerText;
+                document.getElementById('coachType').value = event.target.innerText;
             })
         });
 
@@ -191,7 +194,7 @@
 
     /*document.getElementById('verify-add-btn').addEventListener('click', function () {
 
-        if (document.getElementById('coach-type-input').value == 'Select Coach Type') {
+        if (document.getElementById('coachType').value == 'Select Coach Type') {
 
             document.getElementById('add-bus-coach-info-container').classList.remove('d-none');
             document.getElementById('add-coach-form').classList.add('d-none');

@@ -28,12 +28,12 @@
                 </svg>
             </a>
         </div>
-        <form action="/" method="post">
+        <form action="/Admin/SearchRerouteBus" method="post">
             <div class="search-coach-input">
-                <input id="reroute-coach-no-input" type="text" name="name" value="" placeholder="Enter Coach No" autocomplete="off" />
+                <input id="coachNo" type="text" name="coachNo" value="" placeholder="Enter Coach No" autocomplete="off" />
             </div>
             <div class="search-coach-button">
-                <button class="suplux-btn"><i class="fas fa-check-circle"></i>Verify</button>
+                <button class="suplux-btn" type="submit"><i class="fas fa-check-circle"></i>Verify</button>
             </div>
         </form>
     </div>
@@ -46,22 +46,25 @@
     <!--    reroute bus form    -->
     <div class="reroute-form">
         <h3 class="form-title">Reroute Bus</h3>
-        <form id="reroute-bus-form" action="/" method="post">
+        <form id="reroute-bus-form" action="/Admin/UpdateRoute" method="post">
             <div class="reroute-coach-info">
                 <div class="reroute-input-wrapper">
-                    <input id="reroute-coach-no" type="text" name="name" value="" placeholder="Coach No" readonly />
+                    <input id="reroute-coach-no" type="text" name="coachNo" value="@Session["coachNoForReroute"]" placeholder="Coach No" readonly />
                 </div>
                 <div class="reroute-input-wrapper">
-                    <input type="text" name="name" value="" placeholder="Coach Type" readonly />
+                    <input type="text" name="coachType" value="@Session["coachTypeForReroute"]" placeholder="Coach Type" readonly /> 
                 </div>
                 <div class="autocomplete reroute-input-wrapper">
-                    <input id="starting-point" type="text" name="from" value="" placeholder="Starting Point" autocomplete="off" required/>
+                    <input id="starting-point" type="text" name="startingFrom" value="" placeholder="Starting Point" autocomplete="off" required />
                 </div>
                 <div class="autocomplete reroute-input-wrapper">
-                    <input id="ending-point" type="text" name="to" value="" placeholder="Ending Point" autocomplete="off" required/>
+                    <input id="ending-point" type="text" name="destination" value="" placeholder="Ending Point" autocomplete="off" required />
                 </div>
                 <div class="reroute-input-wrapper">
-                    <input type="text" name="name" value="" placeholder="Fare" autocomplete="off" required/>
+                    <input type="text" name="departureTime" value="" placeholder="Departure Time" autocomplete="off" required />
+                </div>
+                <div class="reroute-input-wrapper">
+                    <input type="text" name="farePerSeat" value="" placeholder="Fare" autocomplete="off" required />
                     <span>BDT</span>
                 </div>
             </div>
