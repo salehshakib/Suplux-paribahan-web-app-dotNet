@@ -66,6 +66,7 @@ namespace SupLuxParibahanWebApp.Controllers
                     Session["currentEmail"] = uEmail;
                     Session["AdminNick"] = getAdmin.adminNick;
 
+                    TempData["notification"] = "success";
                     return RedirectToAction("AdminHome", "Admin");
                 }
                 else
@@ -163,5 +164,6 @@ namespace SupLuxParibahanWebApp.Controllers
 
             return View("~/Views/Account/UserProfile.cshtml");// this line of code can destroy the program. Expected errors from here
         }
+
     }
 }

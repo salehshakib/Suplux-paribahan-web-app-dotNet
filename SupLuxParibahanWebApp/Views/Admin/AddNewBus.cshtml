@@ -51,7 +51,7 @@
         </div>
     </div>
     <!--    add bus form    -->
-    <div id="add-coach-form" class="add-new-bus-form-container">
+    <div id="add-coach-form" class="add-new-bus-form-container d-none">
         <h3 class="form-title">Add New Coach</h3>
         <form id="add-bus-form" action="/Admin/AddNewBus" method="post">
             <div class="add-bus-coach-info">
@@ -68,10 +68,10 @@
                     <input id="ending-point" type="text" name="destination" value="" placeholder="Ending Point" autocomplete="off" required />
                 </div>
                 <div class="add-bus-input-wrapper">
-                    <input type="text" name="departureTime" value="" placeholder="Departure Time" autocomplete="off" required />
+                    <input id="departure-time-field" type="text" name="departureTime" value="" placeholder="Departure Time" autocomplete="off" readonly required />
                 </div>
                 <div class="add-bus-input-wrapper">
-                    <input type="text" name="farePerSeat" value="" placeholder="Fare" autocomplete="off" required />
+                    <input id="fare-field" type="text" name="farePerSeat" value="" placeholder="Fare" autocomplete="off" required />
                     <span>BDT</span>
                 </div>
             </div>
@@ -101,6 +101,9 @@
 </section>
 
 @Scripts.Render("~/Scripts/autocomplete-field.js")
+@Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+@Scripts.Render("~/Scripts/time-picker.js")
 
 <script>
 
@@ -192,16 +195,45 @@
         });
     });
 
-    /*document.getElementById('verify-add-btn').addEventListener('click', function () {
+    const notification = '@TempData["notification"]';
 
-        if (document.getElementById('coachType').value == 'Select Coach Type') {
+    if (notification === 'no coach found') {
+        document.getElementById('add-coach-form').classList.add('d-none');
+        document.getElementById('add-bus-coach-info-container').classList.remove('d-none');
+    }
 
-            document.getElementById('add-bus-coach-info-container').classList.remove('d-none');
-            document.getElementById('add-coach-form').classList.add('d-none');
-        } else {
-            document.getElementById('add-bus-coach-info-container').classList.add('d-none');
-            document.getElementById('add-coach-form').classList.remove('d-none');
+    if (notification === 'coach found') {
+        document.getElementById('add-bus-coach-info-container').classList.add('d-none');
+        document.getElementById('add-coach-form').classList.remove('d-none');
+    }
+
+    //preventing only number to input here
+    document.getElementById('fare-field').addEventListener('beforeinput', function (event) {
+
+        const data = event.data;
+
+        if (data) {
+            const isAllow = /\d/.test(data);
+
+            if (!isAllow) {
+                event.preventDefault();
+            }
         }
-    });*/
+    });
+
+    //departure time field time picker
+    document.getElementById('departure-time-field').style.backgroundColor = 'white';
+
+    $('#departure-time-field').timepicker({
+        timeFormat: 'h:mmp',
+        interval: 5,
+        minTime: '06',
+        maxTime: '11:55pm',
+        defaultTime: '',
+        startTime: '06:00',
+        dynamic: true,
+        dropdown: true,
+        scrollbar: false
+    });
 
 </script>

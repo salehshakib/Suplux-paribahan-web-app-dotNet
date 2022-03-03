@@ -153,7 +153,7 @@ body {
     transform: translateY(-50%) rotateZ(180deg) !important;
 }
 
-#coach-type-input-container ul {
+#coach-type-input-container ul{
     position: absolute;
     list-style: none;
     width: 100%;
@@ -166,6 +166,37 @@ body {
     z-index: 99999;
 }
 
+.ui-timepicker-container {
+    position: absolute;
+    list-style: none;
+    border: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 99999;
+}
+
+.ui-menu-item {
+    padding: 5px 10px !important;
+    transition: 0.3s ease-in-out !important;
+    color: var(--suplux-dark-grey) !important;
+}
+
+.ui-menu-item a {
+    border: 0 !important;
+    color: var(--suplux-dark-grey) !important;
+}
+
+.ui-menu-item a:hover {
+    background-color: transparent !important;
+    color: var(--suplux-profile-menu-text-color) !important;
+}
+
 #coach-type-input-container ul li {
     cursor: pointer;
     padding: 5px 10px;
@@ -174,15 +205,19 @@ body {
 }
 
 #coach-type-input-container ul li:hover,
-#coach-type-input-container ul li:focus {
-    background-color: var(--suplux-profile-menu-color);
-    color: var(--suplux-profile-menu-text-color);
+#coach-type-input-container ul li:focus,
+.ui-menu-item:hover,
+.ui-menu-item:focus {
+    background-color: var(--suplux-profile-menu-color) !important;
+    color: var(--suplux-profile-menu-text-color) !important;
 }
 
+
+
 /*----------------------------------
-        Coach Info Row Design
+    Coach Info Row Design
 -----------------------------------*/
-.bus-list-section{
+.bus-list-section {
     min-height: 100vh;
     background-color: white;
 }
