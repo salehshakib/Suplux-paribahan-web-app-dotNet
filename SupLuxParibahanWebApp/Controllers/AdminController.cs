@@ -107,10 +107,6 @@ namespace SupLuxParibahanWebApp.Controllers
 
             return View();
             
-           
-            
-           
-
         }
 
         public ActionResult AddNewBus() { return View(); }
@@ -122,52 +118,61 @@ namespace SupLuxParibahanWebApp.Controllers
             tripData.TripStatus = "available";
             database.tripDatas.Add(tripData);
             database.SaveChanges();
-            return View(); 
+            TempData["notification"] = "add success";
+            return RedirectToAction("AdminHome", "Admin");
         }
 
         // GET: Add New Bus
         [HttpPost]
         public ActionResult SearchBus(String coachType)
         {
-            if (coachType.Equals("AC(Bi-Axle)"))
+            if(coachType.Equals("Select Coach Type"))
             {
-                coachType = "AC (Bi)";
-            }
-            else if (coachType.Equals("AC(Multi-Axle)"))
-            {
-                coachType = "AC (Multi)";
-            }
-            List<tripData> tripdatas = new List<tripData>();
-            tripdatas = database.tripDatas.Where(temp => temp.coachType.Equals(coachType)).ToList();
-
-            String coachNo = tripdatas.Last().coachNo;
-
-            String lastDigit = coachNo.Substring(coachNo.Length - 3);
-            String cN = coachNo.Substring(0, coachNo.Length - 3);
-            int id = int.Parse(lastDigit);
-            id++;
-            if (id < 100)
-            {
-                cN = cN +"0"+ id.ToString();
+                TempData["notification"] = "no coach found";
             }
             else
             {
-                cN = cN + id.ToString();
+                TempData["notification"] = "coach found";
+                if (coachType.Equals("AC(Bi-Axle)"))
+                {
+                    coachType = "AC (Bi)";
+                }
+                else if (coachType.Equals("AC(Multi-Axle)"))
+                {
+                    coachType = "AC (Multi)";
+                }
+                List<tripData> tripdatas = new List<tripData>();
+                tripdatas = database.tripDatas.Where(temp => temp.coachType.Equals(coachType)).ToList();
+
+                String coachNo = tripdatas.Last().coachNo;
+
+                String lastDigit = coachNo.Substring(coachNo.Length - 3);
+                String cN = coachNo.Substring(0, coachNo.Length - 3);
+                int id = int.Parse(lastDigit);
+                id++;
+                if (id < 100)
+                {
+                    cN = cN +"0"+ id.ToString();
+                }
+                else
+                {
+                    cN = cN + id.ToString();
+                }
+
+                Session["newCoachNo"] =cN;
+                Session["newCoachType"] = coachType;
+
+                //cN = cN+id.ToString();
+                //System.Diagnostics.Debug.WriteLine(lastDigit, cN, id, "jaduuuu");
+                //coachNo = coachNo.Replace
+
+
+
+
+                //List<tripData> tripDatas = new List<tripData>();
+                //tripdatas = database.tripDatas.ToList();
+                //var tripData = database.tripDatas.Where(temp => temp.coachNo.Equals(coachNo) || temp.coachType.Equals(coachType)).SingleOrDefault();
             }
-
-            Session["newCoachNo"] =cN;
-            Session["newCoachType"] = coachType;
-
-            //cN = cN+id.ToString();
-            //System.Diagnostics.Debug.WriteLine(lastDigit, cN, id, "jaduuuu");
-            //coachNo = coachNo.Replace
-
-
-
-
-            //List<tripData> tripDatas = new List<tripData>();
-            //tripdatas = database.tripDatas.ToList();
-            //var tripData = database.tripDatas.Where(temp => temp.coachNo.Equals(coachNo) || temp.coachType.Equals(coachType)).SingleOrDefault();
 
             return RedirectToAction("AddNewBus", "Admin");
         }
@@ -181,9 +186,17 @@ namespace SupLuxParibahanWebApp.Controllers
             //List<tripData> tripdatas = new List<tripData>();
             var tripdatas = database.tripDatas.Where(temp => temp.coachNo.Equals(coachNo)).SingleOrDefault();
 
-            Session["coachNoForReroute"] = tripdatas.coachNo;
-            Session["coachTypeForReroute"]=tripdatas.coachType;
+            if(tripdatas != null)
+            {
+                Session["coachNoForReroute"] = tripdatas.coachNo;
+                Session["coachTypeForReroute"] = tripdatas.coachType;
+                TempData["notification"] = "coach found";
+            }
 
+            else
+            {
+                TempData["notification"] = "no coach found";
+            }
 
             return RedirectToAction("RerouteBus", "Admin");
         }
@@ -205,7 +218,8 @@ namespace SupLuxParibahanWebApp.Controllers
 
                 database.Entry(trip).State = System.Data.Entity.EntityState.Modified;
                 database.SaveChanges();
-                return RedirectToAction("RerouteBus", "Admin");
+                TempData["notification"] = "reroute success";
+                return RedirectToAction("AdminHome", "Admin");
             }
 
             return View("~/Views/Admin/RerouteBus.cshtml"); 

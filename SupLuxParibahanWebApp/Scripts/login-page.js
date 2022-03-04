@@ -1,8 +1,8 @@
 ﻿const emailWrapper = document.getElementById('login-email-input-wrapper');
 const passwordWrapper = document.getElementById('login-password-input-wrapper');
 
-const emailField = document.getElementById('login-email-field');
-const passwordField = document.getElementById('login-password-field');
+const emailField = document.getElementById('uEmail');
+const passwordField = document.getElementById('uPassword');
 
 /*
  *  making the password field visible and invisible

@@ -28,6 +28,7 @@ html {
 body {
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -462,6 +463,29 @@ footer {
     stroke-linejoin: round;
     stroke-width: 12px;
 }
+
+/*--------------------------
+        Alert Design
+---------------------------*/
+.suplux-alert {
+    position: absolute;
+    bottom: 150px;
+    right: -500px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--suplux-dark-blue);
+    border-left: 5px solid var(--suplux-dark-blue);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@keyframes alert-animation{
+
+    from{right: -500px;}
+    to{right: 50px;}
+}
+
 /*--------------------------
         Tablet Design
 ---------------------------*/

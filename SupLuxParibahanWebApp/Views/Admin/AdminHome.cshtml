@@ -98,4 +98,44 @@
             </div>
         </a>
     </div>
+
+
+    <div id="admin-alert" class="suplux-alert alert alert-dismissible" role="alert">
+        
+    </div>
+
 </section>
+
+<script>
+    const alertToast = document.getElementById('admin-alert');
+
+    const notification = '@TempData["notification"]';
+
+    //showing notification based on tempdata
+    if (notification === 'success') {
+
+        alertToast.innerHTML = `
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><i class="fas fa-check-circle"></i></span> Successfully Logged In!!
+            `;
+        alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+    }
+
+    if (notification === 'reroute success') {
+
+        alertToast.innerHTML = `
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><i class="fas fa-check-circle"></i></span> Bus Reroute Successfully!!
+            `;
+        alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+    }
+
+    if (notification === 'add success') {
+
+        alertToast.innerHTML = `
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><i class="fas fa-check-circle"></i></span> Bus Added Successfully!!
+            `;
+        alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+    }
+</script>
