@@ -3,18 +3,6 @@
 ------------------------------*/
 @import url("Site.css");
 
-/*---------------------
-        Utilities
-----------------------*/
-:root {
-    --suplux-buslist-active-bg-color: rgb(222, 255, 222);
-    --suplux-buslist-maintain-bg-color: rgb(255, 239, 204);
-    --suplux-buslist-halt-bg-color: rgb(255, 222, 222);
-    --suplux-buslist-active-text-color: rgb(36, 181, 36);
-    --suplux-buslist-maintain-text-color: rgb(242, 172, 17);
-    --suplux-buslist-halt-text-color: rgb(224, 61, 61);
-}
-
 /*----------------------------------
         Admin Home Page Design
 -----------------------------------*/
@@ -304,7 +292,8 @@ body {
 }
 
 #reroute-coach-info-container,
-#add-bus-coach-info-container {
+#add-bus-coach-info-container,
+#bus-list-info-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -312,7 +301,8 @@ body {
 }
 
 #reroute-coach-info-container h1,
-#add-bus-coach-info-container h1{
+#add-bus-coach-info-container h1,
+#bus-list-info-container h1{
     font-size: 80px;
     text-align: center;
     font-weight: 900;

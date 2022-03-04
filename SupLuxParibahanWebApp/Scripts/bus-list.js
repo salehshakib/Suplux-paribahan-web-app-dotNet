@@ -1,4 +1,9 @@
-﻿/*
+﻿let modalCoachNo = {
+    coachNo: '',
+    status: ''
+};
+
+/*
  * functions
  */
 function addClass(elementId, className) {
@@ -92,7 +97,9 @@ for (let i = 0; i < haltBtns.length; i++) {
 
     haltBtns[i].addEventListener('click', function () {
 
-        haltModalTitle.innerText = `Do you really want to halt Coach no. <strong>${coachNo[i].innerText}/<strong>?`;
+        haltModalTitle.innerHTML = `Do you really want to halt Coach no. <strong>${coachNo[i].innerText}</strong>?`;
+        modalCoachNo.coachNo = coachNo[i].innerText;
+        modalCoachNo.status = 'halt';
     });
 }
 
@@ -100,6 +107,20 @@ for (let i = 0; i < maintainBtns.length; i++) {
 
     maintainBtns[i].addEventListener('click', function () {
 
-        maintainModalTitle.innerHTML = `Do you really want to take Coach no. <strong>${coachNo[i].innerText}/<strong> under maintanence?`;
+        maintainModalTitle.innerHTML = `Do you really want to take Coach no. <strong>${coachNo[i].innerText}</strong> under maintanence?`;
+        modalCoachNo.coachNo = coachNo[i].innerText;
+        modalCoachNo.status = 'maintanence';
     });
+}
+
+//sending coachNo that to be halt or maintained as JSON object
+const setCoachNo = () => {
+
+    fetch('getCoachNo', {
+        method: 'POST',
+        body: JSON.stringify(modalCoachNo),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    }).then(res => res.json()).then(data => console.log(data));
 }
