@@ -100,7 +100,7 @@
     </div>
 
 
-    <div id="admin-alert" class="suplux-alert alert alert-dismissible" role="alert">
+    <div id="admin-alert" class="suplux-alert alert alert-dismissible d-none" role="alert">
         
     </div>
 
@@ -118,24 +118,31 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <span><i class="fas fa-check-circle"></i></span> Successfully Logged In!!
             `;
+        alertToast.classList.remove('d-none');
         alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
     }
 
-    if (notification === 'reroute success') {
+    else if (notification === 'reroute success') {
 
         alertToast.innerHTML = `
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <span><i class="fas fa-check-circle"></i></span> Bus Reroute Successfully!!
             `;
+        alertToast.classList.remove('d-none');
         alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
     }
 
-    if (notification === 'add success') {
+    else if (notification === 'add success') {
 
         alertToast.innerHTML = `
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <span><i class="fas fa-check-circle"></i></span> Bus Added Successfully!!
             `;
+        alertToast.classList.remove('d-none');
         alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+    }
+
+    else {
+        alertToast.classList.add('d-none');
     }
 </script>

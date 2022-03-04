@@ -98,11 +98,16 @@ namespace SupLuxParibahanWebApp.Controllers
                     }
 
                 }
-                
+
 
                 //tripdatas = database.tripDatas.Where(temp => temp.coachNo.Equals(coachNo) || temp.coachType.Equals(coachType)).ToList();
 
                 return View(tripdatas);
+            }
+            else
+            {
+
+                TempData["notification"] = "no coach found";
             }
 
             return View();
@@ -228,6 +233,21 @@ namespace SupLuxParibahanWebApp.Controllers
         public ActionResult RerouteBus()
         {
             return View();
+        }
+
+        //getting coachNo for halting or maintaining  from front end
+        [HttpPost]
+        public ActionResult getCoachNo(string coachNo, string status)
+        {
+            if(status != null)
+            {
+                //TODO here coach No returns the coachNo and status returns 'maintanence' or 'halt'
+                return Json(coachNo + " " + status);
+            }
+            else
+            {
+                return Json("An Error Occoured");
+            }
         }
     }
 }
