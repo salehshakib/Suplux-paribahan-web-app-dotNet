@@ -241,8 +241,27 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             if(status != null)
             {
+                DateTime dateTime = DateTime.Now;
+
                 //TODO here coach No returns the coachNo and status returns 'maintanence' or 'halt'
-                return Json(coachNo + " " + status);
+
+                //return Json(coachNo + " " + status);
+                tripData trip = new tripData();
+                trip = database.tripDatas.Where(x => x.coachNo.Equals(coachNo)).SingleOrDefault();
+                if (trip != null)
+                {
+                    //trip.coachNo = coachNo;
+                    trip.TripStatus = status;
+                    trip.MHDate = dateTime.Date;
+
+                    database.Entry(trip).State = System.Data.Entity.EntityState.Modified;
+                    database.SaveChanges();
+                    TempData["notification"] = "Status updated";
+                    return RedirectToAction("AdminHome", "Admin");
+                }
+                TempData["notification"] = "Error! Status not updated";
+                //return Json(coachNo + " " + status);
+                return RedirectToAction("AdminHome", "Admin");
             }
             else
             {
