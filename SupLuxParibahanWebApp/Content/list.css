@@ -1,0 +1,449 @@
+﻿/*-----------------------------
+        Utilities Import
+------------------------------*/
+@import url("Site.css");
+
+/*-----------------------------
+        Utilities 
+------------------------------*/
+body{
+    background-color: var(--suplux-bg-color);
+}
+
+/*-------------------------------------
+        Search Box Section Design
+--------------------------------------*/
+#search-box-section {
+    position: relative;
+    padding: 52px 0 0;
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+#cross-btn{
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 72px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+#cross-btn i {
+    font-size: 18px;
+    color: var(--suplux-dark-blue);
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 30px;
+}
+
+.suplux-search-box {
+    position: relative;
+    background-color: white;
+    border: 2px solid var(--suplux-dark-blue);
+    width: 33.33%;
+    border-radius: 10px;
+}
+
+.suplux-search-box + .suplux-search-box {
+    margin-left: 10px;
+}
+
+.suplux-search-box p {
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.suplux-search-box input {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 25px 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--suplux-dark-blue);
+    cursor: pointer;
+    border: 0;
+}
+
+.suplux-search-box input:focus {
+    background-color: var(--suplux-light-skyblue);
+}
+
+.search-btn-container {
+   margin-left: 10px;
+}
+
+.search-btn-container .suplux-btn {
+    padding: 18px 50px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#suplux-day {
+    top: 70%;
+    left: 30px;
+}
+
+#mobile-edit-hide-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.edit-btn {
+    color: var(--suplux-dark-blue);
+    background-color: transparent;
+    font-weight: 700;
+    border: 0;
+}
+
+.edit-btn:hover{
+    opacity: 0.4;
+}
+
+/*----------------------------------
+        Filter Section Design
+-----------------------------------*/
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+}
+
+.filters {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.filters + .filters{
+    border-left: 1px dashed var(--suplux-dark-blue);
+}
+
+.suplux-filter-btn{
+    background-color: var(--suplux-dark-blue);
+    height: 60px;
+    width: 60px;
+    border: 0;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.suplux-filter-btn:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.suplux-filter-btn i {
+    margin-right: 0;
+    font-size: 20px;
+}
+
+.suplux-filter-btn + .suplux-filter-btn{
+    margin-left: 5px;
+}
+
+/*-----------------------------------------
+        Coach Result Section Design
+------------------------------------------*/
+.coach-result-row-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.coach-result-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.coach-result-div{
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.coach-result-div + .coach-result-div{
+    border-left: 1px dashed var(--suplux-dark-blue);
+}
+
+.coach-result-div.one {
+    align-items: flex-start;
+}
+
+.coach-result-div.two {
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.from-short,
+.to-short,
+.result-data,
+.trip-data {
+    margin: 0;
+}
+
+.from-to-arrow{
+    height: 45px;
+    width: 45px;
+    transform: rotate(180deg);
+    margin-bottom: 10px;
+}
+
+/*-----------------------------------------
+        Trip Details Section Design
+------------------------------------------*/
+#trip-details-container{
+    display: flex;
+    padding: 20px 30px;
+}
+
+.trip-details-wrapper{
+    width: 70%;
+}
+
+.trip-info-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.trip-info-wrapper + .trip-info-wrapper{
+    margin-top: 15px;
+}
+
+/*------------------------------
+        Seat Map Design
+-------------------------------*/
+.seat-map-container{
+    flex: 1;
+}
+
+.available-sign,
+.selected-sign,
+.booked-sign,
+.sold-sign {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--suplux-dark-blue);
+    border-radius: 3px;
+}
+
+.selected-sign{
+    background-color: var(--suplux-buslist-active-text-color);
+}
+
+.booked-sign {
+    background-color: var(--suplux-buslist-maintain-text-color);
+}
+
+.sold-sign {
+    background-color: var(--suplux-buslist-halt-text-color);
+}
+
+.seat-map{
+    border: 3px solid var(--suplux-dark-blue);
+    border-radius: 20px;
+}
+
+.driver-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.driver-container p{
+    font-weight: 600;
+    border: 2px solid var(--suplux-dark-blue);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.driver svg {
+    height: 80px;
+    width: 80px;
+}
+
+.seat-container {
+    border-top: 1px dashed var(--suplux-dark-blue);
+    padding: 10px;
+}
+
+.seat{
+    width: 60px;
+    height: 60px;
+}
+
+.seat svg {
+    fill: var(--suplux-dark-blue);
+    width: 60px;
+    height: 60px;
+    transform: rotate(90deg);
+}
+
+/*--------------------------
+        Tablet Design
+---------------------------*/
+@media (max-width: 1024px) {
+    #cross-btn {
+        display: block;
+    }
+       
+    .search-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .suplux-search-box {
+        width: 100%;
+    }
+
+    .suplux-date-box {
+        grid-column: 1/ span 2;
+    }
+
+    .suplux-search-box + .suplux-search-box {
+        margin-left: 0;
+    }
+
+    .search-btn-container {
+        margin: 0;
+        grid-column: 1/ span 2;
+    }
+
+    .search-btn-container .suplux-btn {
+        width: 100%;
+        padding: 15px 30px;
+        font-size: 14px;
+    }
+
+    #suplux-day {
+        top: 70%;
+        left: 30px;
+    }
+
+    #mobile-edit-hide-container h6 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--suplux-dark-blue);
+        margin: 0;
+    }
+
+    #mobile-edit-hide-container p {
+        color: var(--suplux-dark-blue);
+        margin: 0;
+    }
+
+    .coach-result-row{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .coach-result-div{
+        flex-direction: row;
+    }
+
+    .coach-result-div + .coach-result-div{
+        border: 0;
+    }
+
+    .coach-result-div p{
+        margin-bottom: 0;
+    }
+
+    .coach-result-div.two{
+        justify-content: space-around;
+    }
+
+    .from-to-arrow{
+        transform: rotate(90deg);
+        margin: 0 20px;
+    }
+
+    .coach-result-div .suplux-btn{
+        width: 100%;
+    }
+}
+
+/*--------------------------
+        Mobile Design
+---------------------------*/
+@media (max-width: 576px) {
+    .search-container {
+        width: 95%;
+        padding: 50px 15px;
+    }
+
+    .suplux-search-box p {
+        left: 10px;
+    }
+
+    .suplux-search-box input {
+        padding: 20px 15px 15px;
+        font-size: 16px;
+    }
+
+    #suplux-day {
+        left: 15px;
+    }
+
+    .filter-container{
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .filters{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .filters + .filters{
+        border: 0;
+    }
+}
+
+/*--------------------------
+        Xs Design
+---------------------------*/
+@media (max-width: 290px) {
+    .suplux-search-box p {
+        left: 5px;
+        font-size: 12px;
+    }
+
+    .suplux-search-box input {
+        padding: 25px 5px 15px;
+    }
+
+    .suplux-search-box p,
+    .suplux-search-box input {
+        font-size: 14px;
+    }
+
+    #suplux-day {
+        left: 5px;
+        font-size: 12px;
+    }
+}

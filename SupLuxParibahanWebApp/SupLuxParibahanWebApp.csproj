@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TermsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,6 +178,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\date-picker.css" />
     <Content Include="Content\home-page.css" />
+    <Content Include="Content\list.css" />
     <Content Include="Content\log-sign-page.css" />
     <Content Include="Content\user-profile-page.css" />
     <Content Include="Content\terms-page.css" />
@@ -262,6 +264,7 @@
     <Content Include="Views\Admin\BusList.cshtml" />
     <Content Include="Views\Admin\AddNewBus.cshtml" />
     <Content Include="Views\Admin\RerouteBus.cshtml" />
+    <Content Include="Views\Bus\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
