@@ -167,6 +167,7 @@ body{
     background-color: white;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 30px;
 }
 
 .coach-result-row {
@@ -215,29 +216,92 @@ body{
 /*-----------------------------------------
         Trip Details Section Design
 ------------------------------------------*/
-#trip-details-container{
+.trip-details-container{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px 30px;
+    transform: scaleY(0);
+    transition: 0.3s ease-in-out;
+}
+
+.trip-details-container.active{
+    transform: scaleY(1);
 }
 
 .trip-details-wrapper{
-    width: 70%;
+    width: 65%;
+}
+
+.trip-title{
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+.trip-info-table {
+    border: 2px dashed var(--suplux-dark-blue);
+    border-radius: 20px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
 }
 
 .trip-info-wrapper {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 2fr 1fr;
+    column-gap: 40px; 
 }
 
 .trip-info-wrapper + .trip-info-wrapper{
     margin-top: 15px;
 }
 
+/*---------------------------------------
+        Selected Seat Table Design
+----------------------------------------*/
+.seat-table {
+    border: 2px dashed var(--suplux-dark-blue);
+    border-radius: 20px;
+}
+
+.suplux-table{
+    margin: 0;
+}
+
+.suplux-table thead tr th,
+.suplux-table tbody tr td, 
+.suplux-table tfoot tr td, 
+.suplux-table tfoot tr th {
+    text-align: center;
+    font-size: 16px;
+}
+
+.suplux-table tbody tr td, 
+.suplux-table tfoot tr td{
+    font-size: 16px;
+}
+
+.suplux-table thead tr th,
+.suplux-table tfoot tr th{
+    color: var(--suplux-dark-blue);
+}
+
+.continue-btn-container{
+    margin-top: 20px;
+}
+
+.continue-btn{
+    width: 100%;
+}
+
 /*------------------------------
         Seat Map Design
 -------------------------------*/
-.seat-map-container{
-    flex: 1;
+.seat-guide{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 8px;
 }
 
 .available-sign,
@@ -251,8 +315,8 @@ body{
     border-radius: 3px;
 }
 
-.selected-sign{
-    background-color: var(--suplux-buslist-active-text-color);
+.selected-sign {
+    background-color: var(--suplux-buslist-selected-seat-color);
 }
 
 .booked-sign {
@@ -276,31 +340,71 @@ body{
 
 .driver-container p{
     font-weight: 600;
+    margin: 0;
     border: 2px solid var(--suplux-dark-blue);
     border-radius: 10px;
     text-align: center;
 }
 
 .driver svg {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
+    fill: var(--suplux-dark-blue);
 }
 
 .seat-container {
+    display: grid;
+    row-gap: 5px;
     border-top: 1px dashed var(--suplux-dark-blue);
     padding: 10px;
 }
 
+.seat-container.business-class-seat-container{
+    grid-template-columns: repeat(4, 60px);
+}
+
+.seat-container.economy-class-seat-container{
+    grid-template-columns: repeat(5, 60px);
+}
+
 .seat{
+    position: relative;
     width: 60px;
     height: 60px;
+    transition: 0.3s ease-in-out;
+}
+
+.seat:hover{
+    transform: scale(1.2);
 }
 
 .seat svg {
     fill: var(--suplux-dark-blue);
+    stroke: var(--suplux-dark-blue);
     width: 60px;
     height: 60px;
     transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.seat.selected svg {
+    fill: var(--suplux-buslist-selected-seat-color);
+    stroke: var(--suplux-buslist-selected-seat-color);
+}
+
+.seat-no {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0;
+    color: var(--suplux-dark-blue);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.seat.selected .seat-no {
+    color: var(--suplux-buslist-selected-seat-color);
 }
 
 /*--------------------------
@@ -385,6 +489,22 @@ body{
     .coach-result-div .suplux-btn{
         width: 100%;
     }
+
+    .trip-details-container{
+        flex-direction: column-reverse;
+    }
+
+    .trip-details-wrapper{
+        margin-top: 20px;
+    }
+
+    .trip-info-wrapper{
+        column-gap: 0;
+    }
+
+    .trip-data {
+        font-size: 20px;
+    }
 }
 
 /*--------------------------
@@ -421,6 +541,14 @@ body{
 
     .filters + .filters{
         border: 0;
+    }
+
+    .trip-details-wrapper {
+        width: 100%;
+    }
+
+    .trip-info-table{
+        padding: 10px;
     }
 }
 
