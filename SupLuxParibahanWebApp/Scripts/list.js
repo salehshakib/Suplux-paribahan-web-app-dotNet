@@ -38,6 +38,7 @@ const economyClassNonAcSeats = [
 ];
 
 const coachResultRowContainers = document.getElementsByClassName('coach-result-row-container');
+const coachResultRows = document.getElementsByClassName('coach-result-row');
 const tripDetailsContainers = document.getElementsByClassName('trip-details-container');
 const businessClassSeatContainers = document.getElementsByClassName('business-class-seat-container');
 const economyClassSeatContainers = document.getElementsByClassName('economy-class-seat-container');
@@ -48,6 +49,7 @@ const seatTableBody = document.getElementsByClassName('selected-seats-table-body
 const seatTableTotalFare = document.getElementsByClassName('total-fare');
 
 let selectedSeatsCount = 0;
+let isFourSeatsSelected = false;
 
 //toggling the search section
 document.getElementById('cross-btn').addEventListener('click', () => {
@@ -64,6 +66,7 @@ document.getElementById('mobile-edit-btn').addEventListener('click', () => {
     document.getElementById('mobile-edit-hide-container').classList.add('d-none');
 });
 
+//rendering seat map
 const renderSeats = (coachType, thisElement) => {
 
     let index = 0;
@@ -82,6 +85,7 @@ const renderSeats = (coachType, thisElement) => {
         if (i !== index) {
 
             tripDetailsContainers[i].classList.add('d-none');
+            coachResultRows[i].classList.remove('show-seat-map');
         }
     }
 
@@ -89,12 +93,13 @@ const renderSeats = (coachType, thisElement) => {
 
         tripDetailsContainers[index].classList.remove('d-none');
         tripDetailsContainers[index].classList.add('active');
+        coachResultRows[index].classList.add('show-seat-map');
     }
 
     else {
 
         tripDetailsContainers[index].classList.add('d-none');
-        console.log('in else');
+        coachResultRows[index].classList.remove('show-seat-map');
     }
 
 
@@ -198,6 +203,7 @@ const renderSeats = (coachType, thisElement) => {
     }
 }
 
+//selecting seats and showing in the table
 const selectSeat = (seatNo, seatType, thisElement, index) => {
 
     console.log(fareDatas[index].innerText.slice(4));
@@ -235,7 +241,10 @@ const selectSeat = (seatNo, seatType, thisElement, index) => {
             }
 
             selectedSeatsCount--;
+
             seatTableTotalFare[index].innerHTML = `BDT ${parseInt(seatTableTotalFare[index].innerText.slice(4)) - parseInt(fareDatas[index].innerText.slice(4))}`;
+
+            isFourSeatsSelected = false;
         }
     }
 
@@ -255,6 +264,19 @@ const selectSeat = (seatNo, seatType, thisElement, index) => {
 
         selectedSeatsCount--;
         seatTableTotalFare[index].innerHTML = `BDT ${parseInt(seatTableTotalFare[index].innerText.slice(4)) - parseInt(fareDatas[index].innerText.slice(4))}`;
+
+        isFourSeatsSelected = false;
+    }
+
+    //showing modal if user tries to select more than 4 seats
+    if (isFourSeatsSelected) {
+
+        $('#seatMaxedOutModal').modal('show');
+    }
+
+    if (selectedSeatsCount == 4) {
+
+        isFourSeatsSelected = true;
     }
 
     console.log(selectedSeatsCount);

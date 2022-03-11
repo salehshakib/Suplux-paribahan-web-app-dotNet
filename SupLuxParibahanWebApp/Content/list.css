@@ -10,6 +10,27 @@ body{
     background-color: var(--suplux-bg-color);
 }
 
+.modal-dialog-centered {
+    top: 50%;
+}
+
+.modal-dialog-centered .modal-content {
+    transform: translateY(-50%);
+}
+
+.warning-ex{
+    color: var(--suplux-buslist-maintain-text-color);
+}
+
+.modal-title{
+    color: var(--suplux-dark-blue);
+    font-weight: 700;
+}
+
+.modal-body{
+    font-size: 16px;
+}
+
 /*-------------------------------------
         Search Box Section Design
 --------------------------------------*/
@@ -176,6 +197,11 @@ body{
     background-color: white;
     border-radius: 20px;
     margin-bottom: 40px;
+}
+
+.coach-result-row.show-seat-map{
+    border-radius: 20px 20px 0 0;
+    border-bottom: 1px dashed var(--suplux-dark-blue);
 }
 
 .coach-result-div{
