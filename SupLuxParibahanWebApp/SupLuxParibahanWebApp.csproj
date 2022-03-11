@@ -180,6 +180,7 @@
     <Content Include="Content\home-page.css" />
     <Content Include="Content\list.css" />
     <Content Include="Content\log-sign-page.css" />
+    <Content Include="Content\payment-page.css" />
     <Content Include="Content\user-profile-page.css" />
     <Content Include="Content\terms-page.css" />
     <Content Include="favicon.ico" />
@@ -241,6 +242,7 @@
     <Content Include="Scripts\list.js" />
     <Content Include="Scripts\login-page.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\payment-page.js" />
     <Content Include="Scripts\signup-page.js" />
     <Content Include="Scripts\time-picker.js" />
     <Content Include="Scripts\user-profile-page.js" />
@@ -266,6 +268,7 @@
     <Content Include="Views\Admin\AddNewBus.cshtml" />
     <Content Include="Views\Admin\RerouteBus.cshtml" />
     <Content Include="Views\Bus\List.cshtml" />
+    <Content Include="Views\Bus\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

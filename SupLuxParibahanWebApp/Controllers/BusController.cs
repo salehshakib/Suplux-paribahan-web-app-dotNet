@@ -13,5 +13,10 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Payment()
+        {
+            return View();
+        }
     }
 }
