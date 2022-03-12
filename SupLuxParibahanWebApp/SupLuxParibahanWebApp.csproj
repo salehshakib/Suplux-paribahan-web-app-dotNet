@@ -156,6 +156,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PaymentInfo.cs" />
     <Compile Include="Models\Reservation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -177,6 +178,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cancel-ticket-page.css" />
     <Content Include="Content\date-picker.css" />
     <Content Include="Content\home-page.css" />
     <Content Include="Content\list.css" />
@@ -228,6 +230,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\autocomplete-field.js" />
     <Content Include="Scripts\bus-list.js" />
+    <Content Include="Scripts\cancel-ticket-page.js" />
     <Content Include="Scripts\date-picker.js" />
     <Content Include="Scripts\header.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -270,6 +273,7 @@
     <Content Include="Views\Admin\RerouteBus.cshtml" />
     <Content Include="Views\Bus\List.cshtml" />
     <Content Include="Views\Bus\Payment.cshtml" />
+    <Content Include="Views\Bus\CancelTicket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
