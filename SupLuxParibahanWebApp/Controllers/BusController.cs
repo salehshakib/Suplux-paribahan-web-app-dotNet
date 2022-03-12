@@ -17,6 +17,9 @@ namespace SupLuxParibahanWebApp.Controllers
            FromToData fromTo = TempData["fromto"] as FromToData;
             string from = fromTo.From;
             string to   = fromTo.To;
+
+            Session["from"]=from;
+            Session["to"]=to;   
             
             List<tripData> tripData = new List<tripData>();
             tripData=database.tripDatas.Where(x=>x.startingFrom.Equals(from) && x.destination.Equals(to)).ToList();
