@@ -229,6 +229,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\autocomplete-field.js" />
     <Content Include="Scripts\bus-list.js" />
+    <Content Include="Scripts\cancel-ticket-page.js" />
     <Content Include="Scripts\date-picker.js" />
     <Content Include="Scripts\header.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
