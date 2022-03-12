@@ -32,7 +32,7 @@ namespace SupLuxParibahanWebApp.Controllers
             fromToData.To = tripData.destination;
             
             TempData["fromto"]=fromToData;
-            return RedirectToAction("List","Bus");
+            return RedirectToAction("List", "Bus");
         }
 
         public ActionResult About()
