@@ -82,9 +82,9 @@ namespace SupLuxParibahanWebApp.Controllers
 
                 if (db.UserTables.Any(temp => temp.userEmail.Equals(uEmail) && temp.userPassword.Equals(uPassword)))
                 {
-
+                    var getUser = db.UserTables.SingleOrDefault(temp => temp.userEmail.Equals(uEmail) && temp.userPassword.Equals(uPassword));
                     Session["currentEmail"] = uEmail;
-
+                    Session["currentUsername"] = getUser.userName;
                     //Session["currentUserName"]=userTable.userPassword.ToString();
                     TempData["notification"] = "log in success";
                     return RedirectToAction("Index", "Home");
