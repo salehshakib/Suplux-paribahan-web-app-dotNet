@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SupLuxParibahanWebApp.Models;
+using System.Globalization;
 
 namespace SupLuxParibahanWebApp.Controllers
 {
@@ -14,7 +15,7 @@ namespace SupLuxParibahanWebApp.Controllers
         // GET: Bus
         public ActionResult List()
         {
-           FromToData fromTo = TempData["fromto"] as FromToData;
+            FromToData fromTo = TempData["fromto"] as FromToData;
             string from = fromTo.From;
             string to   = fromTo.To;
 
@@ -31,5 +32,64 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult CancelTicket()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GetJourneyData(string from, string to, string date)
+        {
+
+            //card generation here
+            return Json(date);
+
+        }
+
+        [HttpPost]
+        public ActionResult GetSelectedSeatsData(string[] seats, string totalFare)
+        {
+
+            //Selected tables are fetching here 
+            return Json(totalFare);
+
+        }
+
+        [HttpPost]
+        public ActionResult List(string type)
+        {
+            string from = (string)Session["from"];
+            string to = (string)Session["to"];
+            List<tripData> tripData = new List<tripData>();
+            if (type == "06-12")
+            {
+
+                string givenTime1 = "06:00AM";
+                string givenTime2 = "12:00PM";
+                string format = "h:mmtt";
+                CultureInfo provider = CultureInfo.InvariantCulture;
+
+                DateTime result1 = DateTime.ParseExact(givenTime1, format, provider);
+                DateTime result2 = DateTime.ParseExact(givenTime2, format, provider);
+
+                //string amOrPm = "%AM";
+                //tripData = database.tripDatas.
+                //tripData = database.tripDatas.Where(temp => temp.startingFrom.Equals(from) && temp.destination.Equals(to) && Convert.ToDateTime(temp.departureTime)>= givenTime1 && Convert.ToDateTime(temp.departureTime) <= givenTime1).ToList();
+                return View(tripData);
+            }
+            else
+            {
+                
+                tripData = database.tripDatas.Where(temp => temp.startingFrom.Equals(from) && temp.destination.Equals(to) && temp.coachType.Equals(type)).ToList();
+                return View(tripData);
+            }
+            
+
+      
+    
+        }
+
+        
     }
 }

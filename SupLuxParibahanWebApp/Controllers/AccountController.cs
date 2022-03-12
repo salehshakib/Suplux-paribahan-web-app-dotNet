@@ -20,7 +20,7 @@ namespace SupLuxParibahanWebApp.Controllers
         [HttpPost]
         public ActionResult SignUp(UserTable userTable)
         {
-            if (db.UserTables.Any(temp=>temp.userEmail==userTable.userEmail || temp.userPhoneNumber==userTable.userPhoneNumber))
+            if (db.UserTables.Any(temp=>temp.userEmail==userTable.userEmail))// || temp.userPhoneNumber==userTable.userPhoneNumber))
             {
                 TempData["notification"] = "account exists";
                 return View();
