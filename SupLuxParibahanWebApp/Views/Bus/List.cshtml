@@ -1,11 +1,10 @@
-﻿
+﻿@model List<SupLuxParibahanWebApp.Models.tripData>
 @{
     ViewBag.Title = "BUS LIST";
     Layout = "~/Views/Shared/_Layout.cshtml";
     @Styles.Render("~/Content/autocomplete-field.css")
     @Styles.Render("~/Content/date-picker.css")
-    @Styles.Render("~/Content/list.css")
-}
+    @Styles.Render("~/Content/list.css")}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css" integrity="sha512-r/Gan7PMSRovDus++vDS2Ayutc/cSdl268u047n4z+k7GYuR7Hiw71FsT3QQxdKJBVHYttOJ6IGLnlM9IoMToQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
@@ -73,6 +72,7 @@
     <div class="container">
 
         <!--    coach result (Multi)    -->
+        
         <div class="coach-result-row-container">
             <div class="coach-result-row">
                 <div class="coach-result-div">

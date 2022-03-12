@@ -9,29 +9,31 @@
 <section id="search-box-section">
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="search-container">
-                <div class="suplux-search-box">
-                    <div class="autocomplete">
-                        <p>From</p>
-                        <input id="starting-point" type="text" name="from" value="" placeholder="Enter City" autocomplete="off" />
+            <form action="/Home/goToBuslist" method="post">
+                <div class="search-container">
+                    <div class="suplux-search-box">
+                        <div class="autocomplete">
+                            <p>From</p>
+                            <input id="starting-point" type="text" name="startingFrom" value="" placeholder="Enter City" autocomplete="off" />
+                        </div>
                     </div>
-                </div>
-                <div class="suplux-search-box">
-                    <div class="autocomplete">
-                        <p>To</p>
-                        <input id="ending-point" type="text" name="to" value="" placeholder="Enter City" autocomplete="off" />
+                    <div class="suplux-search-box">
+                        <div class="autocomplete">
+                            <p>To</p>
+                            <input id="ending-point" type="text" name="destination" value="" placeholder="Enter City" autocomplete="off" />
+                        </div>
                     </div>
-                </div>
 
-                <div class="suplux-search-box suplux-date-box">
-                    <p>journey date</p>
-                    <input id="suplux-datepicker" class="date" type="text" name="to" value="" readonly="readonly" placeholder="Enter City" />
-                    <p id="suplux-day">Day</p>
+                    <div class="suplux-search-box suplux-date-box">
+                        <p>journey date</p>
+                        <input id="suplux-datepicker" class="date" type="text" name="date" value="" readonly="readonly" placeholder="Enter City" />
+                        <p id="suplux-day">Day</p>
+                    </div>
+                    <div class="search-btn-container">
+                        <button class="suplux-btn" type="submit"><i class="fas fa-search"></i>Search</button>
+                    </div>
                 </div>
-                <div class="search-btn-container">
-                    <button class="suplux-btn"><i class="fas fa-search"></i>Search</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>
