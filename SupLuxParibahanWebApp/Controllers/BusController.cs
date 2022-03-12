@@ -67,6 +67,7 @@ namespace SupLuxParibahanWebApp.Controllers
                 return View(tripData);
             }
             
+
       
     
         }
