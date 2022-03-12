@@ -75,7 +75,7 @@ namespace SupLuxParibahanWebApp.Controllers
             paymentInfo.destination = to;
             paymentInfo.tripDate = date;
 
-            Session["journeyDate"] = date;
+            
             //card generation here
             return Json(date);
 
@@ -85,13 +85,13 @@ namespace SupLuxParibahanWebApp.Controllers
         public ActionResult GetSelectedSeatsData(string[] seats, string totalFare)
         {
             paymentInfo.totalFare = totalFare;
-            paymentInfo.seat = seats;
-            /*
+            //paymentInfo.seat = seats;
+
             for (int i = 0; i < seats.Length; i++)
             {
                 paymentInfo.seat[i] = seats[i]; 
             }
-            */
+
             //Selected tables are fetching here 
             return Json(totalFare);
 
@@ -111,15 +111,6 @@ namespace SupLuxParibahanWebApp.Controllers
                 string amOrPm = "%AM";
 
                 var sqlQuery = "Select * from tripData where startingFrom = '" + from + "' and destination = '" + to + "' and departureTime like '" + amOrPm + "' and departureTime between '" + givenTime1 + "' and '" + givenTime2 + "' ";
-               // string format = "h:mmtt";
-               // CultureInfo provider = CultureInfo.InvariantCulture;
-
-                //DateTime result1 = DateTime.ParseExact(givenTime1, format, provider);
-               // DateTime result2 = DateTime.ParseExact(givenTime2, format, provider);
-
-                //string amOrPm = "%AM";
-                //tripData = database.tripDatas.
-                //tripData = database.tripDatas.Where(temp => temp.startingFrom.Equals(from) && temp.destination.Equals(to) && Convert.ToDateTime(temp.departureTime)>= givenTime1 && Convert.ToDateTime(temp.departureTime) <= givenTime1).ToList();
                 tripData = database.tripDatas.SqlQuery(sqlQuery).ToList();
                 return View(tripData);
             }
@@ -131,15 +122,6 @@ namespace SupLuxParibahanWebApp.Controllers
                 string amOrPm = "%PM";
 
                 var sqlQuery = "Select * from tripData where startingFrom = '" + from + "' and destination = '" + to + "' and departureTime like '" + amOrPm + "' and departureTime between '" + givenTime1 + "' and '" + givenTime2 + "' ";
-                // string format = "h:mmtt";
-                // CultureInfo provider = CultureInfo.InvariantCulture;
-
-                //DateTime result1 = DateTime.ParseExact(givenTime1, format, provider);
-                // DateTime result2 = DateTime.ParseExact(givenTime2, format, provider);
-
-                //string amOrPm = "%AM";
-                //tripData = database.tripDatas.
-                //tripData = database.tripDatas.Where(temp => temp.startingFrom.Equals(from) && temp.destination.Equals(to) && Convert.ToDateTime(temp.departureTime)>= givenTime1 && Convert.ToDateTime(temp.departureTime) <= givenTime1).ToList();
                 tripData = database.tripDatas.SqlQuery(sqlQuery).ToList();
                 return View(tripData);
             }
@@ -151,15 +133,6 @@ namespace SupLuxParibahanWebApp.Controllers
                 string amOrPm = "%PM";
 
                 var sqlQuery = "Select * from tripData where startingFrom = '" + from + "' and destination = '" + to + "' and departureTime like '" + amOrPm + "' and departureTime between '" + givenTime1 + "' and '" + givenTime2 + "' ";
-                // string format = "h:mmtt";
-                // CultureInfo provider = CultureInfo.InvariantCulture;
-
-                //DateTime result1 = DateTime.ParseExact(givenTime1, format, provider);
-                // DateTime result2 = DateTime.ParseExact(givenTime2, format, provider);
-
-                //string amOrPm = "%AM";
-                //tripData = database.tripDatas.
-                //tripData = database.tripDatas.Where(temp => temp.startingFrom.Equals(from) && temp.destination.Equals(to) && Convert.ToDateTime(temp.departureTime)>= givenTime1 && Convert.ToDateTime(temp.departureTime) <= givenTime1).ToList();
                 tripData = database.tripDatas.SqlQuery(sqlQuery).ToList();
                 return View(tripData);
             }
