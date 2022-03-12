@@ -18,11 +18,21 @@ namespace SupLuxParibahanWebApp.Controllers
                 var getUser = db.UserTables.Where(temp => temp.userEmail.Equals(email)).FirstOrDefault();
                 if (getUser != null)
                 {
-                    return View(getUser);
+                    return View();
                 }
                 else { return View(); }
             }
             return View();
+        }
+        
+        [HttpPost]
+        public ActionResult goToBuslist(tripData tripData) {
+            FromToData fromToData = new FromToData();
+            fromToData.From = tripData.startingFrom; 
+            fromToData.To = tripData.destination;
+            
+            TempData["fromto"]=fromToData;
+            return RedirectToAction("List","Bus");
         }
 
         public ActionResult About()
