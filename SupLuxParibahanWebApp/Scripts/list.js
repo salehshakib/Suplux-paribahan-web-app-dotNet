@@ -47,9 +47,16 @@ const fareDatas = document.getElementsByClassName('fare-data');
 //selected table 
 const seatTableBody = document.getElementsByClassName('selected-seats-table-body');
 const seatTableTotalFare = document.getElementsByClassName('total-fare');
+const continueBtns = document.getElementsByClassName('continue-btn');
 
 let selectedSeatsCount = 0;
 let isFourSeatsSelected = false;
+let selectedSeatNo = [];
+
+let proceedToPayment = {
+    seats: [],
+    totalFare: ''
+};
 
 //toggling the search section
 document.getElementById('cross-btn').addEventListener('click', () => {
@@ -69,8 +76,20 @@ document.getElementById('mobile-edit-btn').addEventListener('click', () => {
 //rendering seat map
 const renderSeats = (coachType, thisElement) => {
 
+    //resetting previous data
     let index = 0;
     selectedSeatsCount = 0;
+    selectedSeatNo = [];
+
+    for (const seatTable of seatTableBody) {
+
+        seatTable.textContent = '';
+    }
+
+    for (const totalFare of seatTableTotalFare) {
+
+        totalFare.innerText = 'BDT 00';
+    }
 
     for (let i = 0; i < coachResultRowContainers.length; i++) {
 
@@ -206,8 +225,6 @@ const renderSeats = (coachType, thisElement) => {
 //selecting seats and showing in the table
 const selectSeat = (seatNo, seatType, thisElement, index) => {
 
-    console.log(fareDatas[index].innerText.slice(4));
-
     if (selectedSeatsCount < 4) {
 
         thisElement.classList.toggle('selected');
@@ -226,6 +243,7 @@ const selectSeat = (seatNo, seatType, thisElement, index) => {
 
             selectedSeatsCount++;
             seatTableTotalFare[index].innerHTML = `BDT ${parseInt(seatTableTotalFare[index].innerText.slice(4)) + parseInt(fareDatas[index].innerText.slice(4))}`;
+            selectedSeatNo.push(seatNo);
 
         }
 
@@ -245,6 +263,7 @@ const selectSeat = (seatNo, seatType, thisElement, index) => {
             seatTableTotalFare[index].innerHTML = `BDT ${parseInt(seatTableTotalFare[index].innerText.slice(4)) - parseInt(fareDatas[index].innerText.slice(4))}`;
 
             isFourSeatsSelected = false;
+            selectedSeatNo = selectedSeatNo.filter(seat => seat != seatNo);
         }
     }
 
@@ -266,6 +285,7 @@ const selectSeat = (seatNo, seatType, thisElement, index) => {
         seatTableTotalFare[index].innerHTML = `BDT ${parseInt(seatTableTotalFare[index].innerText.slice(4)) - parseInt(fareDatas[index].innerText.slice(4))}`;
 
         isFourSeatsSelected = false;
+        selectedSeatNo = selectedSeatNo.filter(seat => seat != seatNo);
     }
 
     //showing modal if user tries to select more than 4 seats
@@ -279,5 +299,21 @@ const selectSeat = (seatNo, seatType, thisElement, index) => {
         isFourSeatsSelected = true;
     }
 
-    console.log(selectedSeatsCount);
+}
+
+for (let i = 0; i < continueBtns.length; i++) {
+
+    continueBtns[i].addEventListener('click', () => {
+
+        proceedToPayment.seats = selectedSeatNo;
+        proceedToPayment.totalFare = seatTableTotalFare[i].innerText;
+
+        fetch('GetSelectedSeatsData', {
+            method: 'POST',
+            body: JSON.stringify(proceedToPayment),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(res => res.json()).then(data => console.log(data));
+    });
 }
