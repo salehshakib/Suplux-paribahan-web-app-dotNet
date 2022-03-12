@@ -202,9 +202,11 @@
                                     </tfoot>
                                 </table>
                             </div>
-                            <div class="continue-btn-container">
-                                <button class="suplux-btn continue-btn">Continue</button>
-                            </div>
+                            <form action="/Bus/goToPayment" method="post">
+                                <div class="continue-btn-container">
+                                    <button class="suplux-btn continue-btn" type="submit" name="contype" value="@item.coachNo">Continue</button>
+                                </div>
+                            </form>
                         </div>
 
                         <!--    seat map container    -->
