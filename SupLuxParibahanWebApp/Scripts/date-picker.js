@@ -9,7 +9,7 @@ const showDay = document.getElementById('suplux-day');
  */
 $("#suplux-datepicker").datepicker({
     minDate: 0,
-    maxDate: new Date(new Date().setMonth(new Date().getMonth() + 2)),
+    maxDate: '16d',
     monthNames: ["January,", "February,", "March,", "April,", "May,", "June,", "July,", "August,", "September,", "October,", "November,", "December,"],
     showOtherMonths: true,
     changeMonth: false,

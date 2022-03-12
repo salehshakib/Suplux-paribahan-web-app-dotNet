@@ -3,18 +3,6 @@
 ------------------------------*/
 @import url("Site.css");
 
-/*---------------------
-        Utilities
-----------------------*/
-:root {
-    --suplux-buslist-active-bg-color: rgb(222, 255, 222);
-    --suplux-buslist-maintain-bg-color: rgb(255, 239, 204);
-    --suplux-buslist-halt-bg-color: rgb(255, 222, 222);
-    --suplux-buslist-active-text-color: rgb(36, 181, 36);
-    --suplux-buslist-maintain-text-color: rgb(242, 172, 17);
-    --suplux-buslist-halt-text-color: rgb(224, 61, 61);
-}
-
 /*----------------------------------
         Admin Home Page Design
 -----------------------------------*/
@@ -153,7 +141,7 @@ body {
     transform: translateY(-50%) rotateZ(180deg) !important;
 }
 
-#coach-type-input-container ul {
+#coach-type-input-container ul{
     position: absolute;
     list-style: none;
     width: 100%;
@@ -166,6 +154,37 @@ body {
     z-index: 99999;
 }
 
+.ui-timepicker-container {
+    position: absolute;
+    list-style: none;
+    border: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 99999;
+}
+
+.ui-menu-item {
+    padding: 5px 10px !important;
+    transition: 0.3s ease-in-out !important;
+    color: var(--suplux-dark-grey) !important;
+}
+
+.ui-menu-item a {
+    border: 0 !important;
+    color: var(--suplux-dark-grey) !important;
+}
+
+.ui-menu-item a:hover {
+    background-color: transparent !important;
+    color: var(--suplux-profile-menu-text-color) !important;
+}
+
 #coach-type-input-container ul li {
     cursor: pointer;
     padding: 5px 10px;
@@ -174,15 +193,19 @@ body {
 }
 
 #coach-type-input-container ul li:hover,
-#coach-type-input-container ul li:focus {
-    background-color: var(--suplux-profile-menu-color);
-    color: var(--suplux-profile-menu-text-color);
+#coach-type-input-container ul li:focus,
+.ui-menu-item:hover,
+.ui-menu-item:focus {
+    background-color: var(--suplux-profile-menu-color) !important;
+    color: var(--suplux-profile-menu-text-color) !important;
 }
 
+
+
 /*----------------------------------
-        Coach Info Row Design
+    Coach Info Row Design
 -----------------------------------*/
-.bus-list-section{
+.bus-list-section {
     min-height: 100vh;
     background-color: white;
 }
@@ -269,7 +292,8 @@ body {
 }
 
 #reroute-coach-info-container,
-#add-bus-coach-info-container {
+#add-bus-coach-info-container,
+#bus-list-info-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -277,7 +301,8 @@ body {
 }
 
 #reroute-coach-info-container h1,
-#add-bus-coach-info-container h1{
+#add-bus-coach-info-container h1,
+#bus-list-info-container h1{
     font-size: 80px;
     text-align: center;
     font-weight: 900;

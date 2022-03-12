@@ -20,14 +20,15 @@ namespace SupLuxParibahanWebApp.Controllers
         [HttpPost]
         public ActionResult SignUp(UserTable userTable)
         {
-            if (db.UserTables.Any(temp=>temp.userEmail==userTable.userEmail || temp.userPhoneNumber==userTable.userPhoneNumber))
+            if (db.UserTables.Any(temp=>temp.userEmail==userTable.userEmail))// || temp.userPhoneNumber==userTable.userPhoneNumber))
             {
-                ViewBag.Notification = "This account already exists.";
+                TempData["notification"] = "account exists";
                 return View();
             }
             else {
                 db.UserTables.Add(userTable);
                 db.SaveChanges();
+                TempData["notification"] = "account created";
                 return RedirectToAction("Login");
             }
             
@@ -57,7 +58,7 @@ namespace SupLuxParibahanWebApp.Controllers
                 return View();
             }*/
             Session["currentEmail"] = null;
-            if (uEmail.Contains("admin."))
+            if (uEmail.Contains("@suplux.com"))
             {
                 var getAdmin = db.Admins.SingleOrDefault(x => x.adminEmail.Equals(uEmail) && x.adminPassword.Equals(uPassword));
 
@@ -66,11 +67,12 @@ namespace SupLuxParibahanWebApp.Controllers
                     Session["currentEmail"] = uEmail;
                     Session["AdminNick"] = getAdmin.adminNick;
 
+                    TempData["notification"] = "success";
                     return RedirectToAction("AdminHome", "Admin");
                 }
                 else
                 {
-                    ViewBag.Notification = "Error such account doesnt exists.";
+                    TempData["notification"] = "log in failed";
                     return View();
                 }
             }
@@ -80,28 +82,26 @@ namespace SupLuxParibahanWebApp.Controllers
 
                 if (db.UserTables.Any(temp => temp.userEmail.Equals(uEmail) && temp.userPassword.Equals(uPassword)))
                 {
-
+                    var getUser = db.UserTables.SingleOrDefault(temp => temp.userEmail.Equals(uEmail) && temp.userPassword.Equals(uPassword));
                     Session["currentEmail"] = uEmail;
-                    
+                    Session["currentUsername"] = getUser.userName;
                     //Session["currentUserName"]=userTable.userPassword.ToString();
-
+                    TempData["notification"] = "log in success";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewBag.Notification = "Error such account doesnt exists.";
+                    TempData["notification"] = "log in failed";
                     return View();
                 }
             }
-            
-
-            return View();
 
         }
 
         public ActionResult LogOut() 
         {
             Session.Clear();
+            TempData["notification"] = "log out success";
             return RedirectToAction("Index","Home");
         }
 
@@ -163,5 +163,6 @@ namespace SupLuxParibahanWebApp.Controllers
 
             return View("~/Views/Account/UserProfile.cshtml");// this line of code can destroy the program. Expected errors from here
         }
+
     }
 }

@@ -19,6 +19,13 @@
     --suplux-profile-menu-color: #E0F3F8;
     --suplux-profile-menu-text-color: #056998;
     --suplux-edit-profile-input-color: #D8D6DE;
+    --suplux-buslist-active-bg-color: rgb(222, 255, 222);
+    --suplux-buslist-maintain-bg-color: rgb(255, 239, 204);
+    --suplux-buslist-halt-bg-color: rgb(255, 222, 222);
+    --suplux-buslist-active-text-color: rgb(36, 181, 36);
+    --suplux-buslist-maintain-text-color: rgb(242, 172, 17);
+    --suplux-buslist-halt-text-color: rgb(224, 61, 61);
+    --suplux-buslist-selected-seat-color: #04b805;
 }
 
 html {
@@ -28,6 +35,7 @@ html {
 body {
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -462,6 +470,37 @@ footer {
     stroke-linejoin: round;
     stroke-width: 12px;
 }
+
+/*--------------------------
+        Alert Design
+---------------------------*/
+.suplux-alert {
+    position: absolute;
+    bottom: 150px;
+    right: -500px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--suplux-dark-blue);
+    border-left: 5px solid var(--suplux-dark-blue);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#user-alert.suplux-alert{
+    bottom: 50px;
+}
+
+.suplux-alert.error {
+    border-left: 5px solid var(--suplux-buslist-halt-text-color);
+    color: var(--suplux-buslist-halt-text-color);
+}
+
+@keyframes alert-animation {
+    from{right: -500px;}
+    to{right: 50px;}
+}
+
 /*--------------------------
         Tablet Design
 ---------------------------*/
@@ -473,6 +512,10 @@ footer {
 
     .section-title{
         text-align: center;
+    }
+
+    #user-alert.suplux-alert {
+        bottom: 150px;
     }
 }
 
@@ -494,5 +537,15 @@ footer {
 
     .extra-info-container{
         margin-top: 20px;
+    }
+
+    @keyframes alert-animation {
+        from {
+            right: -500px;
+        }
+
+        to {
+            right: 0px;
+        }
     }
 }
