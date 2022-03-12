@@ -77,11 +77,9 @@ namespace SupLuxParibahanWebApp.Controllers
             paymentInfo.totalFare = totalFare;
             //paymentInfo.seat = seats;
 
-            for (int i = 0; i < seats.Length; i++)
-            {
-                paymentInfo.seat[i] = seats[i]; 
-            }
-
+            //foreach(var seat in seats)
+                //paymentInfo.seat.Add(seat);// = seat; 
+            
             //Selected tables are fetching here 
             return Json(totalFare);
 
