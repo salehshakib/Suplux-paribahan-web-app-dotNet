@@ -17,5 +17,7 @@ namespace SupLuxParibahanWebApp.Models
        public List<string> seat { get; set; }
        public string departureTime { get; set; }
 
+        public string seatConcat { get; set; }
+
     }
 }
