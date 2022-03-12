@@ -53,21 +53,23 @@
 
 <!--    filter section    -->
 <section>
-    <div class="container filter-container">
-        <form action="/Bus/List" method="post">
+    <form action="/Bus/List" method="post">
+        <div class="container filter-container">
+
             <div class="filters">
                 <button class="suplux-filter-btn" value="NON-AC" type="submit" name="type">NON-AC</button>
                 <button class="suplux-filter-btn" value="AC (BI)" type="submit" name="type">AC (BI)</button>
                 <button class="suplux-filter-btn" value="AC (Multi)" type="submit" name="type">AC (Multi)</button>
             </div>
 
-        </form>
-        <div class="filters">
-            <button class="suplux-filter-btn" name="type" value="06-12"><i class="wi wi-day-sunny"></i><br />06-12</button>
-            <button class="suplux-filter-btn" name="type" value="12-18"><i class="wi wi-sunset"></i><br />12-18</button>
-            <button class="suplux-filter-btn" name="type" value="18-00"><i class="wi wi-night-clear"></i><br />18-00</button>
+
+            <div class="filters">
+                <button class="suplux-filter-btn" name="type" value="06-12"><i class="wi wi-day-sunny"></i><br />06-12</button>
+                <button class="suplux-filter-btn" name="type" value="12-18"><i class="wi wi-sunset"></i><br />12-18</button>
+                <button class="suplux-filter-btn" name="type" value="18-00"><i class="wi wi-night-clear"></i><br />18-00</button>
+            </div>
         </div>
-    </div>
+    </form>
 </section>
 
 <!--    coach result section    -->
