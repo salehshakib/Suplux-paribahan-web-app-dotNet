@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "PAYMENT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    @Styles.Render("~/Content/payment-page.css")
+}
+
+<!--   ticket section    -->
+<section id="ticket-section">
+    <div class="container">
+        <div class="ticket">
+            <h2 class="ticket-title">Ticket Information</h2>
+            <div class="ticket-body">
+                <p class="ticket-info">Name:</p>
+                <p class="ticket-data">Mr. Aumi</p>
+                <p class="ticket-info">Trip Date:</p>
+                <p class="ticket-data">12-Mar-2022</p>
+                <p class="ticket-info">Seats:</p>
+                <p class="ticket-data">C-2, C-3</p>
+                <p class="ticket-info">Total Fare:</p>
+                <p id="ticket-total-fare" class="ticket-data">BDT 2400</p>
+                <p class="ticket-info">Boarding Point:</p>
+                <p class="ticket-data">Dhaka</p>
+                <p class="ticket-info">Destination:</p>
+                <p class="ticket-data">Khulna</p>
+                <p class="ticket-info">Reporting Time:</p>
+                <p class="ticket-data">12:20AM</p>
+                <p class="ticket-info">Departure Time:</p>
+                <p class="ticket-data">12:35AM</p>
+                <p class="ticket-info">Coach No:</p>
+                <p class="ticket-data">M4005</p>
+                <p class="ticket-info">Coach Type:</p>
+                <p class="ticket-data">AC (Multi)</p>
+            </div>
+            <div class="ticket-footer">
+                <button onclick="openPaymentOptions(this)" class="suplux-btn suplux-alt-btn"><i class="fas fa-bookmark"></i>Book</button>
+                <button onclick="openPaymentOptions(this)" class="suplux-btn"><i class="fas fa-credit-card"></i>Purchase</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--   payment method section    -->
+<section>
+    <div class="container">
+        <div id="payment-options-container" class="d-none">
+            <h2 class="ticket-title">Select your payment option</h2>
+            <div class="payment-options">
+                <div onclick="openPaymentModal('bkash')" class="payment-option">
+                    <img src="~/Resources/images/bkash-logo.svg" alt="bkash logo" />
+                </div>
+                <div onclick="openPaymentModal('rocket')" class="payment-option">
+                    <img src="~/Resources/images/rocket-logo.svg" alt="rocket logo" />
+                </div>
+                <div onclick="openPaymentModal('nagad')" class="payment-option">
+                    <img src="~/Resources/images/Nagad-Logo.svg" alt="nagad logo" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--    payment modal    -->
+<section>
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="payment-modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/" method="post">
+                        <div id="payment-info">
+
+                        </div>
+                        <div class="account-info-container">
+                            <input type="text" name="name" value="" placeholder="Enter Bkash Number"/>
+                            <input type="password" name="name" value="" placeholder="Enter Bkash PIN"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="suplux-btn suplux-alt-btn" data-dismiss="modal"><i class="fas fa-ban"></i>Cancel</button>
+                    <button type="button" class="suplux-btn" data-dismiss="modal"><i class="fas fa-check-circle"></i>Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('suplux-navbar').classList.add('nav-bg');
+</script>
+
+@Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+@Scripts.Render("~/Scripts/payment-page.js")
