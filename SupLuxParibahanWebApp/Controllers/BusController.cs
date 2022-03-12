@@ -37,6 +37,23 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult GetJourneyData(string from, string to, string date)
+        {
+
+            //card generation here
+            return Json(date);
+
+        }
+
+        [HttpPost]
+        public ActionResult GetSelectedSeatsData(string[] seats, string totalFare)
+        {
+
+            //Selected tables are fetching here 
+            return Json(totalFare);
+
+        }
 
         [HttpPost]
         public ActionResult List(string type)
