@@ -156,6 +156,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PaymentInfo.cs" />
     <Compile Include="Models\Reservation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
