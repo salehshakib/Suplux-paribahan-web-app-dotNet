@@ -1,0 +1,188 @@
+﻿/*-----------------------------
+        Utilities Import
+------------------------------*/
+@import url("Site.css");
+
+/*-----------------------------
+        Utilities 
+------------------------------*/
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    background-color: var(--suplux-bg-color);
+}
+
+.modal-dialog-centered {
+    top: 50%;
+}
+
+.modal-dialog-centered .modal-content {
+    transform: translateY(-50%);
+}
+
+.warning-ex {
+    color: var(--suplux-buslist-halt-text-color);
+}
+
+.modal-title {
+    color: var(--suplux-dark-blue);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-body {
+    font-size: 16px;
+}
+
+/*----------------------------------------
+        Searh Ticket Section Design
+-----------------------------------------*/
+#search-ticket-section{
+    margin-top: 120px;
+}
+
+.search-ticket-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.search-ticket-container input{
+    width: 80%;
+    padding: 10px 20px;
+    border: 2px solid var(--suplux-dark-blue);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0;
+    color: var(--suplux-dark-blue);
+}
+
+/*--------------------------------
+        Error Msg Design
+---------------------------------*/
+#no-ticket-found-msg-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#no-ticket-found-msg-container h1 {
+    font-size: 80px;
+    text-align: center;
+    font-weight: 900;
+    color: var(--suplux-dark-grey);
+    opacity: 0.2;
+}
+
+/*--------------------------------
+        Ticket Section Design
+---------------------------------*/
+#ticket-section {
+    margin: 150px 0;
+}
+
+.ticket {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.ticket-title {
+    margin-top: 0;
+    font-weight: 600;
+    color: var(--suplux-dark-blue);
+}
+
+.ticket-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 90px;
+    margin-top: 20px;
+}
+
+.ticket-info {
+    text-align: right;
+    font-size: 16px;
+    color: var(--suplux-dark-grey);
+}
+
+.ticket-data {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--suplux-dark-skyblue);
+}
+
+.ticket-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ticket-footer button + button {
+    margin-left: 10px;
+}
+
+footer{
+    width: 100%;
+}
+
+/*--------------------------
+        Tablet Design
+---------------------------*/
+@media (max-width: 1024px){
+    .ticket-body{
+        column-gap: 30px;
+    }
+
+    #no-ticket-found-msg-container h1{
+        font-size: 50px;
+    }
+}
+
+/*--------------------------
+        Mobile Design
+---------------------------*/
+@media (max-width: 576px){
+    .search-ticket-container{
+        padding: 30px 10px;
+        margin-bottom: 400px;
+    }
+
+    .search-ticket-container input {
+        width: 100%;
+    }
+
+    #no-ticket-found-msg-container {
+        width: 95%;
+        top: 65%;
+    }
+
+    .ticket-body {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ticket-title {
+        text-align: center;
+    }
+
+    .ticket-footer {
+        justify-content: center;
+    }
+
+    .modal-footer{
+        display: flex;
+        justify-content: center;
+    }
+
+    .modal-footer .suplux-btn + .suplux-btn{
+        margin-left: 10px;
+    }
+}

@@ -18,5 +18,10 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult CancelTicket()
+        {
+            return View();
+        }
     }
 }
