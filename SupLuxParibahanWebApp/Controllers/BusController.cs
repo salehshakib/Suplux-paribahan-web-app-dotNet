@@ -12,7 +12,9 @@ namespace SupLuxParibahanWebApp.Controllers
     {
         SUPLUXDashboardEntities database = new SUPLUXDashboardEntities();
         PaymentInfo paymentInfo = new PaymentInfo();
-
+        string[] seats;
+        string CoachNo;
+        
         // GET: Bus
         public ActionResult List()
         {
@@ -31,6 +33,14 @@ namespace SupLuxParibahanWebApp.Controllers
 
         public ActionResult Payment()
         {
+            //PaymentInfo paymentInfo1 = new PaymentInfo();
+            
+            paymentInfo.startPoint = Session["from"].ToString();
+            paymentInfo.destination = Session["to"].ToString();
+            
+            //paymentInfo.tripDate = Session["journeyDate"].ToString();
+            paymentInfo.coachNo=this.CoachNo;
+
             return View(paymentInfo);
         }
 
@@ -42,7 +52,7 @@ namespace SupLuxParibahanWebApp.Controllers
         [HttpPost]
         public ActionResult goToPayment(string contype) {
             
-            paymentInfo.coachNo= contype;
+            this.CoachNo = contype;
             if (contype.Contains("M"))
             {
                 paymentInfo.coachType = "AC (Multi)";
@@ -75,13 +85,13 @@ namespace SupLuxParibahanWebApp.Controllers
         public ActionResult GetSelectedSeatsData(string[] seats, string totalFare)
         {
             paymentInfo.totalFare = totalFare;
-            //paymentInfo.seat = seats;
-
+            paymentInfo.seat = seats;
+            /*
             for (int i = 0; i < seats.Length; i++)
             {
                 paymentInfo.seat[i] = seats[i]; 
             }
-
+            */
             //Selected tables are fetching here 
             return Json(totalFare);
 
