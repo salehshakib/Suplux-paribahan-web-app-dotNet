@@ -39,24 +39,6 @@ namespace SupLuxParibahanWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetJourneyData(string from, string to, string date)
-        {
-
-            //card generation here
-            return Json(date);
-
-        }
-
-        [HttpPost]
-        public ActionResult GetSelectedSeatsData(string[] seats, string totalFare)
-        {
-
-            //Selected tables are fetching here 
-            return Json(totalFare);
-
-        }
-
-        [HttpPost]
         public ActionResult List(string type)
         {
             string from = (string)Session["from"];
@@ -85,7 +67,6 @@ namespace SupLuxParibahanWebApp.Controllers
                 return View(tripData);
             }
             
-
       
     
         }
