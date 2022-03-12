@@ -4,6 +4,8 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 const datePicker = document.getElementById('suplux-datepicker');
 const showDay = document.getElementById('suplux-day');
 
+let fullDate = '';
+
 /*
  *  picking the journey date
  */
@@ -39,13 +41,18 @@ setInterval(function () {
 
 datePicker.onchange = function () {
 
-    const fullDate = datePicker.value;
+    fullDate = datePicker.value;
     const day = new Date(fullDate).getDay();
+
+    const month = new Date(fullDate).getMonth() + 1;
+    const year = new Date(fullDate).getFullYear();
 
     const date = fullDate.split(/\//);
     datePicker.value = date[1] + ' ' + months[--date[0]] + "'" + date[2].slice(2, 4);
 
     showDay.innerText = days[day];
+
+    fullDate = year + '-' + (month < 10 ? '0' : '') + month + '-' + (date[1] < 10 ? '0' : '') + date[1];
 }
 
 /*
@@ -57,11 +64,29 @@ window.onload = function () {
 
     var month = d.getMonth() + 1;
 
-    var fullDate = (month < 10 ? '0' : '') + month + '/' + (d.getDate() < 10 ? '0' : '') + d.getDate() + '/' + d.getFullYear();
+    fullDate = d.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (d.getDate() < 10 ? '0' : '') + d.getDate();
     const day = new Date(fullDate).getDay();
 
-    const date = fullDate.split(/\//);
-    datePicker.value = date[1] + ' ' + months[--date[0]] + "'" + date[2].slice(2, 4);
+    const date = fullDate.split('-');
+    datePicker.value = date[2] + ' ' + months[--date[1]] + "'" + date[0].slice(2, 4);
 
     showDay.innerText = days[day];
 }
+
+//getting JSON trip data to back end
+document.getElementById('bus-search-btn').addEventListener('click', () => {
+
+    const searchData = {
+        from: document.getElementById('starting-point').value,
+        to: document.getElementById('ending-point').value,
+        date: fullDate
+    };
+
+    fetch('Bus/GetJourneyData', {
+        method: 'POST',
+        body: JSON.stringify(searchData),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    }).then(res => res.json()).then(data => console.log(data));
+});
