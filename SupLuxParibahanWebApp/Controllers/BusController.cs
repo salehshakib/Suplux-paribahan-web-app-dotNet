@@ -37,11 +37,11 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult GetJourneyData(string from, string to, string date)
         {
 
+            Session["journeyDate"] = date;
             //card generation here
             return Json(date);
 
@@ -65,17 +65,61 @@ namespace SupLuxParibahanWebApp.Controllers
             if (type == "06-12")
             {
 
-                string givenTime1 = "06:00AM";
-                string givenTime2 = "12:00PM";
-                string format = "h:mmtt";
-                CultureInfo provider = CultureInfo.InvariantCulture;
+                string givenTime1 = "08";
+                string givenTime2 = "12";
+                string amOrPm = "%AM";
 
-                DateTime result1 = DateTime.ParseExact(givenTime1, format, provider);
-                DateTime result2 = DateTime.ParseExact(givenTime2, format, provider);
+                var sqlQuery = "Select * from tripData where startingFrom = '" + from + "' and destination = '" + to + "' and departureTime like '" + amOrPm + "' and departureTime between '" + givenTime1 + "' and '" + givenTime2 + "' ";
+               // string format = "h:mmtt";
+               // CultureInfo provider = CultureInfo.InvariantCulture;
+
+                //DateTime result1 = DateTime.ParseExact(givenTime1, format, provider);
+               // DateTime result2 = DateTime.ParseExact(givenTime2, format, provider);
 
                 //string amOrPm = "%AM";
                 //tripData = database.tripDatas.
                 //tripData = database.tripDatas.Where(temp => temp.startingFrom.Equals(from) && temp.destination.Equals(to) && Convert.ToDateTime(temp.departureTime)>= givenTime1 && Convert.ToDateTime(temp.departureTime) <= givenTime1).ToList();
+                tripData = database.tripDatas.SqlQuery(sqlQuery).ToList();
+                return View(tripData);
+            }
+            else if (type == "12-18")
+            {
+
+                string givenTime1 = "04";
+                string givenTime2 = "06";
+                string amOrPm = "%PM";
+
+                var sqlQuery = "Select * from tripData where startingFrom = '" + from + "' and destination = '" + to + "' and departureTime like '" + amOrPm + "' and departureTime between '" + givenTime1 + "' and '" + givenTime2 + "' ";
+                // string format = "h:mmtt";
+                // CultureInfo provider = CultureInfo.InvariantCulture;
+
+                //DateTime result1 = DateTime.ParseExact(givenTime1, format, provider);
+                // DateTime result2 = DateTime.ParseExact(givenTime2, format, provider);
+
+                //string amOrPm = "%AM";
+                //tripData = database.tripDatas.
+                //tripData = database.tripDatas.Where(temp => temp.startingFrom.Equals(from) && temp.destination.Equals(to) && Convert.ToDateTime(temp.departureTime)>= givenTime1 && Convert.ToDateTime(temp.departureTime) <= givenTime1).ToList();
+                tripData = database.tripDatas.SqlQuery(sqlQuery).ToList();
+                return View(tripData);
+            }
+            else if (type == "18-00")
+            {
+
+                string givenTime1 = "08";
+                string givenTime2 = "12";
+                string amOrPm = "%PM";
+
+                var sqlQuery = "Select * from tripData where startingFrom = '" + from + "' and destination = '" + to + "' and departureTime like '" + amOrPm + "' and departureTime between '" + givenTime1 + "' and '" + givenTime2 + "' ";
+                // string format = "h:mmtt";
+                // CultureInfo provider = CultureInfo.InvariantCulture;
+
+                //DateTime result1 = DateTime.ParseExact(givenTime1, format, provider);
+                // DateTime result2 = DateTime.ParseExact(givenTime2, format, provider);
+
+                //string amOrPm = "%AM";
+                //tripData = database.tripDatas.
+                //tripData = database.tripDatas.Where(temp => temp.startingFrom.Equals(from) && temp.destination.Equals(to) && Convert.ToDateTime(temp.departureTime)>= givenTime1 && Convert.ToDateTime(temp.departureTime) <= givenTime1).ToList();
+                tripData = database.tripDatas.SqlQuery(sqlQuery).ToList();
                 return View(tripData);
             }
             else
@@ -85,7 +129,6 @@ namespace SupLuxParibahanWebApp.Controllers
                 return View(tripData);
             }
             
-
       
     
         }
