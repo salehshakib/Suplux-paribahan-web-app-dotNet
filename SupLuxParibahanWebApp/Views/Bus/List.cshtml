@@ -54,15 +54,18 @@
 <!--    filter section    -->
 <section>
     <div class="container filter-container">
+        <form action="/Bus/List" method="post">
+            <div class="filters">
+                <button class="suplux-filter-btn" value="NON-AC" type="submit" name="type">NON-AC</button>
+                <button class="suplux-filter-btn" value="AC (BI)" type="submit" name="type">AC (BI)</button>
+                <button class="suplux-filter-btn" value="AC (Multi)" type="submit" name="type">AC (Multi)</button>
+            </div>
+
+        </form>
         <div class="filters">
-            <button class="suplux-filter-btn">NON-AC</button>
-            <button class="suplux-filter-btn">AC (BI)</button>
-            <button class="suplux-filter-btn">AC (Multi)</button>
-        </div>
-        <div class="filters">
-            <button class="suplux-filter-btn"><i class="wi wi-day-sunny"></i><br />06-12</button>
-            <button class="suplux-filter-btn"><i class="wi wi-sunset"></i><br />12-18</button>
-            <button class="suplux-filter-btn"><i class="wi wi-night-clear"></i><br />18-00</button>
+            <button class="suplux-filter-btn" name="type" value="06-12"><i class="wi wi-day-sunny"></i><br />06-12</button>
+            <button class="suplux-filter-btn" name="type" value="12-18"><i class="wi wi-sunset"></i><br />12-18</button>
+            <button class="suplux-filter-btn" name="type" value="18-00"><i class="wi wi-night-clear"></i><br />18-00</button>
         </div>
     </div>
 </section>
@@ -80,7 +83,7 @@
                     <div class="coach-result-row">
                         <div class="coach-result-div">
                             <div class="d-flex flex-column align-center">
-                                <h1 class="from-short">@item.startingFrom.Substring(0,3)</h1>
+                                <h1 class="from-short">@item.startingFrom.Substring(0,3).ToUpper()</h1>
                                 <p>@item.startingFrom</p>
                             </div>
                             <svg version="1.1" class="from-to-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612.074 612.074" style="enable-background:new 0 0 612.074 612.074;" xml:space="preserve">
@@ -95,7 +98,7 @@
                         </path>
                     </svg>
                             <div class="d-flex flex-column align-center">
-                                <h1 class="to-short">@item.destination.Substring(0,3)</h1>
+                                <h1 class="to-short">@item.destination.Substring(0,3).ToUpper()</h1>
                                 <p>@item.destination</p>
                             </div>
                         </div>
@@ -242,7 +245,7 @@
                     <div class="coach-result-row">
                         <div class="coach-result-div">
                             <div class="d-flex flex-column align-center">
-                                <h1 class="from-short">DHA</h1>
+                                <h1 class="from-short">@item.startingFrom.Substring(0, 3).ToUpper()</h1>
                                 <p>@item.startingFrom</p>
                             </div>
                             <svg version="1.1" class="from-to-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612.074 612.074" style="enable-background:new 0 0 612.074 612.074;" xml:space="preserve">
@@ -257,7 +260,7 @@
                     </path>
                 </svg>
                             <div class="d-flex flex-column align-center">
-                                <h1 class="to-short">KHU</h1>
+                                <h1 class="to-short">@item.destination.Substring(0, 3).ToUpper()</h1>
                                 <p>@item.destination</p>
                             </div>
                         </div>
@@ -404,7 +407,7 @@
                     <div class="coach-result-row">
                         <div class="coach-result-div">
                             <div class="d-flex flex-column align-center">
-                                <h1 class="from-short">DHA</h1>
+                                <h1 class="from-short">@item.startingFrom.Substring(0, 3).ToUpper()</h1>
                                 <p>@item.startingFrom</p>
                             </div>
                             <svg version="1.1" class="from-to-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612.074 612.074" style="enable-background:new 0 0 612.074 612.074;" xml:space="preserve">
@@ -419,7 +422,7 @@
                     </path>
                 </svg>
                             <div class="d-flex flex-column align-center">
-                                <h1 class="to-short">@item.destination.Substring(0, 3)</h1>
+                                <h1 class="to-short">@item.destination.Substring(0, 3).ToUpper()</h1>
                                 <p>@item.destination</p>
                             </div>
                         </div>
