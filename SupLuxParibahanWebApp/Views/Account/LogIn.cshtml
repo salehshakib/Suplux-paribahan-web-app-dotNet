@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-input-container">
                             <span class="form-input-label">Email</span>
-                            <input id="login-email-field" class="" type="email" name="userEmail" value="" placeholder="someone@example.com" autocomplete="off" required />
+                            <input id="uEmail" class="" type="email" name="uEmail" value="" placeholder="someone@example.com" autocomplete="off" required />
                         </div>
                     </div>
                     <div id="login-password-input-wrapper" class="form-input-wrapper">
@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-input-container">
                             <span class="form-input-label">Password</span>
-                            <input id="login-password-field" type="password" name="userPassword" value="" placeholder="some@pass#123" autocomplete="off" required />
+                            <input id="uPassword" type="password" name="uPassword" value="" placeholder="some@pass#123" autocomplete="off" required />
                         </div>
                         <div class="form-icon-container">
                             <span id="pasword-icon" class="form-input-icon"><i id="password-eye-icon" class="fas fa-eye"></i></span>
@@ -42,10 +42,44 @@
             </div>
         </div>
     </div>
+
+    <div id="user-alert" class="suplux-alert alert alert-dismissible d-none" role="alert">
+
+    </div>
 </section>
 
 <script>
     document.getElementById('suplux-navbar').classList.add('nav-bg');
+
+    const alertToast = document.getElementById('user-alert');
+
+    const notification = '@TempData["notification"]';
+
+    //showing notification based on tempdata
+    if (notification === 'account created') {
+
+        alertToast.innerHTML = `
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><i class="fas fa-check-circle"></i></span> Sign Up Successful!! Please, log in to your account.
+            `;
+        alertToast.classList.remove('d-none');
+        alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+    }
+
+    else if (notification === 'log in failed') {
+
+        alertToast.innerHTML = `
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><i class="fas fa-exclamation-triangle"></i></span> Invalid email or password. Please, try again.
+            `;
+        alertToast.classList.remove('d-none');
+        alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+        alertToast.classList.add('error');
+    }
+
+    else {
+        alertToast.classList.add('d-none');
+    }
 </script>
 
 @Scripts.Render("~/Scripts/login-page.js")

@@ -16,5 +16,7 @@ namespace SupLuxParibahanWebApp.Models
     {
         public int adminID { get; set; }
         public string adminPassword { get; set; }
+        public string adminEmail { get; set; }
+        public string adminNick { get; set; }
     }
 }

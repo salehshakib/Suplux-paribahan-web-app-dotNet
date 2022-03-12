@@ -6,6 +6,8 @@
     </Key>
     <Property Name="adminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="adminPassword" Type="varchar" MaxLength="10" />
+    <Property Name="adminEmail" Type="varchar" MaxLength="50" />
+    <Property Name="adminNick" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Reservation">
     <Key>
@@ -36,12 +38,12 @@
     </Key>
     <Property Name="coachNo" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="startingFrom" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="boardingPoint" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="destination" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="departureTime" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="coachType" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="farePerSeat" Type="int" Nullable="false" />
     <Property Name="TripStatus" Type="varchar" MaxLength="20" />
+    <Property Name="MHDate" Type="date" />
   </EntityType>
   <EntityType Name="UserTable">
     <Key>
@@ -55,7 +57,7 @@
     <Property Name="userNID" Type="varchar" MaxLength="20" />
     <Property Name="userAddress" Type="varchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__Reservati__coach__47DBAE45">
+  <Association Name="FK__Reservati__coach__3C69FB99">
     <End Role="tripData" Type="Self.tripData" Multiplicity="1" />
     <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
     <ReferentialConstraint>
@@ -67,7 +69,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Reservati__userE__46E78A0C">
+  <Association Name="FK__Reservati__userE__3B75D760">
     <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
     <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
     <ReferentialConstraint>
@@ -97,11 +99,11 @@
     <EntitySet Name="TransactionLog" EntityType="Self.TransactionLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tripData" EntityType="Self.tripData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Reservati__coach__47DBAE45" Association="Self.FK__Reservati__coach__47DBAE45">
+    <AssociationSet Name="FK__Reservati__coach__3C69FB99" Association="Self.FK__Reservati__coach__3C69FB99">
       <End Role="tripData" EntitySet="tripData" />
       <End Role="Reservation" EntitySet="Reservation" />
     </AssociationSet>
-    <AssociationSet Name="FK__Reservati__userE__46E78A0C" Association="Self.FK__Reservati__userE__46E78A0C">
+    <AssociationSet Name="FK__Reservati__userE__3B75D760" Association="Self.FK__Reservati__userE__3B75D760">
       <End Role="UserTable" EntitySet="UserTable" />
       <End Role="Reservation" EntitySet="Reservation" />
     </AssociationSet>

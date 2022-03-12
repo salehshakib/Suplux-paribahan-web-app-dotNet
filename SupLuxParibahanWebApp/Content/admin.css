@@ -1,0 +1,465 @@
+﻿/*-----------------------------
+        Utilities Import
+------------------------------*/
+@import url("Site.css");
+
+/*----------------------------------
+        Admin Home Page Design
+-----------------------------------*/
+body {
+    background-color: var(--suplux-bg-color);
+    min-height: 100vh;
+}
+
+.modal-dialog-centered{
+    top: 50%;
+   
+}
+
+.modal-dialog-centered .modal-content {
+    transform: translateY(-50%);
+}
+
+.fa-exclamation-triangle.maintain-ex{
+    color: var(--suplux-buslist-maintain-text-color);
+}
+
+.fa-exclamation-triangle.halt-ex {
+    color: var(--suplux-buslist-halt-text-color);
+}
+
+.admin-card-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/*----------------------------------
+        Admin Card Design
+-----------------------------------*/
+.suplux-admin-card {
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.suplux-admin-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.admin-card-image {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-card-image svg {
+    width: 50%;
+    fill: var(--suplux-dark-blue);
+}
+
+.admin-card-title h3{
+    font-size: 35px;
+    font-weight: 600;
+    color: var(--suplux-dark-blue);
+    text-align: center;
+}
+
+/*--------------------------------------
+        Coach Search Box Design
+---------------------------------------*/
+.search-bus-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 999999;
+}
+
+.search-form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-form form {
+    display: flex;
+    align-items: center;
+}
+
+.search-coach-input + .search-coach-input{
+    margin: 0 20px;
+}
+
+.search-coach-input input {
+    padding: 10px 8px;
+    border: 2px solid var(--suplux-dark-blue);
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--suplux-dark-blue);
+}
+
+#coach-type-input-container {
+    position: relative;
+}
+
+#coach-type-input-container input {
+    cursor: pointer;
+}
+
+#coach-type-input-container input:disabled,
+#coach-no-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+#coach-type-input-container span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+#coach-type-input-container span i {
+    margin: 0;
+}
+
+.arrow-rotate {
+    transform: translateY(-50%) rotateZ(180deg) !important;
+}
+
+#coach-type-input-container ul{
+    position: absolute;
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    border-radius: 10px;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 99999;
+}
+
+.ui-timepicker-container {
+    position: absolute;
+    list-style: none;
+    border: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 99999;
+}
+
+.ui-menu-item {
+    padding: 5px 10px !important;
+    transition: 0.3s ease-in-out !important;
+    color: var(--suplux-dark-grey) !important;
+}
+
+.ui-menu-item a {
+    border: 0 !important;
+    color: var(--suplux-dark-grey) !important;
+}
+
+.ui-menu-item a:hover {
+    background-color: transparent !important;
+    color: var(--suplux-profile-menu-text-color) !important;
+}
+
+#coach-type-input-container ul li {
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: 0.3s ease-in-out;
+    color: var(--suplux-dark-grey);
+}
+
+#coach-type-input-container ul li:hover,
+#coach-type-input-container ul li:focus,
+.ui-menu-item:hover,
+.ui-menu-item:focus {
+    background-color: var(--suplux-profile-menu-color) !important;
+    color: var(--suplux-profile-menu-text-color) !important;
+}
+
+
+
+/*----------------------------------
+    Coach Info Row Design
+-----------------------------------*/
+.bus-list-section {
+    min-height: 100vh;
+    background-color: white;
+}
+
+.coach-info-container {
+    margin: 80px 0 0;
+    padding: 20px 20px 120px;
+}
+.coach-info-row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    background-color: var(--suplux-buslist-active-bg-color);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.coach-info-row.maintained{
+    background-color: var(--suplux-buslist-maintain-bg-color);
+}
+
+.coach-info-row.halt{
+    background-color: var(--suplux-buslist-halt-bg-color);
+}
+
+.coach-info-row + .coach-info-row {
+    margin-top: 20px;
+}
+
+.coach-info h3,
+.coach-info p {
+    margin: 0;
+    color: var(--suplux-buslist-active-text-color);
+}
+
+.coach-info-row.maintained h3,
+.coach-info-row.maintained p{
+    color: var(--suplux-buslist-maintain-text-color);
+}
+
+.coach-info-row.halt h3,
+.coach-info-row.halt p{
+    color: var(--suplux-buslist-halt-text-color);
+}
+
+.coach-info-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.suplux-btn.maintain-btn {
+    border: 3px solid var(--suplux-buslist-maintain-text-color);
+    color: var(--suplux-buslist-maintain-text-color);
+    background-color: var(--suplux-buslist-maintain-bg-color);
+}
+
+.suplux-btn.maintain-btn:disabled,
+.suplux-btn.halt-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.suplux-btn.maintain-btn:disabled:hover,
+.suplux-btn.halt-btn:disabled:hover {
+    box-shadow: none;
+}
+
+.suplux-btn.halt-btn {
+    border: 3px solid var(--suplux-buslist-halt-text-color);
+    color: var(--suplux-buslist-halt-text-color);
+    background-color: var(--suplux-buslist-halt-bg-color);
+}
+
+/*----------------------------------
+        Reroute Bus Design
+-----------------------------------*/
+.reroute-bus-section,
+.add-bus-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reroute-coach-info-container,
+#add-bus-coach-info-container,
+#bus-list-info-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#reroute-coach-info-container h1,
+#add-bus-coach-info-container h1,
+#bus-list-info-container h1{
+    font-size: 80px;
+    text-align: center;
+    font-weight: 900;
+    color: var(--suplux-dark-grey);
+    opacity: 0.2;
+}
+
+.reroute-form,
+.add-new-bus-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.form-title{
+    text-align: center;
+    font-size: 35px;
+    color: var(--suplux-dark-blue);
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.reroute-coach-info,
+.add-bus-coach-info {
+    display: flex;
+    justify-content: center;
+}
+
+.reroute-input-wrapper,
+.add-bus-input-wrapper {
+    position: relative;
+    width: fit-content;
+}
+
+.reroute-input-wrapper + .reroute-input-wrapper,
+.add-bus-input-wrapper + .add-bus-input-wrapper{
+    margin-left: 20px;
+}
+
+.reroute-input-wrapper input,
+.add-bus-input-wrapper input{
+    padding: 10px 8px;
+    border: 2px solid var(--suplux-dark-blue);
+    border-radius: 10px;
+    color: var(--suplux-dark-blue);
+    font-weight: 600;
+}
+
+.reroute-input-wrapper input:read-only,
+.add-bus-input-wrapper input:read-only{
+    background-color: var(--suplux-light-skyblue);
+}
+
+.required-field-not-filled{
+    background-color: var(--suplux-buslist-halt-bg-color);
+}
+
+.reroute-input-wrapper span,
+.add-bus-input-wrapper span{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: var(--suplux-dark-blue);
+    font-weight: 600;
+}
+
+.reroute-coach-btn,
+.add-coach-btn-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/*----------------------------------
+        Verify Coach Design
+-----------------------------------*/
+.verify-coach {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.verify-coach form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.verify-coach form .search-coach-input {
+    margin-right: 20px;
+}
+
+/*----------------------------------
+        Admin Footer Design
+-----------------------------------*/
+footer {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: var(--suplux-dark-blue);
+    padding: 20px;
+    border-radius: 15px;
+    right: 30px;
+    bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.logged-admin-info{
+    margin-right: 20px;
+}
+
+.logged-admin-info h3 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.logged-admin-info h3 #admin-name{
+    font-weight: 700;
+}
+
+/*--------------------------
+        Mobile Design
+---------------------------*/
+@media (max-width: 576px) {
+    .admin-cards-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .admin-card-section{
+        margin: 150px 0;
+    }
+
+    footer{
+        width: 90%;
+        right: 50%;
+        transform: translateX(50%);
+        flex-direction: column;
+    }
+
+    .logged-admin-info {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/*--------------------------
+        Xs Design
+---------------------------*/
+@media (max-width: 290px) {
+
+    .logged-admin-info h3 {
+        font-size: 15px;
+    }
+}

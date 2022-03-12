@@ -13,7 +13,7 @@
                 <div class="suplux-search-box">
                     <div class="autocomplete">
                         <p>From</p>
-                        <input id="starting-point" type="text" name="from" value="" placeholder="Enter City" />
+                        <input id="starting-point" type="text" name="from" value="" placeholder="Enter City" autocomplete="off" />
                     </div>
                 </div>
                 <div class="suplux-search-box">
@@ -21,7 +21,6 @@
                         <p>To</p>
                         <input id="ending-point" type="text" name="to" value="" placeholder="Enter City" autocomplete="off" />
                     </div>
-
                 </div>
 
                 <div class="suplux-search-box suplux-date-box">
@@ -206,9 +205,44 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
+    </div>
+
+    <div id="user-alert" class="suplux-alert alert alert-dismissible d-none" role="alert">
+
     </div>
 </section>
+
+<script>
+    const alertToast = document.getElementById('user-alert');
+
+    const notification = '@TempData["notification"]';
+
+    //showing notification based on tempdata
+    if (notification === 'log in success') {
+
+        alertToast.innerHTML = `
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><i class="fas fa-check-circle"></i></span> Successfully Logged In!!
+            `;
+        alertToast.classList.remove('d-none');
+        alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+    }
+
+    else if (notification === 'log out success') {
+
+        alertToast.innerHTML = `
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><i class="fas fa-check-circle"></i></span> Successfully Logged Out!!
+            `;
+        alertToast.classList.remove('d-none');
+        alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+    }
+
+    else {
+        alertToast.classList.add('d-none');
+    }
+</script>
 
 @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
 @Scripts.Render("~/Scripts/jquery-ui.min.js")
