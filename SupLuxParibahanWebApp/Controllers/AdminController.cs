@@ -246,7 +246,7 @@ namespace SupLuxParibahanWebApp.Controllers
 
                     database.Entry(trip).State = System.Data.Entity.EntityState.Modified;
                     database.SaveChanges();
-                    TempData["notification"] = "Status updated";
+                    TempData["notification"] = "status updated";
                     return RedirectToAction("AdminHome", "Admin");
                 }
                 TempData["notification"] = "Error! Status not updated";

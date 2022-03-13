@@ -115,7 +115,7 @@
                         <div class="coach-result-div one">
                             <div>
                                 <p class="result-data">Coach No</p>
-                                <h3 class="result-data">@item.coachNo</h3>
+                                <h3 class="result-data coach-no">@item.coachNo</h3>
                             </div>
                         </div>
                         <div class="coach-result-div two">
@@ -131,27 +131,29 @@
                         <div class="coach-result-div two">
                             <div>
                                 @{
-                                        string sqlQuery = "select * from Reservation where coachNo = '" + @item.coachNo + "' and dateOfJourney = '" + d + "' ";//+ d + "' \""; //+ @Session["date"] +"\"";
+
+                                    string sqlQuery = "select * from Reservation where coachNo = '" + @item.coachNo + "' and dateOfJourney = '" + d + "' ";//+ d + "' \""; //+ @Session["date"] +"\"";
 
 
-                                        reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
+                                    reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
 
-                                        int availSeats = 31 - reservations.Count();
+                                    int availSeats = 31 - reservations.Count();
+                                }
 
-                                    }
-
-                                <script id="booked-seat" type="application/json">
-                                    <%= JsonConvert.SerializeObject(@reservations) %>
-                                </script>
-                                 
-                                    @if (reservations.Count() != 0) {
-                                        foreach (var s in reservations) {
-                                            System.Diagnostics.Debug.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAA", @s.bookedSeat);
-                                        }
-                                    }
-                                            
+                                @if (reservations.Count() != 0)
+                                {
                                     
-                       
+                                    foreach (var s in reservations)
+                                    {
+
+
+                                        <input type="hidden" class="reservation-seats-multi" value="@item.coachNo @s.bookedSeat">
+
+
+                                    }
+
+
+                                }
 
                                 <p class="result-data">Available Seats</p>
                                 <h3 class="result-data">@availSeats</h3>
@@ -305,7 +307,7 @@
                         <div class="coach-result-div one">
                             <div>
                                 <p class="result-data">Coach No</p>
-                                <h3 class="result-data">@item.coachNo</h3>
+                                <h3 class="result-data coach-no">@item.coachNo</h3>
                             </div>
                         </div>
                         <div class="coach-result-div two">
@@ -327,41 +329,28 @@
 
                                     reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
 
-                                    //var data = reservations;
-
                                     int availSeats = 28 - reservations.Count();
                                 }
 
-
-
                                 @if (reservations.Count() != 0)
                                 {
-                                    Session["booked-seat"] = "kisu to deha";
-                                    //for(int i =0; i<reservations.Count())
+                                    
                                     foreach (var s in reservations)
                                     {
-                                        Session["booked-seat"] = Session["booked-seat"] + @s.bookedSeat;
-                                        System.Diagnostics.Debug.WriteLine("SSSSSSSSSSSSSSSSSSSSSSSS", @s.bookedSeat);
+                                        
+                                       
+                                        <input type="hidden" class="reservation-seats-bi" value="@item.coachNo @s.bookedSeat">
 
-
-                                        <input type="hidden" class="reservation-seats" value="@s.bookedSeat">
-
-                                        //</script>
-
+                                      
                                     }
-                                    <input type="hidden" class="reservation-coach-no" value="@item.coachNo">
+                                   
 
                                 }
 
+                                    <p class="result-data">Available Seats</p>
+                                    <h3 class="result-data">@availSeats</h3>
 
-
-
-
-
-                                <p class="result-data">Available Seats</p>
-                                <h3 class="result-data">@availSeats</h3>
-
-                            </div>
+                                </div>
                             <div>
                                 <p class="result-data">Fare</p>
                                 <h3 class="result-data">BDT @item.farePerSeat</h3>
@@ -507,7 +496,7 @@
                         <div class="coach-result-div one">
                             <div>
                                 <p class="result-data">Coach No</p>
-                                <h3 class="result-data">@item.coachNo</h3>
+                                <h3 class="result-data coach-no">@item.coachNo</h3>
                             </div>
                         </div>
                         <div class="coach-result-div two">
@@ -534,10 +523,18 @@
 
                                 @if (reservations.Count() != 0)
                                 {
+                                   
+                                   
                                     foreach (var s in reservations)
                                     {
-                                        System.Diagnostics.Debug.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAA", @s.bookedSeat);
+
+
+                                        <input type="hidden" class="reservation-seats-non-ac" value="@item.coachNo @s.bookedSeat">
+
+
                                     }
+
+
                                 }
 
                                 <p class="result-data">Available Seats</p>
@@ -697,18 +694,8 @@
     </symbol>
 </svg>
 
-<!--    door svg    -->
-<svg class="d-none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="50" height="50" x="0" y="0" viewBox="0 0 50 50" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">< transform="matrix(6.123233995736764e-17,1,-1,6.123233995736764e-17,511.99999999999983,-2.2737367544323206e-13)">
-<symbol id="door-svg">
-<path d="M477.681,277.819c-21.996-52.05-53.489-98.781-93.604-138.896S297.23,67.315,245.181,45.319    C195.869,24.481,143.736,13.049,90,11.256V11H0v450h45h45V41.27c49.699,1.779,97.905,12.414,143.502,31.683    c48.471,20.483,91.994,49.816,129.361,87.183c37.367,37.367,66.7,80.891,87.184,129.361C471.249,339.669,482,392.998,482,448h30    C512,388.964,500.453,331.707,477.681,277.819z M60,431H30V41h30V431z" fill="#000000" data-original="#000000" stroke-width="10" />
-<circle cx="45" cy="481" r="20" fill="#000000" data-original="#000000" />                  
-    </symbol>
-</svg>
-
-
 <script>
     document.getElementById('suplux-navbar').classList.add('nav-bg');
-    console.log('session value','@Session["starting"]');
 </script>
 
 @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")

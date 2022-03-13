@@ -57,7 +57,7 @@
     <Property Name="userNID" Type="varchar" MaxLength="20" />
     <Property Name="userAddress" Type="varchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__Reservati__coach__47DBAE45">
+  <Association Name="FK__Reservati__coach__3C69FB99">
     <End Role="tripData" Type="Self.tripData" Multiplicity="1" />
     <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
     <ReferentialConstraint>
@@ -69,7 +69,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Reservati__userE__46E78A0C">
+  <Association Name="FK__Reservati__userE__3B75D760">
     <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
     <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
     <ReferentialConstraint>
@@ -99,11 +99,11 @@
     <EntitySet Name="TransactionLog" EntityType="Self.TransactionLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tripData" EntityType="Self.tripData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Reservati__coach__47DBAE45" Association="Self.FK__Reservati__coach__47DBAE45">
+    <AssociationSet Name="FK__Reservati__coach__3C69FB99" Association="Self.FK__Reservati__coach__3C69FB99">
       <End Role="tripData" EntitySet="tripData" />
       <End Role="Reservation" EntitySet="Reservation" />
     </AssociationSet>
-    <AssociationSet Name="FK__Reservati__userE__46E78A0C" Association="Self.FK__Reservati__userE__46E78A0C">
+    <AssociationSet Name="FK__Reservati__userE__3B75D760" Association="Self.FK__Reservati__userE__3B75D760">
       <End Role="UserTable" EntitySet="UserTable" />
       <End Role="Reservation" EntitySet="Reservation" />
     </AssociationSet>

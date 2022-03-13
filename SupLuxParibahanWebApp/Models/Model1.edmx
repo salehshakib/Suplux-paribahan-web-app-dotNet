@@ -62,7 +62,7 @@
           <Property Name="userNID" Type="varchar" MaxLength="20" />
           <Property Name="userAddress" Type="varchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK__Reservati__coach__47DBAE45">
+        <Association Name="FK__Reservati__coach__3C69FB99">
           <End Role="tripData" Type="Self.tripData" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -74,7 +74,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reservati__userE__46E78A0C">
+        <Association Name="FK__Reservati__userE__3B75D760">
           <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,11 +104,11 @@
           <EntitySet Name="TransactionLog" EntityType="Self.TransactionLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tripData" EntityType="Self.tripData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Reservati__coach__47DBAE45" Association="Self.FK__Reservati__coach__47DBAE45">
+          <AssociationSet Name="FK__Reservati__coach__3C69FB99" Association="Self.FK__Reservati__coach__3C69FB99">
             <End Role="tripData" EntitySet="tripData" />
             <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reservati__userE__46E78A0C" Association="Self.FK__Reservati__userE__46E78A0C">
+          <AssociationSet Name="FK__Reservati__userE__3B75D760" Association="Self.FK__Reservati__userE__3B75D760">
             <End Role="UserTable" EntitySet="UserTable" />
             <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
@@ -144,8 +144,8 @@
           <Property Name="dateOfJourney" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="paymentMethod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="duePayment" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tripData" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="Reservation" ToRole="tripData" />
-          <NavigationProperty Name="UserTable" Relationship="Self.FK__Reservati__userE__46E78A0C" FromRole="Reservation" ToRole="UserTable" />
+          <NavigationProperty Name="tripData" Relationship="Self.FK__Reservati__coach__3C69FB99" FromRole="Reservation" ToRole="tripData" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__Reservati__userE__3B75D760" FromRole="Reservation" ToRole="UserTable" />
         </EntityType>
         <EntityType Name="TransactionLog">
           <Key>
@@ -169,7 +169,7 @@
           <Property Name="farePerSeat" Type="Int32" Nullable="false" />
           <Property Name="TripStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MHDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="tripData" ToRole="Reservation" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__coach__3C69FB99" FromRole="tripData" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="UserTable">
           <Key>
@@ -182,10 +182,10 @@
           <Property Name="userPhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userNID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="userAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__userE__46E78A0C" FromRole="UserTable" ToRole="Reservation" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__userE__3B75D760" FromRole="UserTable" ToRole="Reservation" />
           <NavigationProperty Name="TransactionLogs" Relationship="Self.FK__Transacti__userE__412EB0B6" FromRole="UserTable" ToRole="TransactionLog" />
         </EntityType>
-        <Association Name="FK__Reservati__coach__47DBAE45">
+        <Association Name="FK__Reservati__coach__3C69FB99">
           <End Role="tripData" Type="Self.tripData" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,7 +197,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reservati__userE__46E78A0C">
+        <Association Name="FK__Reservati__userE__3B75D760">
           <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -227,11 +227,11 @@
           <EntitySet Name="TransactionLogs" EntityType="Self.TransactionLog" />
           <EntitySet Name="tripDatas" EntityType="Self.tripData" />
           <EntitySet Name="UserTables" EntityType="Self.UserTable" />
-          <AssociationSet Name="FK__Reservati__coach__47DBAE45" Association="Self.FK__Reservati__coach__47DBAE45">
+          <AssociationSet Name="FK__Reservati__coach__3C69FB99" Association="Self.FK__Reservati__coach__3C69FB99">
             <End Role="tripData" EntitySet="tripDatas" />
             <End Role="Reservation" EntitySet="Reservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reservati__userE__46E78A0C" Association="Self.FK__Reservati__userE__46E78A0C">
+          <AssociationSet Name="FK__Reservati__userE__3B75D760" Association="Self.FK__Reservati__userE__3B75D760">
             <End Role="UserTable" EntitySet="UserTables" />
             <End Role="Reservation" EntitySet="Reservations" />
           </AssociationSet>
