@@ -258,7 +258,7 @@ namespace SupLuxParibahanWebApp.Controllers
             foreach (string sed in seat)
             {
                 reservation.UTKNo = utk;
-                reservation.userEmail = "180204060@aust.edu";
+                reservation.userEmail = "mjaumi2864@gmail.com";
                 reservation.coachNo = coachNo;
                 reservation.bookedSeat = sed;
                 string d = DateTime.Now.ToString("yyyy-MM-dd");
@@ -286,7 +286,7 @@ namespace SupLuxParibahanWebApp.Controllers
             //database.SaveChanges();
 
             transactionLog.statusInfo = "Paid";
-            transactionLog.userEmail = "180204060@aust.edu"; //Session["currentEmail"].ToString();
+            transactionLog.userEmail = "mjaumi2864@gmail.com"; //Session["currentEmail"].ToString();
             transactionLog.transactionId = utk;
 
             database.TransactionLogs.Add(transactionLog);
