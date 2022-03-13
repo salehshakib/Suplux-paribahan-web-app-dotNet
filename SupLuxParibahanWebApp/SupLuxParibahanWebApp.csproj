@@ -141,6 +141,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FromToData.cs" />
+    <Compile Include="Models\JourneyDetails.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -246,6 +247,7 @@
     <Content Include="Scripts\list.js" />
     <Content Include="Scripts\login-page.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\modify-date-picker.js" />
     <Content Include="Scripts\payment-page.js" />
     <Content Include="Scripts\signup-page.js" />
     <Content Include="Scripts\time-picker.js" />

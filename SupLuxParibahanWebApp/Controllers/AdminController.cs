@@ -167,16 +167,6 @@ namespace SupLuxParibahanWebApp.Controllers
                 Session["newCoachNo"] =cN;
                 Session["newCoachType"] = coachType;
 
-                //cN = cN+id.ToString();
-                //System.Diagnostics.Debug.WriteLine(lastDigit, cN, id, "jaduuuu");
-                //coachNo = coachNo.Replace
-
-
-
-
-                //List<tripData> tripDatas = new List<tripData>();
-                //tripdatas = database.tripDatas.ToList();
-                //var tripData = database.tripDatas.Where(temp => temp.coachNo.Equals(coachNo) || temp.coachType.Equals(coachType)).SingleOrDefault();
             }
 
             return RedirectToAction("AddNewBus", "Admin");

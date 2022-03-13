@@ -14,8 +14,10 @@ namespace SupLuxParibahanWebApp.Models
        public string destination { get; set; } 
        public string coachNo { get; set; }
        public string coachType { get; set; }
-       public string[] seat { get; set; }
+       public List<string> seat { get; set; }
        public string departureTime { get; set; }
+
+        public string seatConcat { get; set; }
 
     }
 }
