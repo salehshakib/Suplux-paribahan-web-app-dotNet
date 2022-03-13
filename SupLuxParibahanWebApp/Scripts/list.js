@@ -49,6 +49,13 @@ const seatTableBody = document.getElementsByClassName('selected-seats-table-body
 const seatTableTotalFare = document.getElementsByClassName('total-fare');
 const continueBtns = document.getElementsByClassName('continue-btn');
 
+//seat reservation data
+const reservationSeatsMulti = document.getElementsByClassName('reservation-seats-multi');
+const reservationSeatsBi = document.getElementsByClassName('reservation-seats-bi');
+const reservationSeatsNonAc = document.getElementsByClassName('reservation-seats-non-ac');
+
+const coachNo = document.getElementsByClassName('coach-no');
+
 let selectedSeatsCount = 0;
 let isFourSeatsSelected = false;
 let selectedSeatNo = [];
@@ -124,6 +131,17 @@ const renderSeats = (coachType, thisElement) => {
 
     if (coachType === 'multi') {
 
+        let reservedSeats = [];
+
+        for (seat of reservationSeatsMulti) {
+
+            if (seat.value.split(' ')[0] === coachNo[index].innerText) {
+
+                reservedSeats.push(seat.value.split(' ')[1]);
+            }
+
+        }
+
         for (const container of businessClassSeatContainers) {
 
             container.textContent = '';
@@ -133,6 +151,14 @@ const renderSeats = (coachType, thisElement) => {
                 const div = document.createElement('div');
 
                 div.classList.add('seat');
+
+                for (seat of reservedSeats) {
+
+                    if (seat === businessSeat) {
+
+                        div.classList.add('sold');
+                    }
+                }
 
                 div.setAttribute('onclick', `selectSeat('${businessSeat}', 'Business', this, ${index})`);
 
@@ -157,6 +183,19 @@ const renderSeats = (coachType, thisElement) => {
 
     else if (coachType === 'bi') {
 
+        let reservedSeats = [];
+
+        for (seat of reservationSeatsBi) {
+
+            if (seat.value.split(' ')[0] === coachNo[index].innerText) {
+
+                reservedSeats.push(seat.value.split(' ')[1]);
+            }
+
+        }
+
+        console.log(reservedSeats);
+
         for (const container of businessClassSeatContainers) {
 
             container.textContent = '';
@@ -166,6 +205,14 @@ const renderSeats = (coachType, thisElement) => {
                 const div = document.createElement('div');
 
                 div.classList.add('seat');
+
+                for (seat of reservedSeats) {
+
+                    if (seat === businessSeat) {
+
+                        div.classList.add('sold');
+                    }
+                }        
 
                 div.setAttribute('onclick', `selectSeat('${businessSeat}', 'Business', this, ${index})`);
 
@@ -190,6 +237,17 @@ const renderSeats = (coachType, thisElement) => {
 
     else if (coachType === 'non-ac') {
 
+        let reservedSeats = [];
+
+        for (seat of reservationSeatsNonAc) {
+
+            if (seat.value.split(' ')[0] === coachNo[index].innerText) {
+
+                reservedSeats.push(seat.value.split(' ')[1]);
+            }
+
+        }
+
         for (const container of economyClassSeatContainers) {
 
             container.textContent = '';
@@ -199,6 +257,14 @@ const renderSeats = (coachType, thisElement) => {
                 const div = document.createElement('div');
 
                 div.classList.add('seat');
+
+                for (seat of reservedSeats) {
+
+                    if (seat === businessSeat) {
+
+                        div.classList.add('sold');
+                    }
+                }
 
                 div.setAttribute('onclick', `selectSeat('${economySeat}', 'Economy', this, ${index})`);
 

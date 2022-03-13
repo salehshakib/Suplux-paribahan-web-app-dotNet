@@ -405,8 +405,8 @@ body{
 }
 
 .seat svg {
-    fill: var(--suplux-dark-blue);
-    stroke: var(--suplux-dark-blue);
+    fill: var(--suplux-dark-blue) ;
+    stroke: var(--suplux-dark-blue) ;
     width: 60px;
     height: 60px;
     transform: rotate(90deg);
@@ -416,6 +416,23 @@ body{
 .seat.selected svg {
     fill: var(--suplux-buslist-selected-seat-color);
     stroke: var(--suplux-buslist-selected-seat-color);
+}
+
+.seat.sold{
+    pointer-events: none;
+}
+
+.seat.sold svg{
+    cursor: not-allowed;
+}
+
+.seat.sold:hover {
+    transform: scale(1);
+}
+
+.seat.sold svg {
+    fill: var(--suplux-buslist-halt-text-color) !important;
+    stroke: var(--suplux-buslist-halt-text-color) !important;
 }
 
 .seat-no {
@@ -431,6 +448,10 @@ body{
 
 .seat.selected .seat-no {
     color: var(--suplux-buslist-selected-seat-color);
+}
+
+.seat.sold .seat-no {
+    color: var(--suplux-buslist-halt-text-color) !important;
 }
 
 /*--------------------------

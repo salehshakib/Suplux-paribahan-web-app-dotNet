@@ -9,7 +9,7 @@ namespace SupLuxParibahanWebApp.Controllers
 {
     public class AdminController : Controller
     {
-        SUPLUXDashboardEntities database = new SUPLUXDashboardEntities();
+        SUPLUXDashboardEntities2 database = new SUPLUXDashboardEntities2();
         //SUPLUXDashboardEntities db = new SUPLUXDashboardEntities();
 
         // GET: Admin
@@ -246,7 +246,7 @@ namespace SupLuxParibahanWebApp.Controllers
 
                     database.Entry(trip).State = System.Data.Entity.EntityState.Modified;
                     database.SaveChanges();
-                    TempData["notification"] = "Status updated";
+                    TempData["notification"] = "status updated";
                     return RedirectToAction("AdminHome", "Admin");
                 }
                 TempData["notification"] = "Error! Status not updated";

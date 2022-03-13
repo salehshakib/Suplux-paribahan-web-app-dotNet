@@ -142,6 +142,16 @@
         alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
     }
 
+    else if (notification === 'status updated') {
+
+        alertToast.innerHTML = `
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><i class="fas fa-check-circle"></i></span> Bus Status Updated Successfully!!
+            `;
+        alertToast.classList.remove('d-none');
+        alertToast.style.animation = 'alert-animation 1s ease-in-out forwards';
+    }
+
     else {
         alertToast.classList.add('d-none');
     }

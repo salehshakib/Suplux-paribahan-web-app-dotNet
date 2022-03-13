@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SUPLUXDashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SUPLUXDashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="adminID" />
@@ -23,8 +23,8 @@
           <Property Name="userEmail" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="coachNo" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="bookedSeat" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="reservationDate" Type="date" />
-          <Property Name="dateOfJourney" Type="date" />
+          <Property Name="reservationDate" Type="varchar" MaxLength="10" />
+          <Property Name="dateOfJourney" Type="varchar" MaxLength="10" />
           <Property Name="paymentMethod" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="duePayment" Type="int" Nullable="false" />
         </EntityType>
@@ -117,7 +117,8 @@
             <End Role="TransactionLog" EntitySet="TransactionLog" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SUPLUXDashboardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -139,12 +140,12 @@
           <Property Name="userEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="coachNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="bookedSeat" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="reservationDate" Type="DateTime" Precision="0" />
-          <Property Name="dateOfJourney" Type="DateTime" Precision="0" />
+          <Property Name="reservationDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="dateOfJourney" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="paymentMethod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="duePayment" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tripData" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="Reservation" ToRole="tripData" />
-          <NavigationProperty Name="UserTable" Relationship="Self.FK__Reservati__userE__46E78A0C" FromRole="Reservation" ToRole="UserTable" />
+          <NavigationProperty Name="tripData" Relationship="Self.FK__Reservati__coach__3C69FB99" FromRole="Reservation" ToRole="tripData" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__Reservati__userE__3B75D760" FromRole="Reservation" ToRole="UserTable" />
         </EntityType>
         <EntityType Name="TransactionLog">
           <Key>
@@ -167,8 +168,8 @@
           <Property Name="coachType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="farePerSeat" Type="Int32" Nullable="false" />
           <Property Name="TripStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="tripData" ToRole="Reservation" />
           <Property Name="MHDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__coach__3C69FB99" FromRole="tripData" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="UserTable">
           <Key>
@@ -181,10 +182,10 @@
           <Property Name="userPhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userNID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="userAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__userE__46E78A0C" FromRole="UserTable" ToRole="Reservation" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__userE__3B75D760" FromRole="UserTable" ToRole="Reservation" />
           <NavigationProperty Name="TransactionLogs" Relationship="Self.FK__Transacti__userE__412EB0B6" FromRole="UserTable" ToRole="TransactionLog" />
         </EntityType>
-        <Association Name="FK__Reservati__coach__47DBAE45">
+        <Association Name="FK__Reservati__coach__3C69FB99">
           <End Role="tripData" Type="Self.tripData" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +197,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reservati__userE__46E78A0C">
+        <Association Name="FK__Reservati__userE__3B75D760">
           <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,17 +221,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SUPLUXDashboardEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SUPLUXDashboardEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Reservations" EntityType="Self.Reservation" />
           <EntitySet Name="TransactionLogs" EntityType="Self.TransactionLog" />
           <EntitySet Name="tripDatas" EntityType="Self.tripData" />
           <EntitySet Name="UserTables" EntityType="Self.UserTable" />
-          <AssociationSet Name="FK__Reservati__coach__47DBAE45" Association="Self.FK__Reservati__coach__47DBAE45">
+          <AssociationSet Name="FK__Reservati__coach__3C69FB99" Association="Self.FK__Reservati__coach__3C69FB99">
             <End Role="tripData" EntitySet="tripDatas" />
             <End Role="Reservation" EntitySet="Reservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reservati__userE__46E78A0C" Association="Self.FK__Reservati__userE__46E78A0C">
+          <AssociationSet Name="FK__Reservati__userE__3B75D760" Association="Self.FK__Reservati__userE__3B75D760">
             <End Role="UserTable" EntitySet="UserTables" />
             <End Role="Reservation" EntitySet="Reservations" />
           </AssociationSet>
@@ -244,14 +245,14 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SUPLUXDashboardModelStoreContainer" CdmEntityContainer="SUPLUXDashboardEntities">
+        <EntityContainerMapping StorageEntityContainer="SUPLUXDashboardModelStoreContainer" CdmEntityContainer="SUPLUXDashboardEntities2">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="SUPLUXDashboardModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
-                <ScalarProperty Name="adminNick" ColumnName="adminNick" />
-                <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
                 <ScalarProperty Name="adminID" ColumnName="adminID" />
                 <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
+                <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+                <ScalarProperty Name="adminNick" ColumnName="adminNick" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -283,7 +284,6 @@
           <EntitySetMapping Name="tripDatas">
             <EntityTypeMapping TypeName="SUPLUXDashboardModel.tripData">
               <MappingFragment StoreEntitySet="tripData">
-                <ScalarProperty Name="MHDate" ColumnName="MHDate" />
                 <ScalarProperty Name="coachNo" ColumnName="coachNo" />
                 <ScalarProperty Name="startingFrom" ColumnName="startingFrom" />
                 <ScalarProperty Name="destination" ColumnName="destination" />
@@ -291,6 +291,7 @@
                 <ScalarProperty Name="coachType" ColumnName="coachType" />
                 <ScalarProperty Name="farePerSeat" ColumnName="farePerSeat" />
                 <ScalarProperty Name="TripStatus" ColumnName="TripStatus" />
+                <ScalarProperty Name="MHDate" ColumnName="MHDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

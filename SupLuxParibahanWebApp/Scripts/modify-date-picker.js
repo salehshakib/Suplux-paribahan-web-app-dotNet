@@ -58,21 +58,20 @@ datePicker.onchange = function () {
 /*
  *  setting current date when the home page loads
  */
-/*window.onload = function () {
+window.onload = function () {
 
-    var d = new Date();
-
-    var month = d.getMonth() + 1;
-
-    fullDate = d.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (d.getDate() < 10 ? '0' : '') + d.getDate();
+    fullDate = datePicker.value;
     const day = new Date(fullDate).getDay();
+
+    const month = new Date(fullDate).getMonth() + 1;
+    const year = new Date(fullDate).getFullYear();
 
     const date = fullDate.split('-');
     datePicker.value = date[2] + ' ' + months[--date[1]] + "'" + date[0].slice(2, 4);
 
     showDay.innerText = days[day];
 
-}*/
+}
 
 //getting JSON trip data to back end
 document.getElementById('bus-search-btn').addEventListener('click', () => {

@@ -122,5 +122,10 @@ const setCoachNo = () => {
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
-    }).then(res => res.json()).then(data => console.log(data));
+    }).then(res => res.json()).then(data => {
+        console.log(data);
+        
+    });
+
+    window.location.pathname = '/Admin/AdminHome';
 }

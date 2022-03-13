@@ -1,5 +1,10 @@
 ﻿@model List<SupLuxParibahanWebApp.Models.tripData>
-
+@using SupLuxParibahanWebApp.Models;
+@{ 
+    SUPLUXDashboardEntities2 db = new SUPLUXDashboardEntities2();
+    List<Reservation> reservations = new List<Reservation>();
+    string d = Session["date"].ToString();
+}
 @{
     ViewBag.Title = "BUS LIST";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -27,12 +32,12 @@
                     <div class="suplux-search-box">
                         <div class="autocomplete">
                             <p>To</p>
-                            <input id="ending-point" type="text" name="to" value="@Session["to"]" placeholder="Enter City" autocomplete="off" required/>
+                            <input id="ending-point" type="text" name="to" value="@Session["to"]" placeholder="Enter City" autocomplete="off" required />
                         </div>
                     </div>
                     <div class="suplux-search-box suplux-date-box">
                         <p>journey date</p>
-                        <input id="suplux-datepicker" class="date" type="text" name="date" value="@Session["date"]" readonly="readonly" placeholder="Enter City" required/>
+                        <input id="suplux-datepicker" class="date" type="text" name="date" value="@Session["date"]" readonly="readonly" placeholder="Enter City" required />
                         <p id="suplux-day">Day</p>
                     </div>
                     <div class="search-btn-container">
@@ -88,7 +93,7 @@
                     <div class="coach-result-row">
                         <div class="coach-result-div">
                             <div class="d-flex flex-column align-center">
-                                <h1 class="from-short">@item.startingFrom.Substring(0,3).ToUpper()</h1>
+                                <h1 class="from-short">@item.startingFrom.Substring(0, 3).ToUpper()</h1>
                                 <p>@item.startingFrom</p>
                             </div>
                             <svg version="1.1" class="from-to-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612.074 612.074" style="enable-background:new 0 0 612.074 612.074;" xml:space="preserve">
@@ -103,14 +108,14 @@
                         </path>
                     </svg>
                             <div class="d-flex flex-column align-center">
-                                <h1 class="to-short">@item.destination.Substring(0,3).ToUpper()</h1>
+                                <h1 class="to-short">@item.destination.Substring(0, 3).ToUpper()</h1>
                                 <p>@item.destination</p>
                             </div>
                         </div>
                         <div class="coach-result-div one">
                             <div>
                                 <p class="result-data">Coach No</p>
-                                <h3 class="result-data">@item.coachNo</h3>
+                                <h3 class="result-data coach-no">@item.coachNo</h3>
                             </div>
                         </div>
                         <div class="coach-result-div two">
@@ -125,8 +130,34 @@
                         </div>
                         <div class="coach-result-div two">
                             <div>
+                                @{
+
+                                    string sqlQuery = "select * from Reservation where coachNo = '" + @item.coachNo + "' and dateOfJourney = '" + d + "' ";//+ d + "' \""; //+ @Session["date"] +"\"";
+
+
+                                    reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
+
+                                    int availSeats = 31 - reservations.Count();
+                                }
+
+                                @if (reservations.Count() != 0)
+                                {
+                                    
+                                    foreach (var s in reservations)
+                                    {
+
+
+                                        <input type="hidden" class="reservation-seats-multi" value="@item.coachNo @s.bookedSeat">
+
+
+                                    }
+
+
+                                }
+
                                 <p class="result-data">Available Seats</p>
-                                <h3 class="result-data">31</h3>
+                                <h3 class="result-data">@availSeats</h3>
+
                             </div>
                             <div>
                                 <p class="result-data">Fare</p>
@@ -169,8 +200,8 @@
                                         <h3 class="trip-data">@item.coachType</h3>
                                     </div>
                                 </div>
-                                
-                                
+
+
                                 <div class="trip-info-wrapper">
                                     <div class="trip-info">
                                         <p class="result-data">Reporting Time</p>
@@ -276,7 +307,7 @@
                         <div class="coach-result-div one">
                             <div>
                                 <p class="result-data">Coach No</p>
-                                <h3 class="result-data">@item.coachNo</h3>
+                                <h3 class="result-data coach-no">@item.coachNo</h3>
                             </div>
                         </div>
                         <div class="coach-result-div two">
@@ -291,9 +322,35 @@
                         </div>
                         <div class="coach-result-div two">
                             <div>
-                                <p class="result-data">Available Seats</p>
-                                <h3 class="result-data">28</h3>
-                            </div>
+                                @{
+
+                                    string sqlQuery = "select * from Reservation where coachNo = '" + @item.coachNo + "' and dateOfJourney = '" + d + "' ";//+ d + "' \""; //+ @Session["date"] +"\"";
+
+
+                                    reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
+
+                                    int availSeats = 28 - reservations.Count();
+                                }
+
+                                @if (reservations.Count() != 0)
+                                {
+                                    
+                                    foreach (var s in reservations)
+                                    {
+                                        
+                                       
+                                        <input type="hidden" class="reservation-seats-bi" value="@item.coachNo @s.bookedSeat">
+
+                                      
+                                    }
+                                   
+
+                                }
+
+                                    <p class="result-data">Available Seats</p>
+                                    <h3 class="result-data">@availSeats</h3>
+
+                                </div>
                             <div>
                                 <p class="result-data">Fare</p>
                                 <h3 class="result-data">BDT @item.farePerSeat</h3>
@@ -338,7 +395,7 @@
                                 <div class="trip-info-wrapper">
                                     <div class="trip-info">
                                         <p class="result-data">Reporting Time</p>
-                                        <h3 class="trip-data">@item.departureTime, @Session["date"]</h3>
+                                        <h3 class="trip-data">@item.departureTime, @Session["date"].ToString()</h3>
                                     </div>
                                 </div>
                                 <div class="trip-info-wrapper">
@@ -360,7 +417,6 @@
                                         </tr>
                                     </thead>
                                     <tbody class="selected-seats-table-body">
-
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -440,7 +496,7 @@
                         <div class="coach-result-div one">
                             <div>
                                 <p class="result-data">Coach No</p>
-                                <h3 class="result-data">@item.coachNo</h3>
+                                <h3 class="result-data coach-no">@item.coachNo</h3>
                             </div>
                         </div>
                         <div class="coach-result-div two">
@@ -455,8 +511,35 @@
                         </div>
                         <div class="coach-result-div two">
                             <div>
+                                @{
+
+                                    string sqlQuery = "select * from Reservation where coachNo = '" + @item.coachNo + "' and dateOfJourney = '" + d + "' ";//+ d + "' \""; //+ @Session["date"] +"\"";
+
+
+                                    reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
+
+                                    int availSeats = 41 - reservations.Count();
+                                }
+
+                                @if (reservations.Count() != 0)
+                                {
+                                   
+                                   
+                                    foreach (var s in reservations)
+                                    {
+
+
+                                        <input type="hidden" class="reservation-seats-non-ac" value="@item.coachNo @s.bookedSeat">
+
+
+                                    }
+
+
+                                }
+
                                 <p class="result-data">Available Seats</p>
-                                <h3 class="result-data">41</h3>
+                                <h3 class="result-data">@availSeats</h3>
+
                             </div>
                             <div>
                                 <p class="result-data">Fare</p>
@@ -568,9 +651,10 @@
                         </div>
                     </div>
                 </div>
-            }
-        }
-     </div>
+                                            }
+                                        
+                                    }
+    </div>
 </section>
 
 <!--    seat maxed out modal    -->
@@ -610,18 +694,8 @@
     </symbol>
 </svg>
 
-<!--    door svg    -->
-<svg class="d-none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="50" height="50" x="0" y="0" viewBox="0 0 50 50" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">< transform="matrix(6.123233995736764e-17,1,-1,6.123233995736764e-17,511.99999999999983,-2.2737367544323206e-13)">
-<symbol id="door-svg">
-<path d="M477.681,277.819c-21.996-52.05-53.489-98.781-93.604-138.896S297.23,67.315,245.181,45.319    C195.869,24.481,143.736,13.049,90,11.256V11H0v450h45h45V41.27c49.699,1.779,97.905,12.414,143.502,31.683    c48.471,20.483,91.994,49.816,129.361,87.183c37.367,37.367,66.7,80.891,87.184,129.361C471.249,339.669,482,392.998,482,448h30    C512,388.964,500.453,331.707,477.681,277.819z M60,431H30V41h30V431z" fill="#000000" data-original="#000000" stroke-width="10" />
-<circle cx="45" cy="481" r="20" fill="#000000" data-original="#000000" />                  
-    </symbol>
-</svg>
-
-
 <script>
     document.getElementById('suplux-navbar').classList.add('nav-bg');
-    console.log('session value','@Session["starting"]');
 </script>
 
 @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")

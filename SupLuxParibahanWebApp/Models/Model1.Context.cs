@@ -13,10 +13,10 @@ namespace SupLuxParibahanWebApp.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SUPLUXDashboardEntities : DbContext
+    public partial class SUPLUXDashboardEntities2 : DbContext
     {
-        public SUPLUXDashboardEntities()
-            : base("name=SUPLUXDashboardEntities")
+        public SUPLUXDashboardEntities2()
+            : base("name=SUPLUXDashboardEntities2")
         {
         }
     

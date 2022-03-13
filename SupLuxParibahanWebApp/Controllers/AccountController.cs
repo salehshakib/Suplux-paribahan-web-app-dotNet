@@ -9,7 +9,7 @@ namespace SupLuxParibahanWebApp.Controllers
 {
     public class AccountController : Controller
     {
-        SUPLUXDashboardEntities db=new SUPLUXDashboardEntities();   
+        SUPLUXDashboardEntities2 db=new SUPLUXDashboardEntities2();   
         
         // GET: Account
         public ActionResult SignUp()

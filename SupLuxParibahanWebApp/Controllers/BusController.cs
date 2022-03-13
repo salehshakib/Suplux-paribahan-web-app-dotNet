@@ -11,7 +11,7 @@ namespace SupLuxParibahanWebApp.Controllers
     public class BusController : Controller
     {
        
-        SUPLUXDashboardEntities database = new SUPLUXDashboardEntities();
+        SUPLUXDashboardEntities2 database = new SUPLUXDashboardEntities2();
         PaymentInfo paymentInfo = new PaymentInfo();
         JourneyDetails journeyDetails = new JourneyDetails();
         
@@ -24,12 +24,15 @@ namespace SupLuxParibahanWebApp.Controllers
             FromToData fromTo = TempData["fromto"] as FromToData;
             string from = fromTo.From;
             string to   = fromTo.To;
+            string date = fromTo.date;
 
             Session["from"]=from;
             Session["to"]=to;   
-            
+            Session["date"]=date;   
             List<tripData> tripData = new List<tripData>();
             tripData=database.tripDatas.Where(x=>x.startingFrom.Equals(from) && x.destination.Equals(to)).ToList();
+
+            
 
             return View(tripData);
         }
@@ -48,7 +51,14 @@ namespace SupLuxParibahanWebApp.Controllers
             
             paymentInfo.startPoint = Session["from"].ToString();
             paymentInfo.destination = Session["to"].ToString();
-            paymentInfo.tripDate = Session["date"].ToString();
+
+            string Date = Session["date"].ToString();
+            string format = "yyyy-MM-dd";
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            DateTime result = DateTime.ParseExact(Date, format, provider);
+            Date = result.ToString("dd-MMM-yyyy");
+            paymentInfo.tripDate = Date;
             paymentInfo.coachType = Session["coachType"].ToString();
             paymentInfo.coachNo = Session["coachNo"].ToString();
             paymentInfo.totalFare = Session["totalFare"].ToString();
@@ -64,7 +74,17 @@ namespace SupLuxParibahanWebApp.Controllers
 
             FromToData fromToData = new FromToData();
 
-            fromToData.date = date;
+            string Date = date;
+            string[] date2 = Date.Split('\'');
+            Date = date2[0] + " " + date2[1];
+
+            string format = "dd MMM yy";
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            DateTime result = DateTime.ParseExact(Date, format, provider);
+            Date = result.ToString("yyyy-MM-dd");
+
+            fromToData.date = Date;
             fromToData.From = from;
             fromToData.To = to;
 
@@ -112,12 +132,19 @@ namespace SupLuxParibahanWebApp.Controllers
             Session["starting"] = journeyDetails.from;
             Session["destination"] = journeyDetails.to;
             Session["date"] = journeyDetails.date;
+            //Session["journeyDate"] = journeyDetails.date;
+            //string journeyDate = journeyDetails.date;
 
             paymentInfo.startPoint = Session["starting"].ToString();
             paymentInfo.destination = Session["destination"].ToString();
             paymentInfo.tripDate = Session["date"].ToString();
 
-            string date = Session["date"].ToString();
+            
+           // paymentInfo.tripDate = journeyDate;
+
+            //string date = journeyDate;
+
+            string date = Session["date"].ToString(); ;
             string format = "yyyy-MM-dd";
             CultureInfo provider = CultureInfo.InvariantCulture;
 
@@ -129,11 +156,10 @@ namespace SupLuxParibahanWebApp.Controllers
 
             if (!Session["starting"].Equals(""))
             {
-                //return Json(Session["starting"]);
                 return RedirectToAction("goToBuslist", "Home");
             }
 
-            else return Json(journeyDetails.to);
+            else return Json(Session["date"]);
 
         }
 
@@ -143,12 +169,11 @@ namespace SupLuxParibahanWebApp.Controllers
         public ActionResult GetSelectedSeatsData(string[] seats, string totalFare)
         {
             Session["totalFare"] = totalFare;
-
             Session["seats"] = seats[0];
 
             for(int i = 1; i < seats.Length; i++)
             {
-               Session["seats"] = Session["seats"] +", " + seats[i];
+               Session["seats"] = Session["seats"] +"," + seats[i];
             }
 
 
@@ -162,6 +187,16 @@ namespace SupLuxParibahanWebApp.Controllers
         {
             string from = (string)Session["from"];
             string to = (string)Session["to"];
+
+            string date = Session["date"].ToString();
+            
+            //string format = "dd-MMM-yyyy"; 
+           // CultureInfo provider = CultureInfo.InvariantCulture;
+
+            //DateTime result = DateTime.ParseExact(date, format, provider);
+
+           // Session["date"] = result.ToString("yyyy-MM-dd");
+
             List<tripData> tripData = new List<tripData>();
             if (type == "06-12")
             {
@@ -207,6 +242,8 @@ namespace SupLuxParibahanWebApp.Controllers
     
         }
 
+
+
         public ActionResult ConfirmPayment(string tripDate, string seats, string coachNo)
         {
 
@@ -216,21 +253,37 @@ namespace SupLuxParibahanWebApp.Controllers
             Reservation reservation = new Reservation();
             TransactionLog transactionLog = new TransactionLog();
 
+
+
             foreach (string sed in seat)
             {
-
-                reservation.dateOfJourney = Convert.ToDateTime(tripDate);
-                reservation.reservationDate = DateTime.Now;
                 reservation.UTKNo = utk;
-                reservation.coachNo = paymentInfo.coachNo;
-                reservation.userEmail = "mjaumi2864@gmail.com"; //Session["currentEmail"].ToString();
+                reservation.userEmail = "mjaumi2864@gmail.com";
+                reservation.coachNo = coachNo;
                 reservation.bookedSeat = sed;
+                string d = DateTime.Now.ToString("yyyy-MM-dd");
+                reservation.reservationDate = d;
+                reservation.dateOfJourney = Session["date"].ToString();
+                reservation.paymentMethod = "bkash";
+                reservation.duePayment = 0;
 
                 database.Reservations.Add(reservation);
-                
+                database.SaveChanges();
+
+
+
+                //Session["currentEmail"].ToString();
+
+
+
+                System.Diagnostics.Debug.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAA", d);
+
+                //string sqlQuery = "Insert into Reservation (UTKNo, userEmail, coachNo, bookedSeat, reservationDate, dateOfJourney, paymentMethod, duePayment) values ('" + reservation.UTKNo+ "' , '" + reservation.userEmail + ", '" + reservation.coachNo + "', '"+ reservation.bookedSeat +"', '"+  )";
+                //database.Reservations.Add(reservation);
+
             }
             
-            database.SaveChanges();
+            //database.SaveChanges();
 
             transactionLog.statusInfo = "Paid";
             transactionLog.userEmail = "mjaumi2864@gmail.com"; //Session["currentEmail"].ToString();
