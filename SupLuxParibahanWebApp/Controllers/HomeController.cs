@@ -11,7 +11,7 @@ namespace SupLuxParibahanWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        SUPLUXDashboardEntities db = new SUPLUXDashboardEntities();
+        SUPLUXDashboardEntities2 db = new SUPLUXDashboardEntities2();
         public ActionResult Index()
         {
             if (Session["currentEmail"] != null)

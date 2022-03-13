@@ -9,7 +9,7 @@ namespace SupLuxParibahanWebApp.Controllers
 {
     public class AdminController : Controller
     {
-        SUPLUXDashboardEntities database = new SUPLUXDashboardEntities();
+        SUPLUXDashboardEntities2 database = new SUPLUXDashboardEntities2();
         //SUPLUXDashboardEntities db = new SUPLUXDashboardEntities();
 
         // GET: Admin

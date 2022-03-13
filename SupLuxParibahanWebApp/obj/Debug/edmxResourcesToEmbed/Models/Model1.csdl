@@ -18,8 +18,8 @@
     <Property Name="userEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="coachNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="bookedSeat" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="reservationDate" Type="DateTime" Precision="0" />
-    <Property Name="dateOfJourney" Type="DateTime" Precision="0" />
+    <Property Name="reservationDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="dateOfJourney" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="paymentMethod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="duePayment" Type="Int32" Nullable="false" />
     <NavigationProperty Name="tripData" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="Reservation" ToRole="tripData" />
@@ -46,8 +46,8 @@
     <Property Name="coachType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="farePerSeat" Type="Int32" Nullable="false" />
     <Property Name="TripStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="tripData" ToRole="Reservation" />
     <Property Name="MHDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__coach__47DBAE45" FromRole="tripData" ToRole="Reservation" />
   </EntityType>
   <EntityType Name="UserTable">
     <Key>
@@ -99,7 +99,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="SUPLUXDashboardEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="SUPLUXDashboardEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="Reservations" EntityType="Self.Reservation" />
     <EntitySet Name="TransactionLogs" EntityType="Self.TransactionLog" />
