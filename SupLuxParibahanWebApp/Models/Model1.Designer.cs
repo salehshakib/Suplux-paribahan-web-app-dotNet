@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\CSE 3200\Project\SupLuxParibahanWebApp\SupLuxParibahanWebApp\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Documents\180204060\3.2\CSE 3200  SD project\SupLuxParibahanWebApp\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

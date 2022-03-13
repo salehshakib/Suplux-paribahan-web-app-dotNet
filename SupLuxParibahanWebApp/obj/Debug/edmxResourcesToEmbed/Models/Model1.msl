@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SUPLUXDashboardModelStoreContainer" CdmEntityContainer="SUPLUXDashboardEntities">
+  <EntityContainerMapping StorageEntityContainer="SUPLUXDashboardModelStoreContainer" CdmEntityContainer="SUPLUXDashboardEntities2">
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="SUPLUXDashboardModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
-          <ScalarProperty Name="adminNick" ColumnName="adminNick" />
-          <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
           <ScalarProperty Name="adminID" ColumnName="adminID" />
           <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
+          <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+          <ScalarProperty Name="adminNick" ColumnName="adminNick" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -39,7 +39,6 @@
     <EntitySetMapping Name="tripDatas">
       <EntityTypeMapping TypeName="SUPLUXDashboardModel.tripData">
         <MappingFragment StoreEntitySet="tripData">
-          <ScalarProperty Name="MHDate" ColumnName="MHDate" />
           <ScalarProperty Name="coachNo" ColumnName="coachNo" />
           <ScalarProperty Name="startingFrom" ColumnName="startingFrom" />
           <ScalarProperty Name="destination" ColumnName="destination" />
@@ -47,6 +46,7 @@
           <ScalarProperty Name="coachType" ColumnName="coachType" />
           <ScalarProperty Name="farePerSeat" ColumnName="farePerSeat" />
           <ScalarProperty Name="TripStatus" ColumnName="TripStatus" />
+          <ScalarProperty Name="MHDate" ColumnName="MHDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
