@@ -91,3 +91,20 @@ const purchasePaymentInfo = () => {
         <p class="ticket-data">BDT ${parseInt(totalTicketFare.innerText.slice(4)) - (parseInt(totalTicketFare.innerText.slice(4)) * 0.2)}</p>
     `;
 }
+
+const passDataToConfirm = () => {
+
+    const ticketInfo = {
+        tripDate: document.getElementById('ticket-date').innerText,
+        seats: document.getElementById('ticket-seats').innerText,
+        coachNo: document.getElementById('ticket-coach').innerText
+    }
+
+    fetch('ConfirmPayment', {
+        method: 'POST',
+        body: JSON.stringify(ticketInfo),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    }).then(res => res.json()).then(data => console.log(data));
+}

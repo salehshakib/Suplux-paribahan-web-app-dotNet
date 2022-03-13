@@ -13,25 +13,25 @@
             <h2 class="ticket-title">Ticket Information</h2>
             <div class="ticket-body">
                 <p class="ticket-info">Name:</p>
-                <p class="ticket-data">Mr. Aumi</p>
+                <p id="ticket-name" class="ticket-data">Mr. Aumi</p>
                 <p class="ticket-info">Trip Date:</p>
-                <p class="ticket-data">@Model.tripDate</p>
+                <p id="ticket-date" class="ticket-data">@Model.tripDate</p>
                 <p class="ticket-info">Seats:</p>
-                <p class="ticket-data">@Model.seatConcat</p>
+                <p id="ticket-seats" class="ticket-data">@Model.seatConcat</p>
                 <p class="ticket-info">Total Fare:</p>
                 <p id="ticket-total-fare" class="ticket-data">@Model.totalFare</p>
                 <p class="ticket-info">Boarding Point:</p>
-                <p class="ticket-data">@Model.startPoint</p>
+                <p id="ticket-start" class="ticket-data">@Model.startPoint</p>
                 <p class="ticket-info">Destination:</p>
-                <p class="ticket-data">@Model.destination</p>
+                <p id="ticket-end" class="ticket-data">@Model.destination</p>
                 <p class="ticket-info">Reporting Time:</p>
-                <p class="ticket-data">12:20AM</p>
+                <p id="ticket-report" class="ticket-data">12:20AM</p>
                 <p class="ticket-info">Departure Time:</p>
-                <p class="ticket-data">@Model.departureTime</p>
+                <p id="ticket-departure" class="ticket-data">@Model.departureTime</p>
                 <p class="ticket-info">Coach No:</p>
-                <p class="ticket-data">@Model.coachNo</p>
+                <p id="ticket-coach" class="ticket-data">@Model.coachNo</p>
                 <p class="ticket-info">Coach Type:</p>
-                <p class="ticket-data">@Model.coachType</p>
+                <p id="ticket-type" class="ticket-data">@Model.coachType</p>
             </div>
             <div class="ticket-footer">
                 <button onclick="openPaymentOptions(this)" class="suplux-btn suplux-alt-btn"><i class="fas fa-bookmark"></i>Book</button>
@@ -81,10 +81,12 @@
                         </div>
                     </form>
                 </div>
+                
                 <div class="modal-footer">
                     <button type="button" class="suplux-btn suplux-alt-btn" data-dismiss="modal"><i class="fas fa-ban"></i>Cancel</button>
-                    <button type="button" class="suplux-btn" data-dismiss="modal"><i class="fas fa-check-circle"></i>Confirm</button>
+                    <button onclick="passDataToConfirm()" class="suplux-btn" data-dismiss="modal"><i class="fas fa-check-circle"></i>Confirm</button>
                 </div>
+               
             </div>
         </div>
     </div>
