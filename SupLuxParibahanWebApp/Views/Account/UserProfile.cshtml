@@ -1,11 +1,13 @@
 ﻿@model SupLuxParibahanWebApp.Models.UserTable
+@using SupLuxParibahanWebApp.Models;
+
 @{
     ViewBag.Title = "USER PROFILE";
     @Styles.Render("~/Content/user-profile-page.css")
 }
 
 
-  
+
 
 <!--    basic info section    -->
 <section id="basic-info-section">
@@ -135,30 +137,44 @@
                                         <th scope="col">Status</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+
+                                @{
+                                    SUPLUXDashboardEntities2 db = new SUPLUXDashboardEntities2();
+                                    
+                                    List<TransactionLog> transaction = new List<TransactionLog>();
+                                    List<Reservation> reservations = new List<Reservation>();
+                                    
+                                    string userEmail = Session["currentEmail"].ToString();
+
+                                    transaction = db.TransactionLogs.Where(temp => temp.userEmail.Equals(userEmail)).ToList();
+                                    int count = 1;
+
+                                    
+
+
+                                }
+                            <tbody>
+                                @foreach (var td in transaction)
+                                {
+
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>120220221644-M4013D3-140220222230</td>
-                                        <td>12-02-2022</td>
-                                        <td>14-02-2022</td>
-                                        <td>PAID</td>
+                                        <th scope="row">@count</th>@{ count = count + 1;}
+                                        <td>@td.transactionId</td>
+                                        @{ 
+                                            
+
+                                            reservations = db.Reservations.Where(temp => temp.UTKNo.Equals(td.transactionId)).ToList();
+
+                                        }
+                                        <td>@reservations.First().reservationDate</td>
+                                        <td>@reservations.First().dateOfJourney</td>
+                                        <td>@td.statusInfo</td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>120220221644-M4013D3-140220222230</td>
-                                        <td>12-02-2022</td>
-                                        <td>14-02-2022</td>
-                                        <td>BOOKED</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>120220221644-M4013D3-140220222230</td>
-                                        <td>12-02-2022</td>
-                                        <td>14-02-2022</td>
-                                        <td>CANCELLED</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                                }
+                            </tbody>
+
+                                </table>
                         </div>
                     </div>
                     <!--    Settings section    -->

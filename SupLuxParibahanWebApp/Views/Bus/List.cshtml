@@ -131,14 +131,27 @@
                         <div class="coach-result-div two">
                             <div>
                                 @{
+                                        string sqlQuery = "select * from Reservation where coachNo = '" + @item.coachNo + "' and dateOfJourney = '" + d + "' ";//+ d + "' \""; //+ @Session["date"] +"\"";
+
+
+                                        reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
+
+                                        int availSeats = 31 - reservations.Count();
+
+                                    }
+
+                                <script id="booked-seat" type="application/json">
+                                    <%= JsonConvert.SerializeObject(@reservations) %>
+                                </script>
+                                 
+                                    @if (reservations.Count() != 0) {
+                                        foreach (var s in reservations) {
+                                            System.Diagnostics.Debug.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAA", @s.bookedSeat);
+                                        }
+                                    }
+                                            
                                     
-                                    string sqlQuery = "select * from Reservation where coachNo = '" + @item.coachNo + "' and dateOfJourney = '" + d + "' ";//+ d + "' \""; //+ @Session["date"] +"\"";
-
-
-                                    reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
-
-                                    int availSeats = 31 - reservations.Count();
-                                }
+                       
 
                                 <p class="result-data">Available Seats</p>
                                 <h3 class="result-data">@availSeats</h3>
@@ -314,8 +327,36 @@
 
                                     reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
 
+                                    //var data = reservations;
+
                                     int availSeats = 28 - reservations.Count();
                                 }
+
+
+
+                                @if (reservations.Count() != 0)
+                                {
+                                    Session["booked-seat"] = "kisu to deha";
+                                    //for(int i =0; i<reservations.Count())
+                                    foreach (var s in reservations)
+                                    {
+                                        Session["booked-seat"] = Session["booked-seat"] + @s.bookedSeat;
+                                        System.Diagnostics.Debug.WriteLine("SSSSSSSSSSSSSSSSSSSSSSSS", @s.bookedSeat);
+
+
+                                        <input type="hidden" class="reservation-seats" value="@s.bookedSeat">
+
+                                        //</script>
+
+                                    }
+                                    <input type="hidden" class="reservation-coach-no" value="@item.coachNo">
+
+                                }
+
+
+
+
+
 
                                 <p class="result-data">Available Seats</p>
                                 <h3 class="result-data">@availSeats</h3>
@@ -489,6 +530,14 @@
                                     reservations = db.Reservations.SqlQuery(sqlQuery).ToList();
 
                                     int availSeats = 41 - reservations.Count();
+                                }
+
+                                @if (reservations.Count() != 0)
+                                {
+                                    foreach (var s in reservations)
+                                    {
+                                        System.Diagnostics.Debug.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAA", @s.bookedSeat);
+                                    }
                                 }
 
                                 <p class="result-data">Available Seats</p>
