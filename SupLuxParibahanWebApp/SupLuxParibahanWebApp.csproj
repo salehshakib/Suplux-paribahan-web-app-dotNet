@@ -247,6 +247,7 @@
     <Content Include="Scripts\list.js" />
     <Content Include="Scripts\login-page.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\modify-date-picker.js" />
     <Content Include="Scripts\payment-page.js" />
     <Content Include="Scripts\signup-page.js" />
     <Content Include="Scripts\time-picker.js" />

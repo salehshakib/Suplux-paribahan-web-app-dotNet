@@ -84,6 +84,7 @@ namespace SupLuxParibahanWebApp.Controllers
         public ActionResult goToPayment(string contype) {
 
             //this.CoachNo = contype;
+
             string[] arr = contype.Split(' ');
             Session["coachNo"] = arr[0];
             Session["departureTime"] = arr[1];
@@ -100,6 +101,7 @@ namespace SupLuxParibahanWebApp.Controllers
                 Session["coachType"] = "NON-AC";
             }
             return RedirectToAction("Payment","Bus");
+           
         }
 
         [HttpPost]
@@ -205,6 +207,40 @@ namespace SupLuxParibahanWebApp.Controllers
     
         }
 
-        
+        public ActionResult ConfirmPayment(string tripDate, string seats, string coachNo)
+        {
+
+            string[] seat = seats.Split(',');
+
+            string utk = DateTime.Now.ToString("yyyyMMdd") + "-" + coachNo + seat[0] + "-" + Convert.ToDateTime(tripDate).ToString("yyyyMMdd");
+            Reservation reservation = new Reservation();
+            TransactionLog transactionLog = new TransactionLog();
+
+            foreach (string sed in seat)
+            {
+
+                reservation.dateOfJourney = Convert.ToDateTime(tripDate);
+                reservation.reservationDate = DateTime.Now;
+                reservation.UTKNo = utk;
+                reservation.coachNo = paymentInfo.coachNo;
+                reservation.userEmail = "mjaumi2864@gmail.com"; //Session["currentEmail"].ToString();
+                reservation.bookedSeat = sed;
+
+                database.Reservations.Add(reservation);
+                
+            }
+            
+            database.SaveChanges();
+
+            transactionLog.statusInfo = "Paid";
+            transactionLog.userEmail = "mjaumi2864@gmail.com"; //Session["currentEmail"].ToString();
+            transactionLog.transactionId = utk;
+
+            database.TransactionLogs.Add(transactionLog);
+            database.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
