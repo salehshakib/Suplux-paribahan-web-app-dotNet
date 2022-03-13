@@ -16,30 +16,32 @@
     </div>
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div id="modify-search-container" class="search-container">
-                <div class="suplux-search-box">
-                    <div class="autocomplete">
-                        <p>From</p>
-                        <input id="starting-point" type="text" name="from" value="@Session["from"]" placeholder="Enter City" autocomplete="off" />
+            <form action="/Bus/goToModify" method="post">
+                <div id="modify-search-container" class="search-container">
+                    <div class="suplux-search-box">
+                        <div class="autocomplete">
+                            <p>From</p>
+                            <input id="starting-point" type="text" name="from" value="@Session["from"]" placeholder="Enter City" autocomplete="off" required />
+                        </div>
+                    </div>
+                    <div class="suplux-search-box">
+                        <div class="autocomplete">
+                            <p>To</p>
+                            <input id="ending-point" type="text" name="to" value="@Session["to"]" placeholder="Enter City" autocomplete="off" required/>
+                        </div>
+                    </div>
+                    <div class="suplux-search-box suplux-date-box">
+                        <p>journey date</p>
+                        <input id="suplux-datepicker" class="date" type="text" name="date" value="@Session["date"]" readonly="readonly" placeholder="Enter City" required/>
+                        <p id="suplux-day">Day</p>
+                    </div>
+                    <div class="search-btn-container">
+                        <button id="bus-search-btn" class="suplux-btn"><i class="fas fa-search"></i>Modify Search</button>
                     </div>
                 </div>
-                <div class="suplux-search-box">
-                    <div class="autocomplete">
-                        <p>To</p>
-                        <input id="ending-point" type="text" name="to" value="@Session["to"]" placeholder="Enter City" autocomplete="off" />
-                    </div>
-                </div>
-
-                <div class="suplux-search-box suplux-date-box">
-                    <p>journey date</p>
-                    <input id="suplux-datepicker" class="date" type="text" name="to" value="" readonly="readonly" placeholder="Enter City" />
-                    <p id="suplux-day">Day</p>
-                </div>
-                <div class="search-btn-container">
-                    <button id="bus-search-btn" class="suplux-btn"><i class="fas fa-search"></i>Modify Search</button>
-                </div>
-            </div>
+            </form>
         </div>
+
         <div id="mobile-edit-hide-container" class="d-none">
             <div>
                 <h6>Dhaka - Khulna</h6>
@@ -206,7 +208,7 @@
                             </div>
                             <form action="/Bus/goToPayment" method="post">
                                 <div class="continue-btn-container">
-                                    <button class="suplux-btn continue-btn" type="submit" name="contype" value="@item.coachNo">Continue</button>
+                                    <button class="suplux-btn continue-btn" type="submit" name="contype" value="@item.coachNo @item.departureTime">Continue</button>
                                 </div>
                             </form>
                         </div>
@@ -369,9 +371,11 @@
                                     </tfoot>
                                 </table>
                             </div>
-                            <div class="continue-btn-container">
-                                <button class="suplux-btn continue-btn">Continue</button>
-                            </div>
+                            <form action="/Bus/goToPayment" method="post">
+                                <div class="continue-btn-container">
+                                    <button class="suplux-btn continue-btn" type="submit" name="contype" value="@item.coachNo @item.departureTime">Continue</button>
+                                </div>
+                            </form>
                         </div>
 
                         <!--    seat map container    -->
@@ -530,9 +534,11 @@
                                     </tfoot>
                                 </table>
                             </div>
-                            <div class="continue-btn-container">
-                                <button class="suplux-btn continue-btn">Continue</button>
-                            </div>
+                            <form action="/Bus/goToPayment" method="post">
+                                <div class="continue-btn-container">
+                                    <button class="suplux-btn continue-btn" type="submit" name="contype" value="@item.coachNo @item.departureTime">Continue</button>
+                                </div>
+                            </form>
                         </div>
 
                         <!--    seat map container    -->

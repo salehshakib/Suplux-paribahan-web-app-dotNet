@@ -29,6 +29,7 @@ namespace SupLuxParibahanWebApp.Controllers
         
         [HttpPost]
         public ActionResult goToBuslist(tripData tripData) {
+
             FromToData fromToData = new FromToData();
             fromToData.From = tripData.startingFrom; 
             fromToData.To = tripData.destination;

@@ -10,6 +10,7 @@ namespace SupLuxParibahanWebApp.Controllers
 {
     public class BusController : Controller
     {
+       
         SUPLUXDashboardEntities database = new SUPLUXDashboardEntities();
         PaymentInfo paymentInfo = new PaymentInfo();
         JourneyDetails journeyDetails = new JourneyDetails();
@@ -35,6 +36,15 @@ namespace SupLuxParibahanWebApp.Controllers
 
         public ActionResult Payment()
         {
+            if(Session["name"] == null)
+            {
+                paymentInfo.name = "Log in koren Vai";
+                //return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                paymentInfo.name = Session["name"].ToString();
+            }
             
             paymentInfo.startPoint = Session["from"].ToString();
             paymentInfo.destination = Session["to"].ToString();
@@ -42,11 +52,27 @@ namespace SupLuxParibahanWebApp.Controllers
             paymentInfo.coachType = Session["coachType"].ToString();
             paymentInfo.coachNo = Session["coachNo"].ToString();
             paymentInfo.totalFare = Session["totalFare"].ToString();
-
-
             paymentInfo.seatConcat = Session["seats"].ToString();
+            paymentInfo.departureTime = Session["departureTime"].ToString();
 
             return View(paymentInfo);
+        }
+
+        [HttpPost]
+        public ActionResult goToModify(string from, string to, string date)
+        {
+
+            FromToData fromToData = new FromToData();
+
+            fromToData.date = date;
+            fromToData.From = from;
+            fromToData.To = to;
+
+
+
+            TempData["fromto"] = fromToData;
+
+            return RedirectToAction("List", "Bus");
         }
 
         public ActionResult CancelTicket()
@@ -56,22 +82,21 @@ namespace SupLuxParibahanWebApp.Controllers
 
         [HttpPost]
         public ActionResult goToPayment(string contype) {
-            
+
             //this.CoachNo = contype;
-            Session["coachNo"] = contype;
+            string[] arr = contype.Split(' ');
+            Session["coachNo"] = arr[0];
+            Session["departureTime"] = arr[1];
             if (contype.Contains("M"))
             {
-                
                 Session["coachType"] = "AC (Multi)";
             }
             else if (contype.Contains("B"))
             {
-                
                 Session["coachType"] = "AC (Bi)";
             }
             else 
             {
-                
                 Session["coachType"] = "NON-AC";
             }
             return RedirectToAction("Payment","Bus");
@@ -118,8 +143,6 @@ namespace SupLuxParibahanWebApp.Controllers
             Session["totalFare"] = totalFare;
 
             Session["seats"] = seats[0];
-
-            
 
             for(int i = 1; i < seats.Length; i++)
             {

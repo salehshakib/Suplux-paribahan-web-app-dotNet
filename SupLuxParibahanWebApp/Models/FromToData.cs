@@ -9,6 +9,8 @@ namespace SupLuxParibahanWebApp.Models
     {
         public string From { get; set; }
         public string To { get; set; }
+
+        public string date { get; set; }
         public Nullable<System.DateTime> JourneyDate { get; set; }
     }
 }

@@ -17,9 +17,7 @@
                 <p class="ticket-info">Trip Date:</p>
                 <p class="ticket-data">@Model.tripDate</p>
                 <p class="ticket-info">Seats:</p>
-                
                 <p class="ticket-data">@Model.seatConcat</p>
-                
                 <p class="ticket-info">Total Fare:</p>
                 <p id="ticket-total-fare" class="ticket-data">@Model.totalFare</p>
                 <p class="ticket-info">Boarding Point:</p>
@@ -29,7 +27,7 @@
                 <p class="ticket-info">Reporting Time:</p>
                 <p class="ticket-data">12:20AM</p>
                 <p class="ticket-info">Departure Time:</p>
-                <p class="ticket-data">12:10 PM</p>
+                <p class="ticket-data">@Model.departureTime</p>
                 <p class="ticket-info">Coach No:</p>
                 <p class="ticket-data">@Model.coachNo</p>
                 <p class="ticket-info">Coach Type:</p>

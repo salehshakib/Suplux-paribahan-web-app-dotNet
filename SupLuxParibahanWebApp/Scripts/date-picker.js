@@ -71,17 +71,18 @@ window.onload = function () {
     datePicker.value = date[2] + ' ' + months[--date[1]] + "'" + date[0].slice(2, 4);
 
     showDay.innerText = days[day];
-    console.log(fullDate);
+    
 }
 
 //getting JSON trip data to back end
 document.getElementById('bus-search-btn').addEventListener('click', () => {
-
+    
     const searchData = {
         from: document.getElementById('starting-point').value,
         to: document.getElementById('ending-point').value,
         date: fullDate
     };
+    console.log(fullDate);
     
     fetch('Bus/GetJourneyData', {
         method: 'POST',
