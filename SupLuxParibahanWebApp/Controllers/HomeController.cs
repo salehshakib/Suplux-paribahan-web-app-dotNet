@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SupLuxParibahanWebApp.Models;
 using System.Threading;
-
+using System.Globalization;
 
 namespace SupLuxParibahanWebApp.Controllers
 {
@@ -28,14 +28,28 @@ namespace SupLuxParibahanWebApp.Controllers
         }
         
         [HttpPost]
-        public ActionResult goToBuslist(tripData tripData) {
+        public ActionResult goToBuslist(string startingFrom, string destination, string date) {
 
             FromToData fromToData = new FromToData();
-            fromToData.From = tripData.startingFrom; 
-            fromToData.To = tripData.destination;
+            fromToData.From = startingFrom; 
+            fromToData.To = destination;
 
+            string Date = date;
+            string[] date2 = Date.Split('\'');
+            Date = date2[0] + " " + date2[1];
             
-        
+            string format = "dd MMM yy";
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            DateTime result = DateTime.ParseExact(Date, format, provider);
+            Date = result.ToString("yyyy-MM-dd");
+
+            fromToData.date = Date;
+
+            Session["journeyDate"] = Date;
+            
+
+
             TempData["fromto"]=fromToData;
             return RedirectToAction("List", "Bus");
         }

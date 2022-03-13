@@ -161,6 +161,7 @@
     <Compile Include="Models\Reservation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReservationJoinTripData.cs" />
     <Compile Include="Models\TransactionLog.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
