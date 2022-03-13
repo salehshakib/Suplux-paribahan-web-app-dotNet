@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SupLuxParibahanWebApp.Models;
+using System.Threading;
+
 
 namespace SupLuxParibahanWebApp.Controllers
 {
@@ -27,10 +29,13 @@ namespace SupLuxParibahanWebApp.Controllers
         
         [HttpPost]
         public ActionResult goToBuslist(tripData tripData) {
+
             FromToData fromToData = new FromToData();
             fromToData.From = tripData.startingFrom; 
             fromToData.To = tripData.destination;
+
             
+        
             TempData["fromto"]=fromToData;
             return RedirectToAction("List", "Bus");
         }

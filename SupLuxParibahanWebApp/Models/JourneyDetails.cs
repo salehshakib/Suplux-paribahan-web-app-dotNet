@@ -5,12 +5,10 @@ using System.Web;
 
 namespace SupLuxParibahanWebApp.Models
 {
-    public class FromToData
+    public class JourneyDetails
     {
-        public string From { get; set; }
-        public string To { get; set; }
-
+        public string from { get; set; }
+        public string to { get; set; }
         public string date { get; set; }
-        public Nullable<System.DateTime> JourneyDate { get; set; }
     }
 }
