@@ -87,7 +87,7 @@ namespace SupLuxParibahanWebApp.Controllers
                     Session["currentUsername"] = getUser.userName;
                     //Session["currentUserName"]=userTable.userPassword.ToString();
                     TempData["notification"] = "log in success";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("UserProfile", "Account");
                 }
                 else
                 {

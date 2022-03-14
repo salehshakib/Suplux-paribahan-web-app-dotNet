@@ -247,7 +247,15 @@ namespace SupLuxParibahanWebApp.Controllers
     
         }
 
+        [HttpPost]
+        public ActionResult CancelTicketUtk(string utkno)
+        {
+            Reservation reservation = new Reservation();
+            reservation  = database.Reservations.SingleOrDefault(temp => temp.UTKNo.Equals(utkno));
+            return RedirectToAction("CancelTicket", "Bus");
+        }
 
+        
 
         public ActionResult ConfirmPayment(string tripDate, string seats, string coachNo)
         {
@@ -270,7 +278,9 @@ namespace SupLuxParibahanWebApp.Controllers
                 reservation.reservationDate = d;
                 reservation.dateOfJourney = Session["date"].ToString();
                 reservation.paymentMethod = "bkash";
-                reservation.duePayment = 0;
+
+                string[] str = Session["totalFare"].ToString().Split(' ');
+                reservation.duePayment = Int16.Parse(str[1]);
 
                 database.Reservations.Add(reservation);
                 database.SaveChanges();

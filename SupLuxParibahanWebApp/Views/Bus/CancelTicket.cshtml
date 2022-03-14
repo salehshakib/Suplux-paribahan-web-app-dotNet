@@ -1,4 +1,5 @@
-﻿
+﻿@model SupLuxParibahanWebApp.Models.Reservation
+@using SupLuxParibahanWebApp.Models;
 @{
     ViewBag.Title = "CANCEL TICKET";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,10 +10,10 @@
 <!--   search ticket section    -->
 <section id="search-ticket-section">
     <div class="container">
-        <form action="/" method="post">
+        <form action="/Bus/CancelTicketUtk" method="post">
             <div class="search-ticket-container">
                 <h2 class="ticket-title">Search Ticket For Cancellation</h2>
-                <input type="text" name="name" value="" placeholder="Enter UTK Number To Search Ticket" />
+                <input type="text" name="utkno" value="" placeholder="Enter UTK Number To Search Ticket" />
                 <button class="suplux-btn"><i class="fas fa-search"></i>Search Ticket</button>
             </div>
         </form>
@@ -33,6 +34,9 @@
     <div class="container">
         <div class="ticket">
             <h2 class="ticket-title">Ticket Information</h2>
+
+
+
             <div class="ticket-body">
                 <p class="ticket-info">Name:</p>
                 <p class="ticket-data">Mr. Aumi</p>
@@ -55,6 +59,9 @@
                 <p class="ticket-info">Coach Type:</p>
                 <p class="ticket-data">AC (Multi)</p>
             </div>
+
+
+
             <div class="ticket-footer">
                 <button id="discard-btn" class="suplux-btn suplux-alt-btn"><i class="fas fa-ban"></i>Discard</button>
                 <button id="cancel-ticket-btn" class="suplux-btn"><i class="fas fa-remove-format"></i>Cancel</button>
