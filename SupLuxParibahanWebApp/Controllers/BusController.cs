@@ -61,8 +61,9 @@ namespace SupLuxParibahanWebApp.Controllers
             paymentInfo.tripDate = Date;
             paymentInfo.coachType = Session["coachType"].ToString();
             paymentInfo.coachNo = Session["coachNo"].ToString();
-            paymentInfo.totalFare = Session["totalFare"].ToString();
-            paymentInfo.seatConcat = Session["seats"].ToString();
+            //paymentInfo.totalFare = Session["totalFare"].ToString();
+            //System.Diagnostics.Debug.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", Session["totalFare"]);
+            //paymentInfo.seatConcat = Session["seats"].ToString();
             paymentInfo.departureTime = Session["departureTime"].ToString();
 
             return View(paymentInfo);
@@ -171,14 +172,18 @@ namespace SupLuxParibahanWebApp.Controllers
             Session["totalFare"] = totalFare;
             Session["seats"] = seats[0];
 
+            string str = seats[0];
+
+            paymentInfo.totalFare = totalFare;
+
             for(int i = 1; i < seats.Length; i++)
             {
-               Session["seats"] = Session["seats"] +"," + seats[i];
+                str = str + "," + seats[i];
             }
 
+            paymentInfo.seatConcat = str;
 
-            //Selected tables are fetching here 
-            return Json(Session["seats"]);
+            return RedirectToAction("Payment", "Bus");
 
         }
 
